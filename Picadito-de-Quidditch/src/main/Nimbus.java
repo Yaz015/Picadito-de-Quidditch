@@ -1,19 +1,31 @@
 package main;
 
+import java.sql.Date;
+
 public class Nimbus implements Escoba{
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
+    private Integer añoActual;
 
-    public Integer velocidadEscoba(){
-        return (80-this.cantAñosDesdeFabricacion())*this.porcentajeDeSalud();
+    Nimbus(Integer añoDeFabricacion, Integer añoActual, Integer porcentajeDeSalud){
+        this.añoDeFabricacion=añoDeFabricacion;
+        this.añoActual=añoActual;
+        this.porcentajeDeSalud=porcentajeDeSalud;
     }
 
-    public Integer porcentajeDeSalud(){
+    public Integer velocidadEscoba(){
+        return (80- this.añoActual)*this.getPorcentajeDeSalud();
+    }
+
+    public Integer getPorcentajeDeSalud(){
         return this.porcentajeDeSalud/100;
     }
 
     public Integer cantAñosDesdeFabricacion(){
         return this.añoDeFabricacion-2019;
     }
+
+    //public Integer añoActual(){
+    //   return new Date().getYear();} no anda
 }

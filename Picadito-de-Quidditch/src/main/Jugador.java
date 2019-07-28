@@ -5,9 +5,10 @@ public abstract class Jugador {
     protected Escoba escobaDelJugador;
     protected Integer skill;
 
-    Jugador(Integer peso, Escoba escobaDelJugador){
+    Jugador(Integer peso, Escoba escobaDelJugador, Integer skill){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
+        this.skill=skill;
     }
 
     public Escoba escobaDelJugador() {
