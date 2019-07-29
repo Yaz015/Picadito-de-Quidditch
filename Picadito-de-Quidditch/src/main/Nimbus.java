@@ -15,7 +15,7 @@ public class Nimbus implements Escoba{
     }
 
     public Integer velocidadEscoba(){
-        return (80- this.añoActual)*this.getPorcentajeDeSalud();
+        return (80- this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud();
     }
 
     public Integer getPorcentajeDeSalud(){
@@ -23,9 +23,9 @@ public class Nimbus implements Escoba{
     }
 
     public Integer cantAñosDesdeFabricacion(){
-        return this.añoDeFabricacion-2019;
+        return this.añoActual-this.añoDeFabricacion;
     }
 
     //public Integer añoActual(){
-    //   return new Date().getYear();} no anda
+    //   return new Date().getYear();} no se como funciona
 }
