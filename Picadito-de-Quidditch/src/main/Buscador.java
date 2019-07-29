@@ -1,4 +1,4 @@
-package main;
+ptackage main;
 
 public class Buscador extends Jugador {
     private Integer nivelDeReflejos;

@@ -14,6 +14,6 @@ public class Nimbus implements Escoba{
     }
 
     public Integer cantAñosDesdeFabricacion(){
-        return this.añoDeFabricacion-2019;
+        return 2019-this.añoDeFabricacion;
     }
 }

@@ -25,5 +25,7 @@ public abstract class Jugador {
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
     }
+
+
 }
 
