@@ -1,4 +1,4 @@
-ptackage main;
+package main;
 
 public class Buscador extends Jugador {
     private Integer nivelDeReflejos;
@@ -11,6 +11,6 @@ public class Buscador extends Jugador {
     }
 
     public Integer habilidad(){
-        return this.velocidadDelJugador()+this.skill+this.nivelDeReflejos*this.nivelDeVision;
+        return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
     }
 }

@@ -11,6 +11,6 @@ public class Golpeador extends Jugador {
     }
 
     public Integer habilidad(){
-        return super.velocidadDelJugador()+this.skill+this.punteria+this.fuerza;
+        return super.habilidad()+this.punteria+this.fuerza;
     }
 }

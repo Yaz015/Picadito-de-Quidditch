@@ -2,15 +2,11 @@ package main;
 
 import java.util.List;
 
-public abstract class Jugador {
-    protected Integer peso;
-    protected Escoba escobaDelJugador;
-    protected Integer skill;
+public class Categoria {
+    private Jugador jugador;
     public List<Jugador> jugadores;
-    Jugador(Integer peso, Escoba escobaDelJugador){
-        this.peso=peso;
-        this.escobaDelJugador=escobaDelJugador;
-    }
+    private Escoba escobaDelJugador;
+
 
     public Escoba escobaDelJugador() {
         return this.escobaDelJugador;
@@ -27,19 +23,16 @@ public abstract class Jugador {
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
     }
-    public Integer habilidad(){return velocidadDelJugador()+ skill;}
-
-    public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad()<=this.habilidad()/2;}
+    public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad()<=jugador.habilidad()/2;}
 
     /**Si un jugador es groso, que se cumple si su habilidad es mayor al promedio de su
- equipo y su velocidad mayor a un valor arbitrario(KEEEEEEEEJAJA) que a medida que el mercado de
- escobas mejora se actualiza para todos por igual.**/
+     equipo y su velocidad mayor a un valor arbitrario(KEEEEEEEEJAJA) que a medida que el mercado de
+     escobas mejora se actualiza para todos por igual.**/
 
     public Boolean esGroso() { return
-            this.habilidad() > jugadores.stream()
+            jugador.habilidad() > jugadores.stream()
                     .map( j -> j.habilidad()).reduce( 0, Integer::sum );
 
     }}
 
 }
-
