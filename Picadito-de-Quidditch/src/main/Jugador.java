@@ -1,6 +1,6 @@
 package main;
 
-public abstract class Jugador {
+    public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
     protected Integer skill;
@@ -10,6 +10,8 @@ public abstract class Jugador {
         this.escobaDelJugador=escobaDelJugador;
         this.skill=skill;
     }
+
+    public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad() <= this.habilidad();}
 
     public Escoba escobaDelJugador() {
         return this.escobaDelJugador;
@@ -25,6 +27,10 @@ public abstract class Jugador {
 
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
+    }
+
+    public Integer habilidad(){
+        return this.habilidad();
     }
 }
 
