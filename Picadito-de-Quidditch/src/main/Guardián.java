@@ -1,8 +1,8 @@
 package main;
 
 public class Guardián extends Jugador {
-    protected Integer nivelDeReflejos;
-    protected Integer fuerza;
+    private Integer nivelDeReflejos;
+    private Integer fuerza;
 
     Guardián(Integer skill, Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, skill, equipo);
