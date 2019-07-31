@@ -4,14 +4,22 @@ package main;
     protected Integer peso;
     protected Escoba escobaDelJugador;
     protected Integer skill;
+    protected Equipo equipo;
+    protected MercadoDeEscobas mercadoDeEscobas;
 
-    Jugador(Integer peso, Escoba escobaDelJugador, Integer skill){
+    Jugador(Integer peso, Escoba escobaDelJugador, Integer skill, Equipo equipo){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
         this.skill=skill;
+        this.equipo=equipo;
     }
 
     public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad() <= this.habilidad();}
+
+    public Boolean esGroso() {
+        return this.habilidad()>this.equipo.promedioDeHabilidades()
+               && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroAleatorio();
+    }
 
     public Escoba escobaDelJugador() {
         return this.escobaDelJugador;

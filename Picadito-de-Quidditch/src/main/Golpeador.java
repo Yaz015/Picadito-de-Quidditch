@@ -4,8 +4,8 @@ public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
 
-    Golpeador(Integer skill, Integer fuerza, Integer punteria, Integer peso, Escoba escoba){
-        super(peso, escoba, skill);
+    Golpeador(Integer skill, Integer fuerza, Integer punteria, Integer peso, Escoba escoba, Equipo equipo){
+        super(peso, escoba, skill, equipo);
         this.fuerza=fuerza;
         this.punteria=punteria;
     }
