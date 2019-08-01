@@ -5,7 +5,9 @@ import java.util.List;
 public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
-    protected Integer skill;
+    protected Integer skill=6;
+    protected MercadoDeEscobas mercadoDeEscobas;
+    protected Equipo equipo;
     public List<Jugador> jugadores;
     Jugador(Integer peso, Escoba escobaDelJugador){
         this.peso=peso;
@@ -21,25 +23,28 @@ public abstract class Jugador {
     }
 
     public Integer velocidadDelJugador() {
-        return this.velocidadDeEscoba() * this.nivelManejoDeEscoba();
+        return velocidadEscoba() * nivelManejoDeEscoba();
     }
 
-    public Integer velocidadDeEscoba() {
-        return this.escobaDelJugador().velocidadEscoba();
+    public Integer velocidadEscoba() {
+        return escobaDelJugador.velocidadDeEscoba();
     }
+
     public Integer habilidad(){return velocidadDelJugador()+ skill;}
+   /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
+    habilidoso que el otro jugador.**/
 
     public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad()<=this.habilidad()/2;}
 
     /**Si un jugador es groso, que se cumple si su habilidad es mayor al promedio de su
- equipo y su velocidad mayor a un valor arbitrario(KEEEEEEEEJAJA) que a medida que el mercado de
- escobas mejora se actualiza para todos por igual.**/
+    equipo y su velocidad mayor a un valor arbitrario que a medida que el mercado de
+    escobas mejora se actualiza para todos por igual.**/
 
-    public Boolean esGroso() { return
-            this.habilidad() > jugadores.stream()
-                    .map( j -> j.habilidad()).reduce( 0, Integer::sum );
 
+    public Boolean esGroso() {
+        return this.habilidad()>this.equipo.promedioDeHabilidades()
+                && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroAleatorio();
     }}
 
-}
+
 
