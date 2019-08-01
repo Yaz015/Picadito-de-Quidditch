@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MercadoDeEscobas {
-    private Integer numeroAleatorio;
+    private Integer numeroAleatorio=5;
     private int longitud=100;
     private List<Integer> list= new ArrayList<>(longitud);
 

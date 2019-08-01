@@ -24,5 +24,4 @@ public class Equipo {
         return this.jugadores.stream()
                 .map( j -> j.habilidad()).reduce( 0, Integer::sum );
     }
-
 }
