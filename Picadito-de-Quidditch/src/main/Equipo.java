@@ -14,13 +14,13 @@ public class Equipo {
         return jugadores.size();
     }
 
-    public Integer promedioDeHabilidades() {
+    public Double promedioDeHabilidades() {
         return this.sumaDeHabilidadesDeJugadores() / this.cantDeJugadoresEnEquipo();
     }
 
-    public Integer sumaDeHabilidadesDeJugadores() {
+    public Double sumaDeHabilidadesDeJugadores() {
         return this.jugadores.stream()
-                .map(j -> j.habilidad()).reduce(0, Integer::sum);
+                .map(j -> j.habilidad()).reduce(0.0, Double::sum);
     }
 
 }

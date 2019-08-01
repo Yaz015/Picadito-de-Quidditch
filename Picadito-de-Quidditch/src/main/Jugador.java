@@ -3,13 +3,13 @@ package main;
 import java.util.List;
 
 public abstract class Jugador {
-    protected Integer peso;
+    protected Double peso;
     protected Escoba escobaDelJugador;
-    protected Integer skill=6;
+    protected Double skill=100.0;
     protected MercadoDeEscobas mercadoDeEscobas;
     protected Equipo equipo;
     public List<Jugador> jugadores;
-    Jugador(Integer peso, Escoba escobaDelJugador){
+    Jugador(Double peso, Escoba escobaDelJugador){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
     }
@@ -18,19 +18,19 @@ public abstract class Jugador {
         return this.escobaDelJugador;
     }
 
-    public Integer nivelManejoDeEscoba() {
+    public Double nivelManejoDeEscoba() {
         return (this.skill / this.peso);
     }
 
-    public Integer velocidadDelJugador() {
+    public Double velocidadDelJugador() {
         return velocidadEscoba() * nivelManejoDeEscoba();
     }
 
-    public Integer velocidadEscoba() {
+    public Double velocidadEscoba() {
         return escobaDelJugador.velocidadDeEscoba();
     }
 
-    public Integer habilidad(){return velocidadDelJugador()+ skill;}
+    public Double habilidad(){return velocidadDelJugador()+ skill;}
    /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
     habilidoso que el otro jugador.**/
 

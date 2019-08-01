@@ -2,11 +2,11 @@ package main;
 
 public class main {
     public static void main(String[] args){
-        Nimbus nimbus1=new Nimbus(1970,1);
+        Nimbus nimbus1=new Nimbus(1970,80);
         SaetaDeFuego saetaDeFuego1=new SaetaDeFuego();
         saetaDeFuego1.velocidadDeEscoba();
-        Cazador cazadorEquipoAzul= new Cazador(5, 5,2, saetaDeFuego1);
-        Buscador buscadorEquipoRojo4= new Buscador(5,4,3,nimbus1);
+        Cazador cazadorEquipoAzul= new Cazador(12,12,70.0, saetaDeFuego1);
+        Buscador buscadorEquipoRojo4= new Buscador(10,12,65.0,nimbus1);
         //cazadorEquipoAzul.esGroso();
         cazadorEquipoAzul.habilidad();
         //System.out.println(cazadorEquipoAzul.esGroso());

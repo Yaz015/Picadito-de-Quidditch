@@ -4,13 +4,13 @@ public class Buscador extends Jugador {
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
 
-    Buscador(Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba){
+    Buscador(Integer nivelDeReflejos, Integer nivelDeVision, Double peso, Escoba escoba){
         super(peso, escoba);
         this.nivelDeReflejos=nivelDeReflejos;
         this.nivelDeVision=nivelDeVision;
     }
 
-    public Integer habilidad(){
+    public Double habilidad(){
         return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
     }
 }

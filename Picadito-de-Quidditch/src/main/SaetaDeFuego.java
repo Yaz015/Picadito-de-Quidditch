@@ -2,7 +2,7 @@ package main;
 
 public class SaetaDeFuego implements Escoba {
 
-    public Integer velocidadDeEscoba(){
-        return 100;
+    public Double velocidadDeEscoba(){
+        return 100.0;
     }
 }
