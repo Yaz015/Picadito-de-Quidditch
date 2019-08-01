@@ -7,7 +7,7 @@ public class Nimbus implements Escoba{
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
 
-    Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
+    public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
         this.añoDeFabricacion=añoDeFabricacion;
         this.porcentajeDeSalud=porcentajeDeSalud;
     }

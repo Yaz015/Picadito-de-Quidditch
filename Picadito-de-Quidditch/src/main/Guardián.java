@@ -4,7 +4,7 @@ public class Guardián extends Jugador {
     private Integer nivelDeReflejos;
     private Integer fuerza;
 
-    Guardián(Integer nivelDeReflejos, Integer fuerza, Double peso, Escoba escoba){
+    public Guardián(Integer nivelDeReflejos, Integer fuerza, Double peso, Escoba escoba){
         super(peso, escoba);
         this.nivelDeReflejos=nivelDeReflejos;
         this.fuerza=fuerza;

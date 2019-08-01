@@ -1,7 +1,7 @@
 package main;
 
 public class main {
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         Nimbus nimbus1=new Nimbus(1970,80);
         SaetaDeFuego saetaDeFuego1=new SaetaDeFuego();
         saetaDeFuego1.velocidadDeEscoba();
@@ -21,5 +21,4 @@ public class main {
         System.out.println(cazadorEquipoAzul.lePasaElTrapo(buscadorEquipoRojo4));
 
 
-    }
-}
+ */   }

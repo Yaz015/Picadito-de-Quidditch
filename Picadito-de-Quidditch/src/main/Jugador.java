@@ -34,7 +34,7 @@ public abstract class Jugador {
    /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
     habilidoso que el otro jugador.**/
 
-    public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad()<=this.habilidad()/2;}
+    public Boolean lePasaElTrapo(Jugador jugador){return jugador.habilidad()*2.0<=this.habilidad();}
 
     /**Si un jugador es groso, que se cumple si su habilidad es mayor al promedio de su
     equipo y su velocidad mayor a un valor arbitrario que a medida que el mercado de
