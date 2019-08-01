@@ -37,8 +37,6 @@ package main;
         return this.escobaDelJugador().velocidadEscoba();
     }
 
-    public Integer habilidad(){
-        return this.habilidad();
-    }
+    public Integer habilidad(){return velocidadDelJugador()+ skill;}
 }
 
