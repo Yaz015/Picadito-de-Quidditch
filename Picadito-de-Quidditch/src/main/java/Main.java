@@ -11,11 +11,13 @@ public class Main {
         Buscador buscador = new Buscador(30, 32, 49, 75, saeta, griffindor);
         griffindor.agregarJugador(cazador1);
         griffindor.agregarJugador(buscador);
-        System.out.println(griffindor.cantDeJugadoresEnEquipo());
-        System.out.println(griffindor.promedioDeHabilidades());
+        System.out.println(griffindor.cantDeJugadoresEnEquipo()+ "cant de jugadores en equipo");
+        System.out.println(griffindor.promedioDeHabilidades()+" promedio de jugadores en equipo");
 
 
         System.out.println(buscador.nivelManejoDeEscoba()+" nivel de manejo de escoba");
         System.out.println(buscador.velocidadDelJugador()+" velocidad del jugador");
+        System.out.println(cazador1.skill);
+        System.out.println(cazador1.nivelManejoDeEscoba());
     }
 }
