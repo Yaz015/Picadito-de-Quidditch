@@ -1,9 +1,9 @@
-package test;
+package test.java;
 
 
-import main.Equipo;
-import main.Guardián;
-import main.SaetaDeFuego;
+import main.java.Equipo;
+import main.java.Guardián;
+import main.java.SaetaDeFuego;
 import org.junit.jupiter.api.BeforeEach;
 
 
@@ -15,6 +15,5 @@ class GuardiánTest {
     @BeforeEach
      void setUp(){
         saeta = new SaetaDeFuego();
-        guardián= new Guardián(20, 390,10, 90, saeta, griffindor);
     }
 }
