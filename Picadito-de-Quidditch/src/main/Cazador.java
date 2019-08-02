@@ -4,8 +4,8 @@ public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
 
-    public Cazador(Integer punteria, Integer fuerza, Double peso, Escoba escoba){
-        super(peso, escoba);
+    public Cazador(Integer punteria, Integer fuerza, Double peso, Escoba escoba, Double skill){
+        super(peso, escoba, skill);
         this.fuerza=fuerza;
         this.punteria=punteria;
     }

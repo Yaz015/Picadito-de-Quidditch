@@ -5,36 +5,32 @@ import java.util.List;
 public abstract class Jugador {
     protected Double peso;
     protected Escoba escobaDelJugador;
-    protected Double skill=100.0;
+    protected Double skill;
     protected MercadoDeEscobas mercadoDeEscobas;
     protected Equipo equipo;
     public List<Jugador> jugadores;
-    Jugador(Double peso, Escoba escobaDelJugador){
+    Jugador(Double peso, Escoba escobaDelJugador, Double skill){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
+        this.skill=skill;
     }
-
     public Escoba escobaDelJugador() {
         return this.escobaDelJugador;
     }
 
     public Double nivelManejoDeEscoba() {
-        return (this.skill / this.peso);
+        return skill / this.peso;
     }
 
     public Double velocidadDelJugador() {
-        return velocidadEscoba() * nivelManejoDeEscoba();
-    }
-
-    public Double velocidadEscoba() {
-        return escobaDelJugador.velocidadDeEscoba();
+        return escobaDelJugador.velocidadDeLaEscoba() * this.nivelManejoDeEscoba();
     }
 
     public Double habilidad(){return velocidadDelJugador()+ skill;}
    /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
     habilidoso que el otro jugador.**/
 
-    public Boolean lePasaElTrapo(Jugador jugador){return jugador.habilidad()*2.0<=this.habilidad();}
+    public Boolean lePasaElTrapo(Jugador jugador){return jugador.habilidad()*2.0<this.habilidad();}
 
     /**Si un jugador es groso, que se cumple si su habilidad es mayor al promedio de su
     equipo y su velocidad mayor a un valor arbitrario que a medida que el mercado de
