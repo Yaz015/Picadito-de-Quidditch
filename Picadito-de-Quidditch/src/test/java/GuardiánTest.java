@@ -8,21 +8,32 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GuardiánTest {
     Guardián guardián;
     SaetaDeFuego saeta;
     Equipo griffindor;
+    Guardián guardián1;
 
     @BeforeEach
      void setUp(){
         saeta = new SaetaDeFuego();
-        guardián = new Guardián(90, 40, 40, 90, saeta, griffindor);
+        guardián=new Guardián(100, 100, 100, 100, saeta, griffindor);
+        guardián1= new Guardián(10, 10, 10, 10, saeta, griffindor);
     }
 
     @Test
-    void testNivelDeManejoDeEscoba(){
-        assertEquals(guardián.nivelManejoDeEscoba(), 1);
+    void testLePasaElTrapo(){
+        assertTrue(guardián.lePasaElTrapo(guardián1));
+    }
+
+    @Test
+    void testVelocidadDelJugador(){
+        assertEquals(100, guardián.velocidadDelJugador());
+    }
+
+    @Test
+    void TestHabilidadGuardian(){
     }
 }
