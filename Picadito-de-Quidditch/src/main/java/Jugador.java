@@ -1,11 +1,11 @@
 package main.java;
 
-    public abstract class Jugador {
+public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
     protected Integer skill;
     protected Equipo equipo;
-    protected MercadoDeEscobas mercadoDeEscobas;
+    static Integer numAleatorio=200;
 
     public Jugador(Integer peso, Escoba escobaDelJugador, Integer skill, Equipo equipo){
         this.peso=peso;
@@ -14,11 +14,11 @@ package main.java;
         this.equipo=equipo;
     }
 
-    public Boolean lePasaElTrapo(Jugador jugador){ return jugador.habilidad() <= this.habilidad();}
+    public Boolean lePasaElTrapo(Jugador jugador){ return (this.habilidad())>(jugador.habilidad()*2);}
 
     public Boolean esGroso() {
         return this.habilidad()>this.equipo.promedioDeHabilidades()
-               && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroAleatorio();
+               && this.velocidadDelJugador()> this.numAleatorio;
     }
 
     public Escoba escobaDelJugador() {
@@ -37,6 +37,10 @@ package main.java;
         return this.escobaDelJugador().velocidadEscoba();
     }
 
-    public Integer habilidad(){return velocidadDelJugador()+ skill;}
+    public Integer habilidad(){return this.velocidadDelJugador()+this.skill;}
+
+    public void actualizarMercado(){
+        this.numAleatorio++;
+    }
 }
 

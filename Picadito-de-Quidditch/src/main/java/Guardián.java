@@ -1,7 +1,5 @@
 package main.java;
 
-import org.omg.PortableInterceptor.INACTIVE;
-
 public class Guardián extends Jugador {
     private Integer nivelDeReflejos;
     private Integer fuerza;

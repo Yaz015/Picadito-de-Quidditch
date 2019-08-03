@@ -1,16 +1,31 @@
 package main.java;
 
+import main.java.exceptions.NoHayJugadoresEnEquipoException;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Equipo {
     public List<Jugador> jugadores= new ArrayList<>();
 
-    public void agregarJugador(Jugador jugador){
+    public Boolean tieneJugadorEstrella(Equipo equipo){
+        return this.mejorJugador().lePasaElTrapo(equipo.mejorJugador());
+    }
+
+    public Jugador mejorJugador(){
+        return this.jugadores.stream()
+                .max(Comparator.comparing(jugador->jugador.habilidad())).get();
+    }
+
+    public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
     }
 
     public Integer cantDeJugadoresEnEquipo(){
+        if(jugadores.isEmpty()) {
+            throw new NoHayJugadoresEnEquipoException("No hay jugadores");
+        }
         return jugadores.size();
     }
 
