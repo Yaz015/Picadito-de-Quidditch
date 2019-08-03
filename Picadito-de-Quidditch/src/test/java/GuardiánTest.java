@@ -35,5 +35,6 @@ class GuardiánTest {
 
     @Test
     void TestHabilidadGuardian(){
+        assertEquals(400,guardián.habilidad());
     }
 }
