@@ -1,5 +1,7 @@
 package main;
 
+import main.jugador.exception.SinHabilidadException;
+
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
@@ -11,6 +13,8 @@ public class Cazador extends Jugador {
     }
 
     public Integer habilidad(){
+        if(skill==0)
+            throw new SinHabilidadException("No existe");
         return this.velocidadDelJugador()+this.skill+this.punteria*fuerza;
     }
 }
