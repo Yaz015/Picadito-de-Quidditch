@@ -1,17 +1,17 @@
 package main;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 public class Nimbus implements Escoba{
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
-    private Integer añoActual;
 
-    Nimbus(Integer añoDeFabricacion, Integer añoActual, Integer porcentajeDeSalud){
-        this.añoDeFabricacion=añoDeFabricacion;
-        this.añoActual=añoActual;
-        this.porcentajeDeSalud=porcentajeDeSalud;
+
+    Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
+        this.setAñoDeFabricacion(añoDeFabricacion);
+        this.añoActual();
+        this.setPorcentajeDeSalud(porcentajeDeSalud);
     }
 
     public Integer velocidadEscoba(){
@@ -22,10 +22,27 @@ public class Nimbus implements Escoba{
         return this.porcentajeDeSalud/100;
     }
 
-    public Integer cantAñosDesdeFabricacion(){
-        return this.añoActual-this.añoDeFabricacion;
+    public Integer añoActual(){
+        return Calendar.getInstance().get(Calendar.YEAR);
+
     }
 
+
+    public Integer cantAñosDesdeFabricacion(){
+        return añoActual()- this.getAñoDeFabricacion();
+    }
+
+    public Integer getAñoDeFabricacion() {
+        return añoDeFabricacion;
+    }
+
+    public void setAñoDeFabricacion(Integer añoDeFabricacion) {
+        this.añoDeFabricacion = añoDeFabricacion;
+    }
+
+    public void setPorcentajeDeSalud(Integer porcentajeDeSalud) {
+        this.porcentajeDeSalud = porcentajeDeSalud;
+    }
     //public Integer añoActual(){
     //   return new Date().getYear();} no se como funciona
 }
