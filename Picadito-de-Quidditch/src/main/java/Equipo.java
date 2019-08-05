@@ -69,7 +69,7 @@ public class Equipo {
         this.skill= skill+10;
     }
 
-    public Jugador jugadorMasRapido(){
+    public Jugador jugadorMasRapidoDelEquipo(){
         return jugadores.stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }

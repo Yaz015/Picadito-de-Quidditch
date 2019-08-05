@@ -23,8 +23,7 @@ public class Guardián extends Jugador {
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
         System.out.println(this.randomNumber);//sacar este print
-     return 3 == this.randomNumber;
-
+        return 3 == this.randomNumber;
     }
 
     public void setRandomNumber(){
