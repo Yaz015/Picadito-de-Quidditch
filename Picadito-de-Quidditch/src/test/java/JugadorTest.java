@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class JugadorTest {
     Jugador jugador;
@@ -16,24 +18,28 @@ class JugadorTest {
 
     @BeforeEach
     void setUp() {
+        jugador=mock(Jugador.class);
+        jugador1=mock(Jugador.class);
         saetaDeFuego=new SaetaDeFuego();
         griffindor=new Equipo();
     }
 
     @Test
+    void testLePasaElTrapo(){
+        when(jugador1.habilidad()).thenReturn(1000);
+        when(jugador.habilidad()).thenReturn(10);
+        assertTrue(jugador1.lePasaElTrapo(jugador));
+    }
+
+    @Test
     void testNivelManejoDeEscoba(){
-        assertEquals(jugador.nivelManejoDeEscoba(),2 );
-        // this.skill / this.peso
+
     }
 
     @Test
-    void testVelocidadDelJugador(){
-       // assertEquals(buscador.velocidadDelJugador(), 200);//this.velocidadDeEscoba() * this.nivelManejoDeEscoba()
-    }
+    void testVelocidadDelJugador() {
+        // assertEquals(buscador.velocidadDelJugador(), 200);//this.velocidadDeEscoba() * this.nivelManejoDeEsco}
 
-    @Test
-    void habilidad() {
-        //su velocidad + sus skills + su nivel de reflejos * nivel de visión.
-    }
 
+    }
 }

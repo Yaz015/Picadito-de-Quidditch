@@ -13,4 +13,8 @@ public class Buscador extends Jugador {
     public Integer habilidad(){
         return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
     }
+
+    public Boolean puedeBloquear(){
+        return false;
+    }
 }

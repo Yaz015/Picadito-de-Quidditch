@@ -17,7 +17,7 @@ public class NimbusTest {
     @Test
     void velocidadDeLaEscoba() {
         nimbusA=new Nimbus(1989, 80);
-        assertEquals(nimbusA.velocidadEscoba(), 56);
+        assertEquals( 56, nimbusA.velocidadEscoba());
     }
 
     @Test

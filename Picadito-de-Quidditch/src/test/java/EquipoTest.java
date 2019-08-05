@@ -45,13 +45,6 @@ class EquipoTest {
     }
 
     @Test
-    void testCantJugadoresEnExcepcion(){
-        griffindor.agregarJugador(jugador1);
-        griffindor.agregarJugador(jugador2);
-        assertEquals(2, griffindor.cantDeJugadoresEnEquipo());
-    }
-
-    @Test
     void testTieneJugadorEstrella(){
         slytheren.agregarJugador(jugador2);
         griffindor.agregarJugador(jugador1);
@@ -61,8 +54,17 @@ class EquipoTest {
     }
 
     @Test
+    void testCantJugadoresEnEquipo(){
+        griffindor.agregarJugador(jugador1);
+        griffindor.agregarJugador(jugador2);
+        assertEquals(2, griffindor.cantDeJugadoresEnEquipo());
+    }
+
+
+
+    @Test
     void testForListaVacia(){
-        assertThrows(UserException.class, () -> griffindor.cantDeJugadoresEnEquipo(), "No hay Jugadores en Equipo");
+        griffindor.cantDeJugadoresEnEquipo();
     }
 
 }
