@@ -13,4 +13,9 @@ public class Cazador extends Jugador {
     public Integer habilidad(){
         return this.velocidadDelJugador()+ this.getSkill() +this.punteria*fuerza;
     }
+
+    public Boolean puedeBloquear(Cazador uncazador){
+        return this.lePasaElTrapo(uncazador);
+
+    }
 }

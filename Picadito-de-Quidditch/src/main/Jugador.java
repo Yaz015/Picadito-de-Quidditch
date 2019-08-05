@@ -64,6 +64,7 @@ public abstract class Jugador {
         return peso;
     }
 
+
     public void setPeso(Integer peso) {
         this.peso = peso;
     }

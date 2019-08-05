@@ -13,4 +13,8 @@ public class Golpeador extends Jugador {
     public Integer habilidad(){
         return super.velocidadDelJugador()+ this.getSkill() +this.punteria+this.fuerza;
     }
+    public Boolean puedeBloquear(Cazador uncazador){
+        return this.esGroso();
+
+    }
 }

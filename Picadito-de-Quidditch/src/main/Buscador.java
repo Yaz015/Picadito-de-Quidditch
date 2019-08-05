@@ -13,4 +13,8 @@ public class Buscador extends Jugador {
     public Integer habilidad(){
         return this.velocidadDelJugador()+ this.getSkill() +this.nivelDeReflejos*this.nivelDeVision;
     }
+    public Boolean puedeBloquear(Cazador uncazador){
+        return false;
+
+    }
 }
