@@ -21,7 +21,7 @@ public class Equipo {
 
     public int getRandomElement(List<Integer> list)
     {
-        Random rand = new Random();
+        Random rand = new Random();                    //preguntar
         return list.get(rand.nextInt(list.size()));
     }
 
@@ -29,6 +29,7 @@ public class Equipo {
         return jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
+
 
     public Boolean seEvitaElBloqueo(Jugador jugador){
         return this.puedenBloquear(jugador);

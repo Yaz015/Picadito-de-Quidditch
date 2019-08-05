@@ -23,7 +23,6 @@ public class Main {
         System.out.println(cazador1.skill);
         System.out.println(cazador1.nivelManejoDeEscoba());
         System.out.println(cazador1.lePasaElTrapo(buscador)+" le pasa el trapo");
-
-        System.out.println(guardián.getRandomNumber());
+        System.out.println(guardián.puedeBloquear(cazador1));
     }
 }

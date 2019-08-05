@@ -21,12 +21,15 @@ public class Guardián extends Jugador {
     }
 
     public Boolean puedeBloquear(Jugador jugador) {
-     return 3 = getRandomNumber();
+        this.setRandomNumber();
+        System.out.println(this.randomNumber);//sacar este print
+     return 3 == this.randomNumber;
+
     }
 
-    public Integer getRandomNumber(){
+    public void setRandomNumber(){
         Random ran=new Random();
-     return this.randomNumber=  (int)(ran.nextDouble()*3)+1;
+        this.randomNumber=  (int)(ran.nextDouble()*3)+1;
     }
 
 
