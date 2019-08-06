@@ -1,6 +1,4 @@
-package main;
-
-        import main.jugador.exception.SinHabilidadException;
+import main.jugador.exception.SinHabilidadException;
 
         import java.util.List;
 
@@ -10,6 +8,7 @@ public abstract class Jugador {
     protected Double skill;
     protected Equipo equipo;
     public List<Jugador> jugadores;
+
     Jugador(Double peso, Escoba escobaDelJugador, Double skill){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;

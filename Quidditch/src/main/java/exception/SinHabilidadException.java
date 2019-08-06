@@ -1,4 +1,4 @@
-package main.jugador.exception;
+package exception;
 
 public class SinHabilidadException extends RuntimeException {
     public SinHabilidadException(String mensaje) {
