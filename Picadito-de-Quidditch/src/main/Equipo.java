@@ -27,15 +27,10 @@ public class Equipo {
                     .map(j -> j.habilidad()).reduce(0, Integer::sum);
 
         }
-    public Jugador getRandomElement(List<Jugador> jugadores)
-    {
-        Random rand = new Random();
-                          return jugadores.get(rand.nextInt(jugadores.size()));
+    public Jugador jugadorRandom()
+    {        Random rand = new Random();
+        return this.jugadores.get(rand.nextInt(jugadores.size()));
     }
 
-    //Los intervalos de números (rangos) son colecciones que pueden crearse como:
-       // List<Integer> rango = IntStream.range(1,getRandomElement()).boxed().collect(Collectors.toList());
 
-
-
-        }
+    }

@@ -69,6 +69,7 @@ package main;
             System.out.println(golpeador1.lePasaElTrapo(golpeador2));
             System.out.println(guardian1.randomDeBloqueo());
             System.out.println(guardian1.puedeBloquear(cazador1));
+            System.out.println(griffindor.getRandomElement());
         }
 
     }
