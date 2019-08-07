@@ -49,4 +49,3 @@ public class Buscador extends Jugador {
             this.encontroSnitch = true;
         }
     }
-}

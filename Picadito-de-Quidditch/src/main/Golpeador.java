@@ -17,4 +17,10 @@ public class Golpeador extends Jugador {
         return this.esGroso();
 
     }
+
+    //hago el metodo en todas las subclases o la meto en Jugador y fue?
+
+    public Boolean turnoGolpeador(){
+        return this.getEquipo().jugadorRandom().equals(this);
+    }
 }

@@ -108,6 +108,9 @@ public abstract class Jugador {
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+    public Boolean turnoJugador(){
+        return this.getEquipo().jugadorRandom().equals(this);
+    }
 }
 
 
