@@ -1,6 +1,6 @@
 package test;
 
-import main.SaetaDeFuego;
+import main.java.SaetaDeFuego;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

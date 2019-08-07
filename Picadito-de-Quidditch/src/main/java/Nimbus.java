@@ -1,8 +1,10 @@
-package main;
+package main.java;
+
+import main.java.Escoba;
 
 import java.util.Calendar;
 
-public class Nimbus implements Escoba{
+public class Nimbus implements Escoba {
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;

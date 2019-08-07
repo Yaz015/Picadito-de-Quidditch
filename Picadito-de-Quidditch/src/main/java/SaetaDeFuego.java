@@ -1,4 +1,6 @@
-package main;
+package main.java;
+
+import main.java.Escoba;
 
 public class SaetaDeFuego implements Escoba {
 

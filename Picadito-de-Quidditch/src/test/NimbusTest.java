@@ -1,7 +1,6 @@
 package test;
 
-import main.Escoba;
-import main.Nimbus;
+import main.java.Nimbus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
