@@ -1,3 +1,7 @@
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Buscador extends Jugador {
     private Integer nivelDeReflejos;
@@ -29,4 +33,16 @@ public class Buscador extends Jugador {
             this.encontroSnitch = true;
         }
     }
+
+    public Integer randomSnitch() {
+        List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
+        Random rand = new Random();
+        return rango.get(rand.nextInt(rango.size()));
+    }
+
+    public void encuentraSnitch() {
+        if (this.randomSnitch() < this.habilidad()) //+los turnos{
+            this.encontroSnitch = true;
+    }
+
 }
