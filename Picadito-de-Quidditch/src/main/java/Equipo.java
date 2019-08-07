@@ -27,6 +27,7 @@ public class Equipo {
 
     public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
+
     }
 
     public Integer cantDeJugadoresEnEquipo(){
@@ -58,11 +59,31 @@ public class Equipo {
  Independientemente de si pudo meter gol o si fue bloqueado, el cazador pierde la quaffle.
  Siempre que un cazador pierde la quaffle, ésta es atrapada por el cazador rival más rápido.
  * @return**/
+    public Equipo equipo;
+    public Equipo getEquipo() {
+    return equipo;
+}
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+    public Boolean turnoJugador(){
+        return this.getEquipo().jugadorRandom().equals(this);
+    }
 
     public Double puntosEquipo=100.0;
+    public List<Cazador> cazadores;
 
     public void turnoCazador(Cazador cazador){ if (
-        cazador.tenesPelota().equals(true)&& cazador.esBloqueado().equals(false)) {
+        cazador.tenesPelota().equals(true)&& cazador.esBloqueado().equals(false)&& this.turnoJugador().equals(cazador)) {
         cazador.skill=cazador.skill+5.0;
         this.puntosEquipo=this.puntosEquipo+10.0;
         cazador.tenesPelota().equals(false);}
@@ -70,7 +91,7 @@ public class Equipo {
         cazador.skill = cazador.skill - 2;
         jugador.jugadorQueBloquea(cazador);
         cazador.tenesPelota().equals(false);
-        cazador.cazadorMasRapido().agarraPelota(pelota);//falta hacer q el jugador mas rapido la agarre// }
+        cazador.cazadorMasRapido().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }
     }}
     public void turnoBuscador(Buscador buscador){if(
             buscador.buscandoSnitch().equals(true) && buscador.encontroSnitch.equals(true)) {

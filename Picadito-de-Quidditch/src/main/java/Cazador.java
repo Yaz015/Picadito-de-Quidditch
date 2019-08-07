@@ -39,8 +39,10 @@ public class Cazador extends Jugador {
     public Boolean tenesPelota() {
         return this.randomPelota().equals(1);
     }
-        public Jugador cazadorMasRapido() {
+
+    public Jugador cazadorMasRapido() {
         return cazadores.stream().max(Comparator.comparing(j -> j.velocidadDelJugador())).get(); }
+
 
 
 
