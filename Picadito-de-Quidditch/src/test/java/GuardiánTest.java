@@ -35,5 +35,8 @@ class GuardiánTest {
 
     @Test
     void TestHabilidadGuardian(){
+        assertEquals(400, guardián.habilidad());
+        //su velocidad + sus skills + su nivel de reflejos + su fuerza.
     }
+
 }
