@@ -1,4 +1,3 @@
-package main.java;
 
 import java.util.Random;
 
@@ -24,11 +23,15 @@ public class Guardián extends Jugador {
         return 3 == this.getRandomNumber();
     }
 
+
     public void setRandomNumber(){
         Random ran=new Random();
         this.setRandomNumber((int)(ran.nextDouble()*3)+1);
     }
 
+    public Boolean sosCazador(){
+        return false;
+    }
 
     public Integer getRandomNumber() {
         return randomNumber;
