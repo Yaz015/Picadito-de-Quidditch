@@ -16,4 +16,8 @@ public class Golpeador extends Jugador {
     public Boolean puedeBloquear(Jugador jugador){
         return this.esGroso();
     }
+
+    public Boolean sosCazador(){
+        return false;
+    }
 }

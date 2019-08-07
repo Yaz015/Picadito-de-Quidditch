@@ -30,4 +30,8 @@ public class Cazador extends Jugador {
     public void pierdeBloqueo(){
         this.skill=skill-2;
     }
+
+    public Boolean sosCazador(){
+        return true;
+    }
 }

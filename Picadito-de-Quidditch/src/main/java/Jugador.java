@@ -40,5 +40,9 @@ public abstract class Jugador {
     public Boolean puedeBloquear(Jugador jugador){
       return   this.puedeBloquear(jugador);
     }
+
+    public Boolean sosCazador(){
+        return this.sosCazador();
+    }
 }
 

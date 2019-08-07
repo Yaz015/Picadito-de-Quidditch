@@ -72,7 +72,12 @@ public class Equipo {
 
     public List<Jugador> listaDeCazadores(){
         return jugadores.stream()
-                .filter(j->j.getClass().equals());
+                .filter(j->j.sosCazador()).collect(Collectors.toList());
+    }
+
+    public Jugador cazadorMasRapido(){
+        return this.listaDeCazadores().stream()
+                .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
 
     public Jugador jugadorRandom()

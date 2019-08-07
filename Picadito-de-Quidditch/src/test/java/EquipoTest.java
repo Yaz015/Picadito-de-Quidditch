@@ -36,26 +36,26 @@ class EquipoTest {
 
     @Test
     void testPromedioDeHabilidades(){
-        griffindor.agregarJugador(jugador1);
-        griffindor.agregarJugador(jugador2);
-        when(jugador1.habilidad()).thenReturn(50);
-        when(jugador2.habilidad()).thenReturn(10);
+        griffindor.agregarJugador(buscador);
+        griffindor.agregarJugador(cazador);
+        when(cazador.habilidad()).thenReturn(50);
+        when(buscador.habilidad()).thenReturn(10);
         assertEquals(30, griffindor.promedioDeHabilidades());
     }
 
     @Test
     void testTieneJugadorEstrella(){
-        slytheren.agregarJugador(jugador2);
-        griffindor.agregarJugador(jugador1);
-        when(jugador2.habilidad()).thenReturn(100);
-        when(jugador1.habilidad()).thenReturn(30);
+        slytheren.agregarJugador(cazador);
+        griffindor.agregarJugador(buscador);
+        when(cazador.habilidad()).thenReturn(100);
+        when(buscador.habilidad()).thenReturn(30);
         assertTrue(slytheren.tieneJugadorEstrella(griffindor));
     }
 
     @Test
     void testCantJugadoresEnEquipo(){
-        griffindor.agregarJugador(jugador1);
-        griffindor.agregarJugador(jugador2);
+        griffindor.agregarJugador(cazador);
+        griffindor.agregarJugador(buscador);
         assertEquals(2, griffindor.cantDeJugadoresEnEquipo());
     }
 

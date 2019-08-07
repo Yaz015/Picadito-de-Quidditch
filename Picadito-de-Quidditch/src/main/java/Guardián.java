@@ -29,5 +29,9 @@ public class Guardián extends Jugador {
         Random ran=new Random();
         this.randomNumber=  (int)(ran.nextDouble()*3)+1;
     }
+
+    public Boolean sosCazador(){
+        return false;
+    }
 }
 
