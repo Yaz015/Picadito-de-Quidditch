@@ -1,7 +1,4 @@
-package main.java;
-
 import main.java.exceptions.NoHayJugadoresEnEquipoException;
-import sun.misc.JavaUtilJarAccess;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,7 +26,6 @@ public class Equipo {
         return jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
-
 
     public Boolean seEvitaElBloqueo(Jugador jugador){
         return this.puedenBloquear(jugador);
@@ -69,8 +65,18 @@ public class Equipo {
         this.skill= skill+10;
     }
 
-    public Jugador jugadorMasRapidoDelEquipo(){
+    public Jugador jugadorCazadorRapidoDelEquipo(){
         return jugadores.stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
+    }
+
+    public List<Jugador> listaDeCazadores(){
+        return jugadores.stream()
+                .filter(j->j.getClass().equals());
+    }
+
+    public Jugador jugadorRandom()
+    {        Random rand = new Random();
+        return this.jugadores.get(rand.nextInt(jugadores.size()));
     }
 }

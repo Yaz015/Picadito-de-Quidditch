@@ -1,4 +1,3 @@
-package main.java;
 
 public class Golpeador extends Jugador {
     private Integer fuerza;

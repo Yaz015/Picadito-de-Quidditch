@@ -1,37 +1,36 @@
-package test.java;
 
-import main.java.Equipo;
-import main.java.Jugador;
-import main.java.exceptions.NoHayJugadoresEnEquipoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.omg.CORBA.UserException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class EquipoTest {
     Equipo griffindor;
     Equipo slytheren;
-    Jugador jugador1;
-    Jugador jugador2;
+    Cazador cazador;
+    Buscador buscador;
 
     @BeforeEach
     void setUp(){
         griffindor = new Equipo();
         slytheren = new Equipo();
-        jugador1=mock(Jugador.class);
-        jugador2=mock(Jugador.class);
+        cazador=mock(Cazador.class);
+        buscador=mock(Buscador.class);
 
     }
 
     @Test
     void testSumadeHabilidades(){
-        griffindor.agregarJugador(jugador1);
-        griffindor.agregarJugador(jugador2);
-        when(jugador1.habilidad()).thenReturn(50);
-        when(jugador2.habilidad()).thenReturn(10);
+        griffindor.agregarJugador(buscador);
+        griffindor.agregarJugador(cazador);
+        when(buscador.habilidad()).thenReturn(50);
+        when(cazador.habilidad()).thenReturn(10);
         assertEquals(60 ,griffindor.sumaDeHabilidadesDeJugadores());
     }
 
@@ -59,8 +58,6 @@ class EquipoTest {
         griffindor.agregarJugador(jugador2);
         assertEquals(2, griffindor.cantDeJugadoresEnEquipo());
     }
-
-
 
     @Test
     void testForListaVacia(){

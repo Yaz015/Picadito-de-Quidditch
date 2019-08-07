@@ -33,13 +33,10 @@ class JugadorTest {
 
     @Test
     void testNivelManejoDeEscoba(){
-
     }
 
     @Test
     void testVelocidadDelJugador() {
         // assertEquals(buscador.velocidadDelJugador(), 200);//this.velocidadDeEscoba() * this.nivelManejoDeEsco}
-
-
     }
 }

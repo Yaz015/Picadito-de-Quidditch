@@ -1,5 +1,3 @@
-package main.java;
-
 public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
