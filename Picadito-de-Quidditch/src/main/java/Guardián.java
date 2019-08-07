@@ -1,6 +1,5 @@
+package main.java;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Guardián extends Jugador {
@@ -21,17 +20,22 @@ public class Guardián extends Jugador {
 
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
-        System.out.println(this.randomNumber);//sacar este print
-        return 3 == this.randomNumber;
+        System.out.println(this.getRandomNumber());//sacar este print
+        return 3 == this.getRandomNumber();
     }
 
     public void setRandomNumber(){
         Random ran=new Random();
-        this.randomNumber=  (int)(ran.nextDouble()*3)+1;
+        this.setRandomNumber((int)(ran.nextDouble()*3)+1);
     }
 
-    public Boolean sosCazador(){
-        return false;
+
+    public Integer getRandomNumber() {
+        return randomNumber;
+    }
+
+    public void setRandomNumber(Integer randomNumber) {
+        this.randomNumber = randomNumber;
     }
 }
 

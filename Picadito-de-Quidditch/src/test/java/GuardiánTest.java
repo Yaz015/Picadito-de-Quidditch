@@ -1,4 +1,9 @@
+package test.java;
 
+
+import main.java.Equipo;
+import main.java.Guardián;
+import main.java.SaetaDeFuego;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +35,8 @@ class GuardiánTest {
 
     @Test
     void TestHabilidadGuardian(){
-        assertEquals(400,guardián.habilidad());
+        assertEquals(400, guardián.habilidad());
+        //su velocidad + sus skills + su nivel de reflejos + su fuerza.
     }
+
 }
