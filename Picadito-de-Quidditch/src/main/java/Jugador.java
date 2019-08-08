@@ -19,9 +19,7 @@ public abstract class Jugador {
                && this.velocidadDelJugador()> mercadoDeEscobas.getNumeroAleatorio();
     }
 
-    public Escoba escobaDelJugador() {
-        return this.escobaDelJugador;
-    }
+    public  Escoba escobaDelJugador() { return this.escobaDelJugador; }
 
     public Double nivelManejoDeEscoba() {
         return (double)this.skill / this.peso;
@@ -37,12 +35,10 @@ public abstract class Jugador {
 
     public Integer habilidad(){return this.velocidadDelJugador()+this.skill;}
 
-    public Boolean puedeBloquear(Jugador jugador){
-      return   this.puedeBloquear(jugador);
-    }
+    public abstract Boolean puedeBloquear(Jugador jugador);
 
-    public Boolean sosCazador(){
-        return this.sosCazador();
-    }
+    public abstract Boolean sosCazador();
+
+    public abstract Boolean esBlancoUtil();
 }
 

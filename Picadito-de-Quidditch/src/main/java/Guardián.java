@@ -1,6 +1,4 @@
-
 import java.util.Random;
-
 public class Guardián extends Jugador {
     private Integer nivelDeReflejos;
     private Integer fuerza;
@@ -39,6 +37,10 @@ public class Guardián extends Jugador {
 
     public void setRandomNumber(Integer randomNumber) {
         this.randomNumber = randomNumber;
+    }
+
+    public Boolean esBlancoUtil(){
+        return !this.equipo.tenesQuaffle();
     }
 }
 

@@ -1,4 +1,3 @@
-
 public class Main {
     public static void main(String[] args){
 
@@ -13,10 +12,10 @@ public class Main {
 
         griffindor.agregarJugador(cazador1);
         griffindor.agregarJugador(buscador);
+        slytheren.agregarJugador(guardián);
 
         System.out.println(griffindor.cantDeJugadoresEnEquipo()+ "cant de jugadores en equipo");
         System.out.println(griffindor.promedioDeHabilidades()+" promedio de jugadores en equipo");
-
         System.out.println(buscador.nivelManejoDeEscoba()+" nivel de manejo de escoba");
         System.out.println(buscador.velocidadDelJugador()+" velocidad del jugador");
         System.out.println(cazador1.skill);
@@ -24,5 +23,9 @@ public class Main {
         System.out.println(cazador1.lePasaElTrapo(buscador)+" le pasa el trapo");
         System.out.println(guardián.puedeBloquear(cazador1));
         System.out.println(griffindor.listaDeCazadores());
+        System.out.println(griffindor.jugadorCazadorRapidoDelEquipo());
+        slytheren.agregarJugador(golpeador);
+        System.out.println(guardián.puedeBloquear(buscador));
+        System.out.println(buscador.sosCazador());
     }
 }

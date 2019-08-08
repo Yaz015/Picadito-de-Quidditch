@@ -1,10 +1,7 @@
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.omg.CORBA.UserException;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -45,10 +42,10 @@ class EquipoTest {
 
     @Test
     void testTieneJugadorEstrella(){
+        when(cazador.habilidad()).thenReturn(1000);
+        when(buscador.habilidad()).thenReturn(30);
         slytheren.agregarJugador(cazador);
         griffindor.agregarJugador(buscador);
-        when(cazador.habilidad()).thenReturn(100);
-        when(buscador.habilidad()).thenReturn(30);
         assertTrue(slytheren.tieneJugadorEstrella(griffindor));
     }
 

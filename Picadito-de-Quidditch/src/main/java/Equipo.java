@@ -10,7 +10,8 @@ import java.util.stream.IntStream;
 public class Equipo {
     private List<Jugador> jugadores= new ArrayList<>();
     private Integer skill;
-    List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
+    private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
+    private Pelota quaffle;
 
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
@@ -23,7 +24,7 @@ public class Equipo {
     }
 
     public Boolean puedenBloquear(Jugador jugador){
-        return jugadores.stream()
+        return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
 
@@ -83,5 +84,34 @@ public class Equipo {
     public Jugador jugadorRandom()
     {        Random rand = new Random();
         return this.jugadores.get(rand.nextInt(jugadores.size()));
+    }
+
+    public Boolean tenesQuaffle(){
+        return this.randomPelota().equals(1);
+    }
+
+    public Integer randomPelota(){
+        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
+        Random rand = new Random();
+        return rango.get(rand.nextInt(rango.size()));
+    }
+
+    public void setPelota(Pelota quaffle) {
+        this.quaffle=quaffle ;
+    }
+
+    public List<Jugador> listadeBlancosUtiles(){
+
+        return this.jugadores.stream()
+                .filter(j->j.esBlancoUtil()).collect(Collectors.toList());
+    }
+
+    public Jugador getRandomBlancoUtil(){
+        Random rand = new Random();
+        return this.listadeBlancosUtiles().get(rand.nextInt(this.listadeBlancosUtiles().size()));
+    }
+
+    public Jugador getRandomBlancoUtilEquipoContrario(Equipo equipo){
+        return equipo.getRandomBlancoUtil();
     }
 }

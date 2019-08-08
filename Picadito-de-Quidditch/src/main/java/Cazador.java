@@ -1,8 +1,8 @@
-
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
-    Pelota pelota;
+    Pelota quaffle;
+
 
     public Cazador(Integer skill, Integer punteria, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, skill, equipo);
@@ -15,13 +15,12 @@ public class Cazador extends Jugador {
     }
 
     public void juega(){
-        if(this.pelota.getTipo().equals("Quaffle")){
+        if(this.equipo.tenesQuaffle()){
             this.intentarMeterGol();
         }
     }
 
-    public void intentarMeterGol(){
-    }
+    public void intentarMeterGol(){}
 
     public Boolean puedeBloquear(Jugador jugador){
         return this.lePasaElTrapo(jugador);
@@ -33,5 +32,9 @@ public class Cazador extends Jugador {
 
     public Boolean sosCazador(){
         return true;
+    }
+
+    public Boolean esBlancoUtil(){
+        return !this.equipo.tenesQuaffle();
     }
 }

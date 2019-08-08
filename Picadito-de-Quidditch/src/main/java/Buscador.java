@@ -19,7 +19,7 @@ public class Buscador extends Jugador {
         return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
     }
 
-    public Boolean puedeBloquear(){
+    public Boolean puedeBloquear(Jugador jugador) {
         return false;
     }
 
@@ -27,7 +27,7 @@ public class Buscador extends Jugador {
         return false;
     }
 
-    public void tuTurnoBuscador() {
+    public void persiguiendoLaSnitch() {
             this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros == 5000.0) {
             this.encontroSnitch = true;
@@ -39,10 +39,17 @@ public class Buscador extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-
-    public void encuentraSnitch() {
-        if (this.randomSnitch() < this.habilidad()) //+los turnos{
+    public void buscandoLaSnitch() {
+        if (this.randomSnitch() < this.habilidad()) //+los turnos
             this.encontroSnitch = true;
     }
 
+    public Boolean esBlancoUtil(){
+        return this.encontroSnitch=false || this.kilometros<1000;
+        //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
+    }
+
+    public void juega(){
+        //intenta obtener la snitch
+    }
 }

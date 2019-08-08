@@ -49,6 +49,6 @@ class BuscadorTest {
 
     @Test
     void testPuedeBloquear() {
-        assertFalse(buscador.puedeBloquear());
+        assertFalse(buscador.puedeBloquear(buscador));
     }
 }

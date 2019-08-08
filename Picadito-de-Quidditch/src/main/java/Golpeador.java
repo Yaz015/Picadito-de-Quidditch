@@ -1,4 +1,3 @@
-
 public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
@@ -19,5 +18,13 @@ public class Golpeador extends Jugador {
 
     public Boolean sosCazador(){
         return false;
+    }
+
+    public Boolean esBlancoUtil(){
+        return false;//No es útil golpear golpeadores.????
+    }
+
+    public void juega(){
+        //cuando juega elige un blanco útil
     }
 }
