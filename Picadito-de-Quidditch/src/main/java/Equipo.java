@@ -1,5 +1,4 @@
 import main.java.exceptions.NoHayJugadoresEnEquipoException;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

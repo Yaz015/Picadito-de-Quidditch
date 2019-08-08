@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Buscador extends Jugador {
+
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
     private Double kilometros;
