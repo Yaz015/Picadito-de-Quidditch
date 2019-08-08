@@ -59,21 +59,22 @@ public class Cazador extends Jugador {
         this.fuerza = fuerza;
     }
 
+
     public void juegaCazador(){
 
     }
 
-    public void haceGolCazador(){
 
+
+    public Boolean sosCazador(){
+        return true;
     }
 
     public Boolean turnoCazador(){
         return this.getEquipo().jugadorRandom().equals(this);
     }
 
-   // public Pelota getPelota() {
-   //     return pelota;
-   // }
+
 
 
 }

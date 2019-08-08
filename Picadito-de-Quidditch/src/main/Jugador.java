@@ -1,12 +1,13 @@
 package main;
 
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class Jugador {
     private Integer peso;
     private Escoba escobaDelJugador;
-    private Integer skill=100;
+    public Integer skill=100;
     private MercadoDeEscobas mercadoDeEscobas;
     private Equipo equipo;
 
@@ -108,9 +109,39 @@ public abstract class Jugador {
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
     public Boolean turnoJugador(){
         return this.getEquipo().jugadorRandom().equals(this);
     }
+
+    public Boolean puedeBloquear(Jugador jugador){
+        return   this.puedeBloquear(jugador);
+    }
+
+
+
+    public Jugador jugadorCazadorRapidoDelEquipo(){
+        return jugadores.stream()
+                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
+    }
+    public Boolean sosCazador(){
+        return this.sosCazador();
+
+    }
+
+
+    /*public void turnoCazador(Cazador cazador){
+        if (
+            cazador.tenesPelota()&& !cazador.esBloqueado()&& this.turnoJugador(); {
+        cazador.skill=cazador.skill+5.0;
+        this.puntosEquipo=this.puntosEquipo+10.0;
+        cazador.tenesPelota().equals(false);}
+    else if (cazador.esBloqueado().equals(true)) {
+        cazador.skill = cazador.skill - 2;
+        jugador.jugadorQueBloquea(cazador);
+        cazador.tenesPelota().equals(false);
+        cazador.cazadorMasRapido().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }*/
+
 }
 
 

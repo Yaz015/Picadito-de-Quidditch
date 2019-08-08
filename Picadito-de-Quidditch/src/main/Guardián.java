@@ -25,12 +25,12 @@ public class Guardián extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-    // ver si hacer stactic el random
-
+    //
     public Boolean puedeBloquear(Cazador uncazador){
         return this.randomDeBloqueo().equals(3);
-
-
+    }
+    public Boolean guardianBlancoUtil(){
+       return !this.getEquipo().tenesQuaffle();
     }
 }
 

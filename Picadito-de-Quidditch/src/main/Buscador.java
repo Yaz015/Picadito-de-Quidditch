@@ -31,7 +31,8 @@ public class Buscador extends Jugador {
         return rango.get(rand.nextInt(rango.size()));
     }
 
-    //no no esta saliendo \
+    //no no esta saliendo \ ver la idea de turno como el momento de jugar
+
 
     public Boolean encontroSnitch = false;
 
