@@ -18,10 +18,12 @@ public class Cazador extends Jugador {
         this.punteria=punteria;}
 
     public Double habilidad(){
-        return (this.punteria*this.fuerza)+(super.habilidad()); }
+        return (this.punteria*this.fuerza)+super.skill+ this.velocidadDelJugador(); }
 
-    public Pelota quaffle;
+    public Double velocidadDelJugador(){
+        return super.velocidadDeEscoba()*super.nivelManejoDeEscoba();}
 
+        public Pelota pelota;
 
     public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador)
             ;}
@@ -31,12 +33,15 @@ public class Cazador extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-    public void setPelota(Pelota quaffle) {
-        this.quaffle=quaffle ;
+    public void setPelota(Pelota pelota) {
+        this.pelota=pelota ;
     }
     public Boolean tenesPelota() {
         return this.randomPelota().equals(1);
     }
+    public Boolean noTenesPelota(){return !tenesPelota();
+    }
+
 
 
 

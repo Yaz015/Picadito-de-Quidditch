@@ -1,4 +1,4 @@
 package main.java;
 
-public interface Pelota {
+public class Pelota {
 }

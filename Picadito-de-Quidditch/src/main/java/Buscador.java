@@ -9,14 +9,16 @@ public class Buscador extends Jugador {
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
 
-    Buscador(Integer nivelDeReflejos, Integer nivelDeVision, Double peso, Escoba escoba, Equipo equipo){
+    public Buscador(Integer nivelDeReflejos, Integer nivelDeVision, Double peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, equipo);
         this.nivelDeReflejos=nivelDeReflejos;
         this.nivelDeVision=nivelDeVision;
     }
     public Double habilidad(){
-        return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
+        return super.skill+this.velocidadDelJugador()+this.nivelDeReflejos*this.nivelDeVision;
     }
+    public Double velocidadDelJugador(){ return super.velocidadDeEscoba()*super.nivelManejoDeEscoba();}
+
     public Boolean puedeBloquear(Jugador jugador) {return false;}// aca va excepcion
 
     public Double kilometros=0.0;

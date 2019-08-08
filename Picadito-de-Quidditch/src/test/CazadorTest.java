@@ -2,32 +2,46 @@ package test;
 
 import main.java.Cazador;
 import main.java.Equipo;
+import main.java.Nimbus;
 import main.java.SaetaDeFuego;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CazadorTest {
-    Cazador cazadorEquipoAzul1;
+    Cazador cazador1;
+    Cazador cazador2;
     SaetaDeFuego saetaDeFuegoA;
+    Nimbus nimbus;
     Equipo griffindor;
-
+    Equipo slytheren;
    @BeforeEach
    void setUp(){
+        slytheren=new Equipo();
         griffindor= new Equipo();
-        cazadorEquipoAzul1= new Cazador(5,5,50.0, saetaDeFuegoA, griffindor);
         saetaDeFuegoA= new SaetaDeFuego();
-        cazadorEquipoAzul1.skill=200.0;}
+        nimbus=new Nimbus(1989,80);
+        cazador1= new Cazador(5,5,50.0, saetaDeFuegoA, griffindor);
+        cazador2= new Cazador(6,6,200.0, nimbus, slytheren);}
+        //cazadorEquipoAzul1.skill=200.0;}
+        //saetaDeFuegoA.velocidadDeLaEscoba();
 
     @Test
-    void habilidad(){
-        //assertEquals(cazadorEquipoAzul1.nivelManejoDeEscoba(), 4.0);
-        assertEquals(saetaDeFuegoA.velocidadDeLaEscoba(), 100.0);
-        assertEquals(cazadorEquipoAzul1.velocidadDelJugador(), 224.0);
-        //cazadorEquipoAzul1.velocidadDelJugador();
-        //saetaDeFuegoA.velocidadDeLaEscoba();
-        assertEquals(cazadorEquipoAzul1.habilidad(), 449);
+    void testLepasaElTrapo(){
+       assertTrue(cazador1.lePasaElTrapo(cazador2));
+
     }
+    @Test
+    void testHabilidad(){
+       assertEquals(625,cazador1.habilidad());
+       assertEquals(292,cazador2.habilidad());
+    }
+    @Test
+    void testVelocidadCazador(){
+       assertEquals(400,cazador1.velocidadDelJugador());
+       assertEquals(56,cazador2.velocidadDelJugador());}
+
 
 }

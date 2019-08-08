@@ -9,15 +9,16 @@ public class Guardián extends Jugador {
     private Integer nivelDeReflejos;
     private Integer fuerza;
 
+
     public Guardián(Integer nivelDeReflejos, Integer fuerza, Double peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, equipo );
         this.nivelDeReflejos=nivelDeReflejos;
         this.fuerza=fuerza;
     }
     public Double habilidad(){
-        return super.habilidad()+this.nivelDeReflejos+this.fuerza;
+        return super.skill+ this.velocidadDelJugador()*this.nivelDeReflejos+this.fuerza;
     }
-
+    public Double velocidadDelJugador(){ return super.velocidadDeEscoba()+super.nivelManejoDeEscoba();}
     public Integer randomDeBloqueo(){
         List<Integer> rango = IntStream.range(1,4).boxed().collect(Collectors.toList());
         Random rand = new Random();

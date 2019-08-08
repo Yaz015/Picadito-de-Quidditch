@@ -5,6 +5,8 @@ import main.java.Cazador;
 import main.java.Equipo;
 import main.java.Guardián;
 
+import javax.swing.plaf.synth.SynthLookAndFeel;
+
 public class main {
     public static void main(String[] args){
 
@@ -12,6 +14,7 @@ public class main {
             Equipo griffindor = new Equipo();
             Equipo  slytherin= new Equipo();
 
+            Pelota quaffle=new Pelota();
 
             SaetaDeFuego saeta1=new SaetaDeFuego();
             Nimbus nimbus2=new Nimbus(2019,20);
@@ -26,6 +29,9 @@ public class main {
             Cazador cazador2=new Cazador(40,80,70.0,saeta1,griffindor);
             Cazador cazador3=new Cazador(90,80,50.0,nimbus1,griffindor);
 
+            cazador1.setNombre("Cazador 1");
+            cazador2.setNombre("Cazador 2");
+            cazador3.setNombre("Cazador 3");
 
             Buscador buscador2=new Buscador(200,60,60.0,nimbus2,slytherin);
             Guardián guardian3=new Guardián(20,80,80.0,saeta1,slytherin);
@@ -34,6 +40,10 @@ public class main {
             Cazador cazador4= new Cazador(100,70,60.0,saeta1,slytherin);
             Cazador cazador5=new Cazador(40,150,50.0,nimbus2,slytherin);
             Cazador cazador6=new Cazador(90,70,80.0,nimbus1,slytherin);
+            cazador4.setNombre("Cazador 4");
+            cazador5.setNombre("Cazador 5");
+            cazador6.setNombre("Cazador 6");
+
 
             slytherin.agregarJugador(buscador2);
             slytherin.agregarJugador(guardian3);
@@ -74,12 +84,20 @@ public class main {
             System.out.println(guardian1.randomDeBloqueo());
             System.out.println(guardian1.puedeBloquear(cazador1));
             System.out.println(griffindor.jugadorRandom());
+
+
             System.out.println(griffindor.jugadorCazadorRapidoDelEquipo());
+            System.out.println(cazador1.tenesPelota());
             System.out.println(cazador1.skill);
             System.out.println(griffindor.puntosEquipo);
-            griffindor.turnoCazador(cazador1);
-            System.out.println(cazador1.skill);
+            System.out.println(cazador1.puedeBloquear(cazador4));
+            System.out.println(cazador4.tenesPelota());
+            griffindor.turnoCazador(cazador4);
+            System.out.println(cazador4.skill);
             System.out.println(griffindor.puntosEquipo);
-        }
+            System.out.println(cazador1.skill);
+            System.out.println(slytherin.puntosEquipo);
+            System.out.println(griffindor.jugadorCazadorRapidoDelEquipo().getNombre());
+            System.out.println((cazador2.skill));}
 
     }

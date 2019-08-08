@@ -17,7 +17,7 @@ public class Equipo {
     /**Si un equipo tiene un jugador estrella para jugar contra otro equipo. Un jugador es
      estrella si le pasa el trapo a todos los jugadores del equipo contrario.**/
 
-    public Boolean tieneJugadorEstrella(Equipo equipo){
+    public Boolean tieneJugadorEstrellaContra(Equipo equipo){
         return this.mejorJugador().lePasaElTrapo(equipo.mejorJugador());
     }
 
@@ -28,7 +28,9 @@ public class Equipo {
 
     public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
-
+    }
+    public void agregarJugadores(List<Jugador>jugadores){
+        jugadores.add(jugador);
     }
 
     public Integer cantDeJugadoresEnEquipo(){
@@ -83,6 +85,9 @@ public class Equipo {
         cazador.skill=cazador.skill+5;
         this.puntosEquipo= puntosEquipo+10;
     }
+    public void cazadorNoMeteGol(Cazador cazador){
+        cazador.skill=cazador.skill-2;
+    }
 
     public Jugador jugadorCazadorRapidoDelEquipo(){
         return jugadores.stream()
@@ -97,19 +102,23 @@ public class Equipo {
         return jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
+
+    public void jugadorQueBloquea(Jugador jugador){if(
+            jugador.puedeBloquear(jugador)) {
+        jugador.skill=jugador.skill+10;
+    }}
     public Double puntosEquipo=100.0;
     public List<Cazador> cazadores;
 
     public void turnoCazador(Cazador cazador){ if (
-        cazador.tenesPelota()&& !puedenBloquear(cazador)) {
-        this.cazadorMeteGol(cazador);
-        cazador.tenesPelota().equals(false) ;}
-        else if (puedenBloquear(cazador)) {
-        cazador.skill = cazador.skill - 2;
-//        jugador.jugadorQueBloquea(cazador);
-        cazador.tenesPelota().equals(false);
-        this.jugadorCazadorRapidoDelEquipo().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }
-    }}
+        cazador.tenesPelota().equals(true)&& !puedenBloquear(cazador)) {
+        this.cazadorMeteGol(cazador); }
+        else
+        this.cazadorNoMeteGol(cazador);
+        jugadorQueBloquea(cazador);
+        jugadorCazadorRapidoDelEquipo().agarraPelota(pelota);
+
+    }
 
     public void turnoBuscador(Buscador buscador){if(
         buscador.buscandoSnitch() && buscador.persigueSnitch()) {

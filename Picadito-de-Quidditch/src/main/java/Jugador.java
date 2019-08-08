@@ -18,6 +18,7 @@ public abstract class Jugador {
         this.equipo = equipo;
     }
 
+    //public void setJugador(){}
     public Escoba escobaDelJugador() {
         return escobaDelJugador;
     }
@@ -27,17 +28,17 @@ public abstract class Jugador {
     }
 
     //public Double velocidadDelJugador;
-    public Double velocidadDelJugador() {
-        return this.velocidadDeEscoba() * this.nivelManejoDeEscoba();
-    }
+    public abstract Double velocidadDelJugador(); /*{
+        return this.velocidadDeEscoba() * this.nivelManejoDeEscoba();*/
+
 
     public Double velocidadDeEscoba() {
         return escobaDelJugador.velocidadDeLaEscoba();
     }
 
-    public Double habilidad() {
-        return this.skill + this.velocidadDelJugador();
-    }
+    public abstract Double habilidad();// {
+        /*return this.skill + this.velocidadDelJugador()}*/ ;
+
 
     /**
      * Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
@@ -78,16 +79,14 @@ public abstract class Jugador {
      **/
     public abstract  Boolean puedeBloquear(Jugador jugador);
 
-    public void jugadorQueBloquea(Jugador jugador){if(
-            this.puedeBloquear(jugador).equals(true)){
-        this.skill=this.skill+10;
-    }}
     private Pelota pelota;
     public void agarraPelota(Pelota pelota){this.pelota=pelota;}
 
     public Boolean sosCazador(){
         return this.sosCazador();
     }
-
+    public String nombre;
+    public void setNombre(String nombre){this.nombre= nombre;}
+    public String getNombre(){ return nombre=nombre;}
 
 }
