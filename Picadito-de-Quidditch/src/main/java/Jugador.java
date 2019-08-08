@@ -68,9 +68,8 @@ public abstract class Jugador {
 
     //intento de es groso
     public Boolean esGroso() {
-        return this.habilidad() > (this.getEquipo().promedioDeHabilidades())
-                && (this.velocidadDelJugador()) > this.getMercadoDeEscobas().actualizarMercadoDeEscobas();
-    }
+        return this.habilidad()> (this.getEquipo().promedioDeHabilidades())
+                && (this.velocidadDelJugador())>this.getMercadoDeEscobas().actualizarMercadoDeEscobas(); }
 
     /**
      * Saber si un jugador puede bloquear el tiro de un cazador. Esto se cumple para los
@@ -86,6 +85,9 @@ public abstract class Jugador {
     private Pelota pelota;
     public void agarraPelota(Pelota pelota){this.pelota=pelota;}
 
+    public Boolean sosCazador(){
+        return this.sosCazador();
+    }
 
 
 }

@@ -23,11 +23,9 @@ public class Cazador extends Jugador {
     public Pelota quaffle;
 
 
-    public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador).equals(true);}
+    public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador)
+            ;}
 
-    public Boolean esBloqueado(){ if (puedeBloquear(this).equals(true));
-    return true;
-    }
     public Integer randomPelota(){
         List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
         Random rand = new Random();
@@ -39,9 +37,6 @@ public class Cazador extends Jugador {
     public Boolean tenesPelota() {
         return this.randomPelota().equals(1);
     }
-
-    public Jugador cazadorMasRapido() {
-        return cazadores.stream().max(Comparator.comparing(j -> j.velocidadDelJugador())).get(); }
 
 
 

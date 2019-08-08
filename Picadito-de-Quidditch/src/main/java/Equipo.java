@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Equipo {
     public List<Jugador> jugadores= new ArrayList<>();
@@ -78,23 +79,40 @@ public class Equipo {
     public Boolean turnoJugador(){
         return this.getEquipo().jugadorRandom().equals(this);
     }
+    public void cazadorMeteGol(Cazador cazador){
+        cazador.skill=cazador.skill+5;
+        this.puntosEquipo= puntosEquipo+10;
+    }
 
+    public Jugador jugadorCazadorRapidoDelEquipo(){
+        return jugadores.stream()
+                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
+    }
+
+    public List<Jugador> listaDeCazadores(){
+        return jugadores.stream()
+                .filter(j->j.sosCazador()).collect(Collectors.toList());
+    }
+    public Boolean puedenBloquear(Jugador jugador){
+        return jugadores.stream()
+                .anyMatch(j -> j.puedeBloquear(jugador));
+    }
     public Double puntosEquipo=100.0;
     public List<Cazador> cazadores;
 
     public void turnoCazador(Cazador cazador){ if (
-        cazador.tenesPelota().equals(true)&& cazador.esBloqueado().equals(false)&& this.turnoJugador().equals(cazador)) {
-        cazador.skill=cazador.skill+5.0;
-        this.puntosEquipo=this.puntosEquipo+10.0;
-        cazador.tenesPelota().equals(false);}
-        else if (cazador.esBloqueado().equals(true)) {
+        cazador.tenesPelota()&& !puedenBloquear(cazador)) {
+        this.cazadorMeteGol(cazador);
+        cazador.tenesPelota().equals(false) ;}
+        else if (puedenBloquear(cazador)) {
         cazador.skill = cazador.skill - 2;
-        jugador.jugadorQueBloquea(cazador);
+//        jugador.jugadorQueBloquea(cazador);
         cazador.tenesPelota().equals(false);
-        cazador.cazadorMasRapido().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }
+        this.jugadorCazadorRapidoDelEquipo().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }
     }}
+
     public void turnoBuscador(Buscador buscador){if(
-            buscador.buscandoSnitch().equals(true) && buscador.encontroSnitch.equals(true)) {
+        buscador.buscandoSnitch() && buscador.persigueSnitch()) {
         buscador.skill = buscador.skill + 10;
         this.puntosEquipo = this.puntosEquipo + 150.0; }
     }}

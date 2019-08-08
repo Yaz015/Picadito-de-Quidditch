@@ -35,6 +35,7 @@ public class Buscador extends Jugador {
     public Boolean persigueSnitch() {
         if (this.randomTurnos() * (this.velocidadDelJugador() / 1.6) == 5000)
            return true; else return false;}
+
                    /*this.encontroSnitch = true;
         else return this.encontroSnitch=false;/*
         if (this.kilometros == 5000.0) { this.encontroSnitch = true;
