@@ -1,4 +1,4 @@
-import main.jugador.exception.SinHabilidadException;
+//import main.jugador.exception.SinHabilidadException;
 
         import java.util.List;
 
@@ -27,9 +27,9 @@ public abstract class Jugador {
     }
 
     public Double habilidad(){
-        if(habilidad()==0)
+      /*  if(habilidad()==0)
             throw new SinHabilidadException("No es posible");
-
+*/
         return velocidadDelJugador()+ skill;
 
 

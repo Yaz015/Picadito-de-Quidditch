@@ -6,7 +6,7 @@ public class Guardian extends Jugador {
         super(peso, escobaDelJugador, skill);
     }
     public Double habilidad(){
-        return velocidadDelJugador() + skill + nivelDeReflejos + fuerza;
+        return velocidadDelJugador() + super.skill + nivelDeReflejos + fuerza;
     }
 }
 //Guardianes: su velocidad + sus skills + su nivel de reflejos + su fuerza.

@@ -8,6 +8,8 @@ public class Golpeador extends Jugador {
     public Double habilidad(){
         return velocidadDelJugador() + skill + punteria + fuerza;
     }
+
+
 }
 //Golpeadores: su velocidad + sus skills + su puntería + su fuerza.
 /*
