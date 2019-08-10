@@ -1,5 +1,7 @@
 package main;
 
+import exception.NoEsUtilGolpearGolpeadoresException;
+
 public class Golpeador extends Jugador {
     protected Double punteria;
     protected Double fuerza;
@@ -15,6 +17,12 @@ public class Golpeador extends Jugador {
         return null;
     }
 
+    public Boolean esBlancoUtil(){
+        if(esBlancoUtil()==false)
+            throw new NoEsUtilGolpearGolpeadoresException("No se puede golpear a golpeadores");
+
+        return null;
+    }
 
 }
 //Golpeadores: su velocidad + sus skills + su puntería + su fuerza.
