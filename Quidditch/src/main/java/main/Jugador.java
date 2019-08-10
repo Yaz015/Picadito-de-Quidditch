@@ -1,3 +1,4 @@
+package main;
 //import main.jugador.exception.SinHabilidadException;
 
         import java.util.List;
@@ -8,6 +9,7 @@ public abstract class Jugador {
     protected Double skill;
     protected Equipo equipo;
     public List<Jugador> jugadores;
+
 
     Jugador(Double peso, Escoba escobaDelJugador, Double skill){
         this.peso=peso;
@@ -49,6 +51,10 @@ public abstract class Jugador {
                 && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroAleatorio();
 
      */
+
+    public Boolean tenerPelota(){
+        return null;
+    }
     }
 
 

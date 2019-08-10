@@ -1,3 +1,5 @@
+package main;
+
 public class Cazador extends Jugador {
     private Double punteria;
     private Double fuerza;
@@ -7,6 +9,11 @@ public class Cazador extends Jugador {
     }
     public Double habilidad(){
         return velocidadDelJugador() + skill + punteria +fuerza;
+    }
+
+    public Boolean turnoCazador(Jugador jugador){
+
+        return null;
     }
 }
 //Cazadores: su velocidad + sus skills + su puntería * su fuerza.

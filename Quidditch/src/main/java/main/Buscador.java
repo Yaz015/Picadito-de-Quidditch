@@ -1,3 +1,4 @@
+package main;
 public class Buscador extends Jugador {
     private Double nivelDeReflejos;
     private Double nivelDeVision;
@@ -6,7 +7,11 @@ public class Buscador extends Jugador {
         super(peso, escobaDelJugador, skill);
     }
     public Double habilidad(){
-        return velocidadDelJugador() + skill + nivelDeReflejos + nivelDeVision;
+        return velocidadDelJugador() + super.skill + nivelDeReflejos + nivelDeVision;
+    }
+
+    public Boolean turnoBuscador(Jugador jugador){
+        return null;
     }
 }
 //Buscadores: su velocidad + sus skills + su nivel de reflejos * nivel de visión.

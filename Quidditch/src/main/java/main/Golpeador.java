@@ -1,3 +1,5 @@
+package main;
+
 public class Golpeador extends Jugador {
     protected Double punteria;
     protected Double fuerza;
@@ -6,7 +8,11 @@ public class Golpeador extends Jugador {
         super(peso, escobaDelJugador, skill);
     }
     public Double habilidad(){
-        return velocidadDelJugador() + skill + punteria + fuerza;
+        return velocidadDelJugador() + super.skill + punteria + fuerza;
+    }
+
+    public Boolean turnoGolpeador(Jugador jugador){
+        return null;
     }
 
 
