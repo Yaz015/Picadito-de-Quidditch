@@ -9,7 +9,6 @@ class BuscadorTest {
     private Equipo griffindor;
     private SaetaDeFuego saeta;
 
-
     @BeforeEach
     void setUp() {
         saeta = new SaetaDeFuego();
@@ -50,5 +49,16 @@ class BuscadorTest {
     @Test
     void testPuedeBloquear() {
         assertFalse(buscador.puedeBloquear(buscador));
+    }
+
+    @Test
+    void testEsBlancoUtil(){
+        assertTrue(buscador.esBlancoUtil());
+    }
+
+    @Test
+    void testTurnos(){
+        buscador.juega();
+        assertEquals(1, buscador.getTurnosBuscando());
     }
 }

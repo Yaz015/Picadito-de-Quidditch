@@ -42,11 +42,10 @@ class EquipoTest {
 
     @Test
     void testTieneJugadorEstrella(){
-        when(cazador.habilidad()).thenReturn(1000);
-        when(buscador.habilidad()).thenReturn(30);
-        slytheren.agregarJugador(cazador);
-        griffindor.agregarJugador(buscador);
-        assertTrue(slytheren.tieneJugadorEstrella(griffindor));
+        griffindor.agregarJugador(cazador);
+        slytheren.agregarJugador(buscador);
+        when(cazador.lePasaElTrapo(slytheren.mejorJugador())).thenReturn(true);
+        assertTrue(griffindor.tieneJugadorEstrella(slytheren));
     }
 
     @Test
@@ -58,7 +57,6 @@ class EquipoTest {
 
     @Test
     void testForListaVacia(){
-        griffindor.cantDeJugadoresEnEquipo();
+       griffindor.cantDeJugadoresEnEquipo();
     }
-
 }

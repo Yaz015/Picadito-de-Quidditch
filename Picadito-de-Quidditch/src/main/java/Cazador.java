@@ -20,7 +20,12 @@ public class Cazador extends Jugador {
         }
     }
 
-    public void intentarMeterGol(){}
+    public void intentarMeterGol(){
+        if(this.equipo.equipoContrarioEvitaBloqueo(this)){
+            this.pierdeBloqueo();
+        }
+        else this.meteGol();//evitar bloqueo
+    }
 
     public Boolean puedeBloquear(Jugador jugador){
         return this.lePasaElTrapo(jugador);
@@ -36,5 +41,9 @@ public class Cazador extends Jugador {
 
     public Boolean esBlancoUtil(){
         return !this.equipo.tenesQuaffle();
+    }
+
+    public void meteGol(){
+        this.skill=this.skill+5;
     }
 }

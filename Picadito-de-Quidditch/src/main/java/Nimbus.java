@@ -4,6 +4,7 @@ public class Nimbus implements Escoba {
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
+    private String tipo="Nimbua";
 
     public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
         this.añoDeFabricacion=añoDeFabricacion;
@@ -24,4 +25,17 @@ public class Nimbus implements Escoba {
 
     public Integer añoActual(){
         return Calendar.getInstance().get(Calendar.YEAR);}
+
+    @Override
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void pierdeSalud(){
+        this.porcentajeDeSalud=this.porcentajeDeSalud-10;
+    }
 }

@@ -15,7 +15,7 @@ public abstract class Jugador {
     public Boolean lePasaElTrapo(Jugador jugador){ return (jugador.habilidad()*2.0)<this.habilidad();}
 
     public Boolean esGroso() {
-        return this.habilidad()>this.equipo.promedioDeHabilidades()
+        return this.habilidad()> this.equipo.promedioDeHabilidades()
                && this.velocidadDelJugador()> mercadoDeEscobas.getNumeroAleatorio();
     }
 
@@ -40,5 +40,13 @@ public abstract class Jugador {
     public abstract Boolean sosCazador();
 
     public abstract Boolean esBlancoUtil();
+
+    public void golpeadoPorBludger(){
+        this.skill=this.skill-2;
+        if (this.escobaDelJugador.getTipo().equals("Nimbus")){
+            this.escobaDelJugador.pierdeSalud();
+        }
+    }
+
 }
 

@@ -1,6 +1,7 @@
-package main.java.exceptions;
+package exceptions;
 
 public class NoHayJugadoresEnEquipoException extends RuntimeException {
-    public NoHayJugadoresEnEquipoException(String no_hay_jugadores) {
+    public NoHayJugadoresEnEquipoException(String msj) {
+        super(msj);
     }
 }

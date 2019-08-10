@@ -17,7 +17,7 @@ public class Guardián extends Jugador {
 
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
-        System.out.println(this.getRandomNumber());//sacar este print
+       // System.out.println(this.getRandomNumber());//sacar este print
         return 3 == this.getRandomNumber();
     }
 
@@ -41,6 +41,14 @@ public class Guardián extends Jugador {
 
     public Boolean esBlancoUtil(){
         return !this.equipo.tenesQuaffle();
+    }
+
+    public void juega(){
+
+    }
+
+    public void eligeUnBlancoUtil(){
+        this.equipo.getRandomBlancoUtilEquipoContrario();
     }
 }
 

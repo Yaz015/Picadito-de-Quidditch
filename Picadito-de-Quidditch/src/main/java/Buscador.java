@@ -9,6 +9,7 @@ public class Buscador extends Jugador {
     private Integer nivelDeVision;
     private Double kilometros;
     private Boolean encontroSnitch=false;
+    private Integer turnosBuscando=0;
 
     public Buscador(Integer skill, Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba,skill, equipo);
@@ -29,28 +30,50 @@ public class Buscador extends Jugador {
     }
 
     public void persiguiendoLaSnitch() {
-            this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
-        if (this.kilometros == 5000.0) {
-            this.encontroSnitch = true;
+        this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
+        if (this.kilometros >= 5000.0) {
+                this.atrapaSnitch();
         }
     }
 
-    public Integer randomSnitch() {
+
+    public void buscandoLaSnitch() {
+        if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
+                this.persiguiendoLaSnitch();
+                this.encontroSnitch = true;
+        }
+    }
+
+    public void juega(){
+        if(this.encontroSnitch==false) {
+            this.buscandoLaSnitch();
+            this.setTurnosBuscando(this.getTurnosBuscando() + 1);}
+        else if(this.encontroSnitch==true){
+            this.buscandoLaSnitch();
+        }
+    }
+
+    public Boolean esBlancoUtil(){
+        return this.encontroSnitch==false || this.kilometros<1000;
+        //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
+    }
+
+   public void  atrapaSnitch(){
+        this.skill= this.skill+10;
+        this.equipo.buscadorAtrapaSnitch();
+   }
+
+   public Integer randomSnitch() {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-    public void buscandoLaSnitch() {
-        if (this.randomSnitch() < this.habilidad()) //+los turnos
-            this.encontroSnitch = true;
+
+    public Integer getTurnosBuscando() {
+        return turnosBuscando;
     }
 
-    public Boolean esBlancoUtil(){
-        return this.encontroSnitch=false || this.kilometros<1000;
-        //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
-    }
-
-    public void juega(){
-        //intenta obtener la snitch
+    public void setTurnosBuscando(Integer turnosBuscando) {
+        this.turnosBuscando = turnosBuscando;
     }
 }
