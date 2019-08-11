@@ -31,7 +31,7 @@ public class Guardián extends Jugador {
     }
 
 
-    public Boolean guardianBlancoUtil(){
+    public Boolean esBlancoUtil(){
         return !this.getEquipo().tenesQuaffle();
     }
 

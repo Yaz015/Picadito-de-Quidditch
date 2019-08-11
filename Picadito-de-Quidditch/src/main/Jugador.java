@@ -39,6 +39,8 @@ public abstract class Jugador {
     
     public Integer habilidad()
     {return velocidadDelJugador()+ getSkill();}
+
+
     /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
      habilidoso que el otro jugador.**/
 
@@ -85,6 +87,8 @@ public abstract class Jugador {
         return this.sosCazador();
 
     }
+    public abstract Boolean esBlancoUtil();
+
     public Escoba getEscobaDelJugador() {
         return escobaDelJugador;
     }

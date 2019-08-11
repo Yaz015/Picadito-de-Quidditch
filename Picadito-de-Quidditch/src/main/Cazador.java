@@ -35,7 +35,7 @@ public class Cazador extends Jugador {
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
     }
-    public Boolean cazadorblancoUtil(){
+    public Boolean esBlancoUtil(){
         return this.getEquipo().tenesQuaffle();
     }
 

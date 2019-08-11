@@ -11,10 +11,12 @@ import java.util.stream.IntStream;
 public class Equipo {
 
     protected Integer puntos=0;
-
-    public Quaffle quaffle;
-
+    public Pelota quaffle;
     private List<Jugador> jugadores = new ArrayList<>();
+    private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
+    private Equipo equipoContrario;
+
+
 
     public void agregarJugador(Jugador jugador) {
         getJugadores().add(jugador);
@@ -39,14 +41,7 @@ public class Equipo {
         return this.getJugadores().get(rand.nextInt(getJugadores().size()));
     }
 
-    public List<Jugador> getJugadores() {
-        return jugadores;
-    }
 
-
-    public void setJugadores(List<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
     public Boolean puedeBloquear(Jugador jugador){
         return   this.puedeBloquear(jugador);
     }
@@ -58,6 +53,13 @@ public class Equipo {
     public Boolean puedenBloquear(Jugador jugador){
         return jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
+    }
+    public Boolean intentanBloquear(Jugador jugador){
+        return this.puedenBloquear(jugador);
+    }
+
+    public Boolean equipoContrarioEvitaBloqueo(Jugador jugador){
+        return this.equipoContrario.intentanBloquear(jugador);
     }
 
     public Boolean seEvitaElBloqueo(Jugador jugador){
@@ -72,6 +74,32 @@ public class Equipo {
         return this.jugadores.stream()
                 .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
+
+    public Jugador jugadorCazadorRapidoDelEquipo(){
+        return jugadores.stream()
+                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
+    }
+
+
+    public Jugador cazadorMasRapido(){
+        return this.listaDeCazadores().stream()
+                .max(Comparator.comparing(jugador->jugador.habilidad())).get();
+    }
+
+    public List<Jugador> listadeBlancosUtiles(){
+        return this.jugadores.stream()
+                .filter(j->j.esBlancoUtil()).collect(Collectors.toList());
+    }
+
+    public Jugador getRandomBlancoUtil(){
+        Random rand = new Random();
+        return this.listadeBlancosUtiles().get(rand.nextInt(this.listadeBlancosUtiles().size()));
+    }
+
+    public Jugador getRandomBlancoUtilEquipoContrario(){
+        return this.equipoContrario.getRandomBlancoUtil();
+    }
+
 
     public Integer randomPelota(){
         List<Integer> rango = IntStream.range(1,3).boxed().collect(Collectors.toList());
@@ -98,6 +126,15 @@ public class Equipo {
 
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
+    }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
 }
 

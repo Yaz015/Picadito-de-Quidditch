@@ -78,7 +78,7 @@ public class Buscador extends Jugador {
     }
 
 
-    public Boolean buscadorBlancoUtil(){
+    public Boolean esBlancoUtil(){
         return !this.encuentraSnitch||this.kilometros<4001;
        }
 

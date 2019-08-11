@@ -33,7 +33,7 @@ public class Golpeador extends Jugador {
         return this.getEquipo().jugadorRandom().equals(this);
     }
 
-    public Boolean golpeadorBlancoUtil(){
+    public Boolean esBlancoUtil(){
         return  false;
     }
 }
