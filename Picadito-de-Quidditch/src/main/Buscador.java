@@ -54,7 +54,7 @@ public class Buscador extends Jugador {
     public void esGolpeadoPorBludger(){
         this.skill=-2 ;
         this.getEscobaDelJugador().escobaGolpeada();
-        this.kilometros=5000.0;
+        this.kilometros=0.0;
     }
 
   /*  public Boolean encontroSnitch = false;
