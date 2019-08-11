@@ -41,7 +41,6 @@ public class Equipo {
         return this.getJugadores().get(rand.nextInt(getJugadores().size()));
     }
 
-
     public Boolean puedeBloquear(Jugador jugador){
         return   this.puedeBloquear(jugador);
     }
@@ -74,7 +73,6 @@ public class Equipo {
         return this.jugadores.stream()
                 .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
-
     public Jugador jugadorCazadorRapidoDelEquipo(){
         return jugadores.stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
