@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 public class Equipo {
 
-    private Integer puntos=0;
+    protected Integer puntos=0;
 
     public Quaffle quaffle;
 
@@ -74,7 +74,7 @@ public class Equipo {
     }
 
     public Integer randomPelota(){
-        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
+        List<Integer> rango = IntStream.range(1,3).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
@@ -85,7 +85,12 @@ public class Equipo {
         return this.randomPelota().equals(1);
 
     }
+    public void buscadorAtrapoSnith(){
+        this.puntos=+150;    }
 
+    public void cazadorHaceGol(){
+        this.puntos=+10;
+    }
 
     public Integer getPuntos() {
         return puntos;

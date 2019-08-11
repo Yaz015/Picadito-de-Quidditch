@@ -9,7 +9,8 @@ public abstract class Jugador {
     private Escoba escobaDelJugador;
     public Integer skill=100;
     private MercadoDeEscobas mercadoDeEscobas;
-    private Equipo equipo;
+   protected Equipo equipo;
+    private Integer turno=0;
 
     private List<Jugador> jugadores;
 
@@ -36,7 +37,8 @@ public abstract class Jugador {
         return this.getEscobaDelJugador().velocidadEscoba();
     }
     
-    public Integer habilidad(){return velocidadDelJugador()+ getSkill();}
+    public Integer habilidad()
+    {return velocidadDelJugador()+ getSkill();}
     /** Si un jugador le pasa el trapo a otro; esto sucede si es por lo menos el doble de
      habilidoso que el otro jugador.**/
 
@@ -61,15 +63,28 @@ public abstract class Jugador {
                 && (this.velocidadDelJugador())>this.getMercadoDeEscobas().actualizarMercadoDeEscobas(); }
 
 
-      public Integer getPeso() {
-        return peso;
+
+    public Boolean turnoJugador(){
+        return this.getEquipo().jugadorRandom().equals(this);
     }
 
-
-    public void setPeso(Integer peso) {
-        this.peso = peso;
+    public Boolean puedeBloquear(Jugador jugador){
+        return   this.puedeBloquear(jugador);
     }
+     public void esGolpeadoPorBludger(Jugador unJugador){
+        this.skill=-2 ;
+        this.getEscobaDelJugador().escobaGolpeada();
+     }
 
+
+    public Jugador jugadorCazadorRapidoDelEquipo(){
+        return jugadores.stream()
+                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
+    }
+    public Boolean sosCazador(){
+        return this.sosCazador();
+
+    }
     public Escoba getEscobaDelJugador() {
         return escobaDelJugador;
     }
@@ -102,6 +117,16 @@ public abstract class Jugador {
         this.equipo = equipo;
     }
 
+    public Integer getPeso() {
+        return peso;
+    }
+
+
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
+
+
     public List<Jugador> getJugadores() {
         return jugadores;
     }
@@ -110,23 +135,12 @@ public abstract class Jugador {
         this.jugadores = jugadores;
     }
 
-    public Boolean turnoJugador(){
-        return this.getEquipo().jugadorRandom().equals(this);
+    public Integer getTurno() {
+        return turno;
     }
 
-    public Boolean puedeBloquear(Jugador jugador){
-        return   this.puedeBloquear(jugador);
-    }
-
-
-
-    public Jugador jugadorCazadorRapidoDelEquipo(){
-        return jugadores.stream()
-                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
-    }
-    public Boolean sosCazador(){
-        return this.sosCazador();
-
+    public void setTurno(Integer turno) {
+        this.turno = turno;
     }
 
 

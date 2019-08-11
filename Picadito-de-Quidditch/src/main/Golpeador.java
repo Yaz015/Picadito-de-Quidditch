@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
@@ -18,9 +20,20 @@ public class Golpeador extends Jugador {
 
     }
 
+    public Jugador elegirBlancoUtil() {
+        Random rand = new Random();
+        return this.getJugadores().get(rand.nextInt(getJugadores().size()));
+    }
+
+    public void juega(){}
+
     //hago el metodo en todas las subclases o la meto en Jugador y fue?
 
     public Boolean turnoGolpeador(){
         return this.getEquipo().jugadorRandom().equals(this);
+    }
+
+    public Boolean golpeadorBlancoUtil(){
+        return  false;
     }
 }

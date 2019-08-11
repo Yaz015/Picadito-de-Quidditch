@@ -9,6 +9,7 @@ public class Buscador extends Jugador {
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
     private Double kilometros = 0.0;
+    private Boolean encuentraSnitch=false;
 
     Buscador(Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escobaDelJugador, Equipo equipo) {
         super(peso, escobaDelJugador, equipo);
@@ -33,20 +34,59 @@ public class Buscador extends Jugador {
 
     //no no esta saliendo \ ver la idea de turno como el momento de jugar
 
+    public void buscandoSnitch(){
+        if (this.encuentraSnitch==false){
+           if( this.randomSnitch() < (this.habilidad()+ this.getTurno()))
+               this.setTurno(this.getTurno() + 1);{
+                   this.encuentraSnitch=true;
 
-    public Boolean encontroSnitch = false;
+           }
+        }
+    }
+    public void juegaBuscador(){
+        this.buscandoSnitch();
+    }
 
+    public Boolean atrapoSnitch(){
+        return this.encuentraSnitch&&this.getKilometros()>=5000;
+    }
 
-    public void tuTurnoBuscador() {
+    public void esGolpeadoPorBludger(){
+        this.skill=-2 ;
+        this.getEscobaDelJugador().escobaGolpeada();
+        this.kilometros=5000.0;
+    }
+
+  /*  public Boolean encontroSnitch = false;
+
+  public void buscandoSnitch(){
+        if (!atrapoSnitch())
+        this.setKilometros(this.getKilometros() + velocidadDelJugador() / 1.6);
+        if (this.kilometros>=5000) {this.atrapoSnitch();}
+    }
+
+    public void buscaSnitch() {
         if (this.kilometros == 5000.0) {
             this.encontroSnitch = true;
         } else
             this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
 
+    }*/
+
+    public Boolean puedeBloquear(){
+        return false;
     }
 
-    public void encuentraSnitch() {
-        if (this.randomSnitch() < this.habilidad()) //+los turnos{
-            this.encontroSnitch = true;
-        }
+
+    public Boolean buscadorBlancoUtil(){
+        return !this.encuentraSnitch||this.kilometros<4001;
+       }
+
+    public Double getKilometros() {
+        return kilometros;
     }
+
+    public void setKilometros(Double kilometros) {
+        this.kilometros = kilometros;
+    }
+}

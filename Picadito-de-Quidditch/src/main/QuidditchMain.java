@@ -71,7 +71,10 @@ package main;
             System.out.println(guardian1.puedeBloquear(cazador1));
             System.out.println(griffindor.jugadorRandom());
             System.out.println(cazador1.turnoCazador());
-        }
+            buscador1.buscandoSnitch();
+            System.out.println(buscador1.getTurno());
+
+                   }
 
     }
 

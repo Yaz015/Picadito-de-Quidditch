@@ -29,9 +29,12 @@ public class Guardián extends Jugador {
     public Boolean puedeBloquear(Cazador uncazador){
         return this.randomDeBloqueo().equals(3);
     }
+
+
     public Boolean guardianBlancoUtil(){
-       return !this.getEquipo().tenesQuaffle();
+        return !this.getEquipo().tenesQuaffle();
     }
+
 }
 
 
