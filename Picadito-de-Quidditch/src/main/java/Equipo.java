@@ -118,6 +118,16 @@ public class Equipo {
 
    public Boolean tenesQuaffle(){return this.randomPelota()==1;
    }
+    public static boolean () {caraCruz
+
+        boolean coinState;
+        if (Math.random() < 0.5) {
+            coinState = true;
+        } else {
+            coinState = false;
+        }
+        return coinState;
+    }
 
     public Integer randomPelota(){
         List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
