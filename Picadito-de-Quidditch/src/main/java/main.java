@@ -110,7 +110,7 @@ public class main {
             System.out.println(cazador1.skill);
             System.out.println(griffindor.puntosEquipo);
             griffindor.jugadorCazadorRapidoDelEquipo();
-            System.out.println(slytherin.jugadorCazadorRapidoDelEquipo().getNombre());
+            //System.out.println(slytherin.jugadorCazadorRapidoDelEquipo().getNombre());
             cazador1.jugaContra(slytherin);
             //System.out.println(cazador4.puedeBloquear(cazador2)+ " bloqueo");
             System.out.println(slytherin.puedenBloquear(cazador1)+ " Bloqueo");

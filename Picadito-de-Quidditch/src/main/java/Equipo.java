@@ -15,6 +15,7 @@ public class Equipo {
     public Jugador jugador;
     public Pelota pelota;
 
+
     /**
      * Si un equipo tiene un jugador estrella para jugar contra otro equipo. Un jugador es
      * estrella si le pasa el trapo a todos los jugadores del equipo contrario.
@@ -104,44 +105,51 @@ public class Equipo {
         return jugadores.stream()
                 .max(Comparator.comparing(j -> j.velocidadDelJugador())).get();
     }
+
     public Boolean puedenBloquear(Jugador jugador) {
         return jugadores.stream()
-                .anyMatch(j -> j.puedeBloquear(jugador).equals(true));
+                        .anyMatch(j -> j.puedeBloquear(jugador));
     }
-   public void jugadorQueBloquea(Jugador jugador) {
-       if (
-               puedenBloquear(jugador)) {
-           jugador.getEquipo().jugadorCazadorRapidoDelEquipo().skill =
-                   jugador.getEquipo().jugadorCazadorRapidoDelEquipo().skill + 10;
-       }
-   }
+    public void jugadorQueBloquea(Jugador jugador) {
+        this.jugadorCazadorRapidoDelEquipo().skill =
+                this.jugadorCazadorRapidoDelEquipo().skill + 10;
+    }
 
-   public Boolean tenesQuaffle(){return this.randomPelota()==1;
-   }
-    public static boolean () {caraCruz
+    public Boolean tenesQuaffle() { return this.randomPelota()==1;
+    }
 
-        boolean coinState;
+    /*public Boolean caraCruz;
+    public Boolean caraCruz() {
+        boolean caraCruz;
         if (Math.random() < 0.5) {
-            coinState = true;
+            caraCruz = true;
         } else {
-            coinState = false;
+            caraCruz = false;
         }
-        return coinState;
-    }
+        return caraCruz;
+    }*/ //metodo que no se usa
 
-    public Integer randomPelota(){
-        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
+    public Integer randomPelota() {
+        List<Integer> rango = IntStream.range(1, 2).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-    public void setPelota(Pelota pelota) {
-        this.pelota=pelota ;
-    }
-    public Pelota getPelota(){return pelota;}
 
-    public void turnoBuscador(Buscador buscador){if(
-        buscador.buscandoSnitch() && buscador.persigueSnitch()) {
-        buscador.skill = buscador.skill + 10;
-        this.puntosEquipo = this.puntosEquipo + 150.0; }
-    }}
+    public void setPelota(Pelota pelota) {
+        this.pelota = pelota;
+    }
+
+    public Pelota getPelota() {
+        return pelota;
+    }
+
+    public void turnoBuscador(Buscador buscador) {
+        if (
+                buscador.buscandoSnitch() && buscador.persigueSnitch()) {
+            buscador.skill = buscador.skill + 10;
+            this.puntosEquipo = this.puntosEquipo + 150.0;
+        }
+    }
+}
+
     //public void turnoGolpeador(Golpeador golpeador;)
