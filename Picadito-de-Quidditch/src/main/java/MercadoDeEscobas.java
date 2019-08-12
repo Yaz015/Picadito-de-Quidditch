@@ -16,23 +16,9 @@ public  class MercadoDeEscobas {
         return this.numeroAleatorio;
     }
 
-    // public int getRandomElement(List<Integer> list)
-    {
-        //  Random rand = new Random();
-        //   return list.get(rand.nextInt(list.size()));
-    }
-    //Los intervalos de números (rangos) son colecciones que pueden crearse como:
-    // List<Integer> rango = IntStream.range(1, numeroAleatorio).boxed().collect(Collectors.toList());
-
-
-    // public void actualizarMercado() {
-    // this.numeroAleatorio=getRandomElement(this.list);
-    //
     public Integer añoActual(){
         return Calendar.getInstance().get(Calendar.YEAR);
-
     }
-
     public Integer difDeAnios(){
         return añoActual()-añoDeCreacion;
     }
@@ -42,7 +28,6 @@ public  class MercadoDeEscobas {
 
     public boolean debeActualizarMercadodeEscobas(){
         return difDeAnios()>0;
-
 
     }
     public Integer numeroArbitrario(){

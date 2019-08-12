@@ -6,6 +6,8 @@ import main.java.Equipo;
 import main.java.Guardián;
 
 import javax.swing.plaf.synth.SynthLookAndFeel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class main {
     public static void main(String[] args){
@@ -15,6 +17,7 @@ public class main {
             Equipo  slytherin= new Equipo();
 
             Pelota quaffle=new Pelota();
+            quaffle.setNombrePelota("Quaffle");
 
             SaetaDeFuego saeta1=new SaetaDeFuego();
             Nimbus nimbus2=new Nimbus(2019,20);
@@ -44,6 +47,14 @@ public class main {
             cazador5.setNombre("Cazador 5");
             cazador6.setNombre("Cazador 6");
 
+            List<Jugador> jugadoresSlytherin= new ArrayList<>();
+            jugadoresSlytherin.add(buscador2);
+            jugadoresSlytherin.add(guardian3);
+            jugadoresSlytherin.add(golpeador3);
+            jugadoresSlytherin.add(golpeador4);
+            jugadoresSlytherin.add(cazador4);
+            jugadoresSlytherin.add(cazador5);
+            jugadoresSlytherin.add(cazador6);
 
             slytherin.agregarJugador(buscador2);
             slytherin.agregarJugador(guardian3);
@@ -53,15 +64,19 @@ public class main {
             slytherin.agregarJugador(cazador5);
             slytherin.agregarJugador(cazador6);
 
-
-
             MercadoDeEscobas mercadoDeEscobas1=new MercadoDeEscobas();
             cazador3.getMercadoDeEscobas();
 
-
-
             System.out.println(golpeador1.habilidad());
 
+            List<Jugador> jugadoresGriffindor= new ArrayList<>();
+            jugadoresGriffindor.add(golpeador1);
+            jugadoresGriffindor.add(golpeador2);
+            jugadoresGriffindor.add(cazador1);
+            jugadoresGriffindor.add(cazador2);
+            jugadoresGriffindor.add(cazador3);
+            jugadoresGriffindor.add(guardian1);
+            jugadoresGriffindor.add(buscador1);
 
             griffindor.agregarJugador(golpeador1);
             griffindor.agregarJugador(golpeador2);
@@ -85,19 +100,31 @@ public class main {
             System.out.println(guardian1.puedeBloquear(cazador1));
             System.out.println(griffindor.jugadorRandom());
 
+            griffindor.agregarJugadores(jugadoresGriffindor);
+            slytherin.agregarJugadores(jugadoresSlytherin);
 
-            System.out.println(griffindor.jugadorCazadorRapidoDelEquipo());
-            System.out.println(cazador1.tenesPelota());
+
+            System.out.println(slytherin.jugadorCazadorRapidoDelEquipo().getNombre()+" Cazador mas rapido");
+            cazador2.setPelota(quaffle);
+            //System.out.println(cazador1.agarraQuaffle(quaffle).getPelota() + " Agarra quaffle");
             System.out.println(cazador1.skill);
             System.out.println(griffindor.puntosEquipo);
-            System.out.println(cazador1.puedeBloquear(cazador4));
-            System.out.println(cazador4.tenesPelota());
-            griffindor.turnoCazador(cazador4);
-            System.out.println(cazador4.skill);
-            System.out.println(griffindor.puntosEquipo);
-            System.out.println(cazador1.skill);
-            System.out.println(slytherin.puntosEquipo);
-            System.out.println(griffindor.jugadorCazadorRapidoDelEquipo().getNombre());
-            System.out.println((cazador2.skill));}
+            griffindor.jugadorCazadorRapidoDelEquipo();
+            System.out.println(slytherin.jugadorCazadorRapidoDelEquipo().getNombre());
+            cazador1.jugaContra(slytherin);
+            //System.out.println(cazador4.puedeBloquear(cazador2)+ " bloqueo");
+            System.out.println(slytherin.puedenBloquear(cazador1)+ " Bloqueo");
+            System.out.println(griffindor.tenesQuaffle()+ " tenes pelota");
+            System.out.println(cazador1.skill+" Skill cazador1");
+            System.out.println(griffindor.puntosEquipo+ " puntos ");
 
-    }
+            System.out.println(cazador4.skill+ " Skill cazador 4");
+            System.out.println(slytherin.puntosEquipo+ " puntos");
+            //System.out.println(cazador1.pierdePelota());
+            //System.out.println(griffindor.tenesQuaffle());
+           // System.out.println(slytherin.tenesQuaffle());
+
+
+
+
+    }}

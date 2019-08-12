@@ -2,6 +2,9 @@ package main.java;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public abstract class Jugador {
     protected Double peso;
@@ -80,7 +83,18 @@ public abstract class Jugador {
     public abstract  Boolean puedeBloquear(Jugador jugador);
 
     private Pelota pelota;
-    public void agarraPelota(Pelota pelota){this.pelota=pelota;}
+
+    public void setPelota(Pelota pelota) {
+        this.pelota=pelota ;
+    }
+    public Pelota getPelota(){return pelota;}
+
+
+        //this.agarraPelota(pelota).equals(false);
+        //this.getEquipo().jugadorCazadorRapidoDelEquipo(equipo).agarraPelota(pelota);
+
+        //this.agarraPelota(pelota).equals(false);
+        //this.getEquipo().jugadorCazadorRapidoDelEquipo(equipo).agarraPelota(pelota);
 
     public Boolean sosCazador(){
         return this.sosCazador();

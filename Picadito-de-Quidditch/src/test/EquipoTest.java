@@ -48,8 +48,8 @@ import static org.mockito.Mockito.when;
             assertEquals(60 ,griffindor.sumaDeHabilidadesDeJugadores());
         }
 
-        @Test
-        void testPromedioDeHabilidades(){
+            @Test
+             void testPromedioDeHabilidades(){
             griffindor.agregarJugador(buscador);
             griffindor.agregarJugador(cazador);
             when(cazador.habilidad()).thenReturn(50.0);

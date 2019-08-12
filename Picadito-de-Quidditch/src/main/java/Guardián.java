@@ -25,5 +25,5 @@ public class Guardián extends Jugador {
         return rango.get(rand.nextInt(rango.size()));
     }
 
-    public Boolean puedeBloquear(Jugador jugador){return this.randomDeBloqueo().equals(3);}}
+    public Boolean puedeBloquear(Jugador jugador){return this.randomDeBloqueo()==3;}}
     //public Double velJugador(){return velocidadDelJugador();}

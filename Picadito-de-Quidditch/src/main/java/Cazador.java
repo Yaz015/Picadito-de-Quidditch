@@ -25,22 +25,36 @@ public class Cazador extends Jugador {
 
         public Pelota pelota;
 
-    public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador)
-            ;}
+    public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador);}
 
-    public Integer randomPelota(){
-        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
-        Random rand = new Random();
-        return rango.get(rand.nextInt(rango.size()));
+
+    //public void pierdePelota() {equipo.tenesQuaffle().equals(false);
+    public void meteGol() {
+        this.skill = this.skill + 5.0;
+        this.equipo.puntosEquipo = equipo.puntosEquipo + 10.0;}
+
+    public void noMeteGol() {
+        this.skill = this.skill - 2.0;
+
     }
-    public void setPelota(Pelota pelota) {
-        this.pelota=pelota ;
-    }
-    public Boolean tenesPelota() {
-        return this.randomPelota().equals(1);
-    }
-    public Boolean noTenesPelota(){return !tenesPelota();
-    }
+    /*public void intentarMeterGol(Equipo equipoContrario){
+        if(equipoContrario.puedenBloquear(this).equals(true)){
+            this.noMeteGol();
+             }
+        else this.meteGol();
+    }*/
+   /* public void jugadorPuedeBloquear(Jugador jugador){ if (jugador.puedeBloquear(this)){
+        equipo.jugadorCazadorRapidoDelEquipo().skill=equipo.jugadorCazadorRapidoDelEquipo().skill +10;*/
+    public Pelota quaffle;
+    public void jugaContra(Equipo equipoContrario){
+        this.getPelota();
+        if(this.equipo.tenesQuaffle() && !equipoContrario.puedenBloquear(this)){
+            this.meteGol();
+            equipoContrario.setPelota(quaffle);
+        } else if (!this.equipo.tenesQuaffle()) {this.noMeteGol();
+            equipoContrario.setPelota(quaffle);
+            equipoContrario.jugadorQueBloquea(this);} }}
+
 
 
 
@@ -54,5 +68,5 @@ public class Cazador extends Jugador {
         if (!puedeBloquear(this)) {
             return true;}
         else return false;}*/
-    }
+
 
