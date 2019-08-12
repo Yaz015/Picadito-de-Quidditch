@@ -1,20 +1,97 @@
 package main;
 
+<<<<<<< HEAD
 import main.jugador.exception.SinHabilidadException;
+=======
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+>>>>>>> e0e642ca6e348e666c50ef2eaa06421257ef345a
 
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
+    private Pelota quaffle;
 
-    Cazador(Integer skill, Integer punteria, Integer fuerza, Integer peso, Escoba escoba){
-        super(peso, escoba, skill);
-        this.fuerza=fuerza;
-        this.punteria=punteria;
+
+    public Cazador( Integer punteria, Integer fuerza, Integer peso, Escoba escobaDelJugador,Equipo equipo){
+        super(peso, escobaDelJugador,equipo);
+        this.setFuerza(fuerza);
+        this.setPunteria(punteria);
     }
 
     public Integer habilidad(){
+<<<<<<< HEAD
         if(skill==0)
             throw new SinHabilidadException("No existe");
         return this.velocidadDelJugador()+this.skill+this.punteria*fuerza;
+=======
+        return this.velocidadDelJugador()+ this.getSkill() + this.getPunteria() * getFuerza();
     }
+
+    public Boolean puedeBloquear(Cazador uncazador){
+        return this.lePasaElTrapo(uncazador);
+    }
+// decidimos que si sale 1 tiene la pelota, sino no.
+// Para eso hacemos un boolean  que responda a eso , llamando a un método que responde a un random
+
+    public Integer randomPelota(){
+           List<Integer> rango = IntStream.range(1,3).boxed().collect(Collectors.toList());
+            Random rand = new Random();
+            return rango.get(rand.nextInt(rango.size()));
+    }
+    public void setPelota(Pelota quaffle) {
+        this.quaffle=quaffle ;
+    }
+    public Boolean esBlancoUtil(){
+        return this.getEquipo().tenesQuaffle();
+    }
+
+    public void haceGol(){
+        this.skill=skill+10;
+        this.getEquipo().cazadorHaceGol();
+    }
+
+    public Boolean tenesQuaffle(){
+        return this.randomPelota().equals(1);
+
+    }
+
+
+    public Boolean turnoCazador(){
+        return this.getEquipo().jugadorRandom().equals(this);
+    }
+
+
+    public void juegaCazador(){
+
+    }
+
+
+
+    public Boolean sosCazador(){
+        return true;
+    }
+
+    public Integer getPunteria() {
+        return punteria;
+    }
+
+    public void setPunteria(Integer punteria) {
+        this.punteria = punteria;
+    }
+
+    public Integer getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(Integer fuerza) {
+        this.fuerza = fuerza;
+>>>>>>> e0e642ca6e348e666c50ef2eaa06421257ef345a
+    }
+
+
+
+
 }

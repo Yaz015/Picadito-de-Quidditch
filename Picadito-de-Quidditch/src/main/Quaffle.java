@@ -1,4 +1,6 @@
 package main;
 
-public class Quaffle {
+public class Quaffle implements Pelota {
+
+
 }

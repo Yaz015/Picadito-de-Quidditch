@@ -1,4 +1,4 @@
 package main;
 
-public class Bludger {
+public class Bludger implements Pelota{
 }

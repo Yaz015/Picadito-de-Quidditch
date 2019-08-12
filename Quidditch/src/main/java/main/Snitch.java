@@ -1,4 +1,4 @@
 package main;
 
-public class Snitch {
+public class Snitch implements Pelota{
 }

@@ -2,6 +2,8 @@ package main;
 
 import exception.NoEsUtilGolpearGolpeadoresException;
 
+
+
 public class Golpeador extends Jugador {
     protected Double punteria;
     protected Double fuerza;
@@ -16,6 +18,7 @@ public class Golpeador extends Jugador {
     public Boolean turnoGolpeador(Jugador jugador){
         return null;
     }
+
 
     public Boolean esBlancoUtil(){
         if(esBlancoUtil()==false)

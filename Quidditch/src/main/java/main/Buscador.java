@@ -1,6 +1,5 @@
 package main;
-public class Buscador extends Jugador {
-    private Double nivelDeReflejos;
+public class Buscador extends Jugador { private Double nivelDeReflejos;
     private Double nivelDeVision;
 
     Buscador(Double peso, Escoba escobaDelJugador, Double skill) {

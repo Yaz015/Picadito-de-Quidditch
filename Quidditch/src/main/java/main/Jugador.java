@@ -55,6 +55,38 @@ public abstract class Jugador {
     public Boolean tenerPelota(){
         return null;
     }
+
+    public Double getPeso() {
+        return peso;
     }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public Escoba getEscobaDelJugador() {
+        return escobaDelJugador;
+    }
+
+    public void setEscobaDelJugador(Escoba escobaDelJugador) {
+        this.escobaDelJugador = escobaDelJugador;
+    }
+
+    public Double getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Double skill) {
+        this.skill = skill;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+}
 
 
