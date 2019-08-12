@@ -12,8 +12,8 @@ public class Equipo {
 
     protected Integer puntos=0;
     public Pelota quaffle;
-    private List<Jugador> jugadores = new ArrayList<>();
-    private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
+    protected List<Jugador> jugadores = new ArrayList<>();
+    protected List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Equipo equipoContrario;
 
 

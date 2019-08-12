@@ -5,14 +5,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class Jugador {
-    private Integer peso;
-    private Escoba escobaDelJugador;
+    protected Integer peso;
+    protected Escoba escobaDelJugador;
     public Integer skill=100;
-    private MercadoDeEscobas mercadoDeEscobas;
+    protected MercadoDeEscobas mercadoDeEscobas;
    protected Equipo equipo;
-    private Integer turno=0;
+    protected Integer turno=0;
 
-    private List<Jugador> jugadores;
+    protected List<Jugador> jugadores;
 
     public Jugador(Integer peso, Escoba escobaDelJugador,Equipo equipo){
         this.setPeso(peso);

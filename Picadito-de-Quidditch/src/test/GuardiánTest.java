@@ -8,19 +8,37 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
 
 class GuardiánTest {
     Guardián guardián;
     Cazador uncazador;
-    SaetaDeFuego saetaDeFuego;
+    SaetaDeFuego saeta;
     Equipo griffindor=new Equipo();
+    Guardián guardián1;
     @BeforeEach
-    void setUp(){
-        saetaDeFuego=new SaetaDeFuego();
+        void setUp(){
+        saeta=new SaetaDeFuego();
         griffindor=new Equipo();
-        guardián=new Guardián(60,70,60,saetaDeFuego,griffindor);
+        guardián=new Guardián(60,70,60,saeta,griffindor);
+        guardián1= new Guardián(10, 10, 10, saeta, griffindor);
+    }
+
+
+    @Test
+    void testLePasaElTrapo(){
+        assertTrue(guardián.lePasaElTrapo(guardián1));
+    }
+
+    @Test
+    void testVelocidadDelJugador(){
+        assertEquals(100, guardián.velocidadDelJugador());
+    }
+
+    @Test
+    void TestHabilidadGuardian(){
+        assertEquals(400, guardián.habilidad());
+        //su velocidad + sus skills + su nivel de reflejos + su fuerza.
     }
 
     @Test
