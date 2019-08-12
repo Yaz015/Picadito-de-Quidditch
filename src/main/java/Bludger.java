@@ -1,4 +1,3 @@
-
 public class Bludger implements Pelota{
     private static String tipo="Bludger";
 

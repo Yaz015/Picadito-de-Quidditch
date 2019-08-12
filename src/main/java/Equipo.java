@@ -1,5 +1,4 @@
 import exceptions.NoHayJugadoresEnEquipoException;
-import exceptions.NoSePuedeAgregarJugadoresException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -47,10 +46,7 @@ public class Equipo {
                 .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
 
-    public void agregarJugador(Jugador jugador) throws NoSePuedeAgregarJugadoresException {
-        if(jugador.sosCazador() && this.listaDeCazadores().size()>4){
-            throw new NoSePuedeAgregarJugadoresException("No se Puede agregar cazadores");
-        }
+    public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
     }
 
