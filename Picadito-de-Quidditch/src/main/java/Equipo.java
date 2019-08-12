@@ -51,7 +51,6 @@ public class Equipo {
         if(jugador.sosCazador() && this.listaDeCazadores().size()>4){
             throw new NoSePuedeAgregarJugadoresException("No se Puede agregar cazadores");
         }
-
         jugadores.add(jugador);
     }
 
