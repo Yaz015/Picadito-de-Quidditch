@@ -134,18 +134,14 @@ public class Equipo {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-
     public void setPelota(Pelota pelota) {
         this.pelota = pelota;
     }
-
     public Pelota getPelota() {
         return pelota;
     }
-
     public void turnoBuscador(Buscador buscador) {
-        if (
-                buscador.buscandoSnitch() && buscador.persigueSnitch()) {
+        if (buscador.buscandoSnitch() && buscador.persigueSnitch()) {
             buscador.skill = buscador.skill + 10;
             this.puntosEquipo = this.puntosEquipo + 150.0;
         }

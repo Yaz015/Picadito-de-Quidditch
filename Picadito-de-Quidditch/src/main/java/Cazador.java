@@ -27,7 +27,6 @@ public class Cazador extends Jugador {
 
     public Boolean puedeBloquear(Jugador jugador) {return this.lePasaElTrapo(jugador);}
 
-    public Pelota quaffle;
     public void meteGol() {
         this.skill = this.skill + 5.0;
         this.equipo.puntosEquipo = equipo.puntosEquipo + 10.0;}
