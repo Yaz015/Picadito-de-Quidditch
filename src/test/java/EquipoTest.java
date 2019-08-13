@@ -1,3 +1,4 @@
+import exceptions.NoHayJugadoresEnEquipoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +21,6 @@ class EquipoTest {
         slytheren = new Equipo();
         cazador=mock(Cazador.class);
         buscador=mock(Buscador.class);
-
     }
 
     @Test
@@ -58,6 +58,6 @@ class EquipoTest {
 
     @Test
     void testForListaVacia(){
-       griffindor.cantDeJugadoresEnEquipo();
+        assertThrows(NoHayJugadoresEnEquipoException.class,() ->griffindor.cantDeJugadoresEnEquipo());
     }
 }
