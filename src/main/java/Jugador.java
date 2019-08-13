@@ -26,14 +26,12 @@ public abstract class Jugador {
     }
 
     public abstract Integer velocidadDelJugador();
-    //{ return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
 
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
     }
 
     public abstract Integer habilidad();
-    //{return this.velocidadDelJugador()+this.skill;}
 
     public abstract Boolean puedeBloquear(Jugador jugador);
 
