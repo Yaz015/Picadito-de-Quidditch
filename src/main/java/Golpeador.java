@@ -22,10 +22,17 @@ public class Golpeador extends Jugador {
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosBuscador(){return false;}
+
 
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }
+    public void golpeadoPorBludger(){
+        super.skill=super.skill-2;
+        if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
+            super.escobaDelJugador.pierdeSalud();
+        }}
 
     public void juega(){
         //cuando juega elige un blanco útil

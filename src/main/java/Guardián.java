@@ -32,6 +32,12 @@ public class Guardián extends Jugador {
         return false;
     }
 
+    public void golpeadoPorBludger(){
+        super.skill=super.skill-2;
+        if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
+            super.escobaDelJugador.pierdeSalud();
+        }}
+
     public Integer getRandomNumber() {
         return randomNumber;
     }

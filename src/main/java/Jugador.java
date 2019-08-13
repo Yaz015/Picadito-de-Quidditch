@@ -1,3 +1,5 @@
+import java.sql.BatchUpdateException;
+
 public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
@@ -37,14 +39,9 @@ public abstract class Jugador {
 
     public abstract Boolean sosCazador();
 
+
     public abstract Boolean esBlancoUtil();
 
-    public void golpeadoPorBludger(){
-        this.skill=this.skill-2;
-        if (this.escobaDelJugador.getTipo().equals("Nimbus")){
-            this.escobaDelJugador.pierdeSalud();
-        }
-    }
-
+    public abstract void golpeadoPorBludger();
 }
 

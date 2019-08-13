@@ -16,12 +16,6 @@ public class Cazador extends Jugador {
     public Integer velocidadDelJugador(){
         return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
 
-    public void juega(){
-        if(this.equipo.tenesQuaffle()){
-            this.intentarMeterGol();
-        }
-    }
-
     public void intentarMeterGol(){
         if(this.equipo.equipoContrarioEvitaBloqueo(this)){
             this.pierdeBloqueo();
@@ -40,8 +34,16 @@ public class Cazador extends Jugador {
     public Boolean sosCazador(){
         return true;
     }
+    public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuaffle();}
 
-    public Boolean esBlancoUtil(){
+    public void golpeadoPorBludger(){
+        super.skill=super.skill-2;
+        if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
+            super.escobaDelJugador.pierdeSalud();
+            this.pierdeQuaffle();
+        }}
+
+    public Boolean esBlancoUtil(){// es blanco util es igual a pierde la quaffle
         return !this.equipo.tenesQuaffle();
     }
 
@@ -52,6 +54,7 @@ public class Cazador extends Jugador {
     public void noMeteGol() {
         this.skill = this.skill - 2;
     }
+
     public void jugaContra(Equipo equipoContrario){
         equipo.getPelota();
         if(this.equipo.tenesQuaffle().equals(true) && !equipoContrario.puedenBloquear(this)){

@@ -28,6 +28,9 @@ public class Main {
         System.out.println(guardián.puedeBloquear(buscador));
         System.out.println(buscador.sosCazador());
 
+
         buscador.juega();
+        buscador.buscandoLaSnitch();
+        System.out.println(buscador.skill);
     }
 }

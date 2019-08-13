@@ -36,16 +36,13 @@ public class Buscador extends Jugador {
                 this.atrapaSnitch();
         }
     }
-
-
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
                 this.persiguiendoLaSnitch();
                 this.encontroSnitch = true;
         }
     }
-
-    public void juega(){
+    public void juegaContra(Equipo equipoContrario){
         if(this.encontroSnitch==false) {
             this.buscandoLaSnitch();
             this.setTurnosBuscando(this.getTurnosBuscando() + 1);}
@@ -53,7 +50,6 @@ public class Buscador extends Jugador {
             this.buscandoLaSnitch();
         }
     }
-
     public Boolean esBlancoUtil(){
         return this.encontroSnitch==false || this.kilometros<1000;
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
@@ -69,7 +65,6 @@ public class Buscador extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-
     public Integer getTurnosBuscando() {
         return turnosBuscando;
     }
@@ -77,4 +72,13 @@ public class Buscador extends Jugador {
     public void setTurnosBuscando(Integer turnosBuscando) {
         this.turnosBuscando = turnosBuscando;
     }
-}
+    public void golpeadoPorBludger(){
+        super.skill=super.skill-2;
+        if (super.escobaDelJugador.getTipo().equals("Nimbus")){
+            super.escobaDelJugador.pierdeSalud();
+            this.buscadorReiniciaBusqueda();
+    }}
+    public void buscadorReiniciaBusqueda() {
+        this.habilidad().equals(0);
+        this.getTurnosBuscando().equals(0);
+    }}
