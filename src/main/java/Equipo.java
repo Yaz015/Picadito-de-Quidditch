@@ -1,4 +1,6 @@
 import exceptions.NoHayJugadoresEnEquipoException;
+import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -23,7 +25,6 @@ public class Equipo {
         return list.get(rand.nextInt(list.size()));
     }
 
-
     public Boolean puedenBloquear(Jugador jugador){
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
@@ -47,6 +48,10 @@ public class Equipo {
     }
 
     public void agregarJugador(Jugador jugador) {
+        if(jugador.sosCazador() && this.listaDeCazadores().size()>4){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar más cazadores");
+        }else if(jugador.sosGuardian() && this.listaDeGuardianes().size()==1)
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas guardianes");
         jugadores.add(jugador);
     }
 
@@ -116,5 +121,10 @@ public class Equipo {
 
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
+    }
+
+    public List<Jugador> listaDeGuardianes(){
+        return jugadores.stream()
+                .filter(j->j.sosGuardian()).collect(Collectors.toList());
     }
 }

@@ -13,6 +13,7 @@ public class Main {
         griffindor.agregarJugador(cazador1);
         griffindor.agregarJugador(buscador);
         slytheren.agregarJugador(guardián);
+        slytheren.agregarJugador(guardián);
 
         System.out.println(griffindor.cantDeJugadoresEnEquipo()+ "cant de jugadores en equipo");
         System.out.println(griffindor.promedioDeHabilidades()+" promedio de jugadores en equipo");

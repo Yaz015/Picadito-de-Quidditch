@@ -27,9 +27,12 @@ public class Guardián extends Jugador {
         this.setRandomNumber((int)(ran.nextDouble()*3)+1);
     }
 
+    ///Metodos Sos
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosGuardian(){return true;}
+    ///
 
     public Integer getRandomNumber() {
         return randomNumber;
