@@ -7,7 +7,4 @@ public class Nimbus implements Escoba {
     public Double velocidadDeLaEscoba() {
         return (80-Salud)*Calendar.getInstance().get(Calendar.YEAR);
     }
-
-
-
 }

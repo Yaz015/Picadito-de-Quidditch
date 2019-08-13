@@ -1,20 +1,23 @@
 package main;
 //import main.jugador.exception.SinHabilidadException;
 
+        import java.util.Calendar;
         import java.util.List;
 
 public abstract class Jugador {
     protected Double peso;
     protected Escoba escobaDelJugador;
-    protected Double skill;
+    protected Double skill=100.00;
     protected Equipo equipo;
+    protected Integer turno=0;
     public List<Jugador> jugadores;
 
 
-    Jugador(Double peso, Escoba escobaDelJugador, Double skill){
+    Jugador(Double peso, Escoba escobaDelJugador, Double skill, Equipo equipo){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
         this.skill=skill;
+        this.equipo= equipo;
     }
     public Escoba escobaDelJugador() {
         return this.escobaDelJugador;
@@ -51,6 +54,11 @@ public abstract class Jugador {
                 && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroAleatorio();
 
      */
+
+
+    public Integer añoActual(){
+        return Calendar.getInstance().get(Calendar.YEAR);}
+
 
     public Boolean tenerPelota(){
         return null;
