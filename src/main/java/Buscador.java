@@ -7,7 +7,7 @@ public class Buscador extends Jugador {
 
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
-    private Double kilometros;
+    private Double kilometros=0.0;
     private Boolean encontroSnitch=false;
     private Integer turnosBuscando=0;
 

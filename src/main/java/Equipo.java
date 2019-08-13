@@ -48,7 +48,7 @@ public class Equipo {
     }
 
     public void agregarJugador(Jugador jugador) {
-        if(jugador.sosCazador() && this.listaDeCazadores().size()>4){
+        if(jugador.sosCazador() && this.listaDeCazadores().size()==3){
             throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar más cazadores");
         }else if(jugador.sosGuardian() && this.listaDeGuardianes().size()==1)
             throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas guardianes");
