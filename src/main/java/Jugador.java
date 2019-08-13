@@ -5,10 +5,10 @@ public abstract class Jugador {
     protected Equipo equipo;
     static MercadoDeEscobas mercadoDeEscobas=new MercadoDeEscobas();
 
-    public Jugador(Integer peso, Escoba escobaDelJugador, Integer skill, Equipo equipo){
+    public Jugador(Integer peso, Escoba escobaDelJugador, Equipo equipo){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
-        this.skill=skill;
+        this.skill=200;
         this.equipo=equipo;
     }
 
@@ -25,15 +25,15 @@ public abstract class Jugador {
         return (double)this.skill / this.peso;
     }
 
-    public Integer velocidadDelJugador() {
-        return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba());
-    }
+    public abstract Integer velocidadDelJugador();
+    //{ return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
 
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
     }
 
-    public Integer habilidad(){return this.velocidadDelJugador()+this.skill;}
+    public abstract Integer habilidad();
+    //{return this.velocidadDelJugador()+this.skill;}
 
     public abstract Boolean puedeBloquear(Jugador jugador);
 

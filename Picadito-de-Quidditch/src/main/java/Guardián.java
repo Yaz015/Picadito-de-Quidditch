@@ -18,6 +18,7 @@ public class Guardián extends Jugador {
     public Double habilidad(){
         return super.skill+ this.velocidadDelJugador()*this.nivelDeReflejos+this.fuerza;
     }
+
     public Double velocidadDelJugador(){ return super.velocidadDeEscoba()+super.nivelManejoDeEscoba();}
     public Integer randomDeBloqueo(){
         List<Integer> rango = IntStream.range(1,4).boxed().collect(Collectors.toList());

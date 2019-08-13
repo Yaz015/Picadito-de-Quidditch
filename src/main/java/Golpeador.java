@@ -2,15 +2,18 @@ public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
 
-    public Golpeador(Integer skill, Integer fuerza, Integer punteria, Integer peso, Escoba escoba, Equipo equipo){
-        super(peso, escoba, skill, equipo);
+    public Golpeador( Integer fuerza, Integer punteria, Integer peso, Escoba escoba, Equipo equipo){
+        super(peso, escoba, equipo);
         this.fuerza=fuerza;
         this.punteria=punteria;
     }
 
     public Integer habilidad(){
-        return super.habilidad()+this.punteria+this.fuerza;
+        return super.skill+ this.velocidadDelJugador()+this.punteria+this.fuerza;
     }
+
+    public Integer velocidadDelJugador(){
+        return (int)(super.velocidadDeEscoba() * super.nivelManejoDeEscoba()); }
 
     public Boolean puedeBloquear(Jugador jugador){
         return this.esGroso();

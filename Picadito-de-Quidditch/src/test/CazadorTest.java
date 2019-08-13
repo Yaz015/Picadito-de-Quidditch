@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CazadorTest {
     Cazador cazador1;
     Cazador cazador2;
-    SaetaDeFuego saetaDeFuegoA;
+    SaetaDeFuego saeta;
     Nimbus nimbus;
     Equipo griffindor;
     Equipo slytheren;
@@ -21,12 +21,11 @@ public class CazadorTest {
    void setUp(){
         slytheren=new Equipo();
         griffindor= new Equipo();
-        saetaDeFuegoA= new SaetaDeFuego();
+        saeta= new SaetaDeFuego();
         nimbus=new Nimbus(1989,80);
-        cazador1= new Cazador(5,5,50.0, saetaDeFuegoA, griffindor);
+        cazador1= new Cazador(5,5,50.0, saeta, griffindor);
         cazador2= new Cazador(6,6,200.0, nimbus, slytheren);}
-        //cazadorEquipoAzul1.skill=200.0;}
-        //saetaDeFuegoA.velocidadDeLaEscoba();
+
 
     @Test
     void testLepasaElTrapo(){

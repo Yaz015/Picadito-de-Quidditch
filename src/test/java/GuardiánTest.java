@@ -12,8 +12,8 @@ class GuardiánTest {
     @BeforeEach
      void setUp(){
         saeta = new SaetaDeFuego();
-        guardián=new Guardián(100, 100, 100, 100, saeta, griffindor);
-        guardián1= new Guardián(10, 10, 10, 10, saeta, griffindor);
+        guardián=new Guardián(100, 100, 100, saeta, griffindor);
+        guardián1= new Guardián(10, 10, 10, saeta, griffindor);
     }
 
     @Test
@@ -23,12 +23,12 @@ class GuardiánTest {
 
     @Test
     void testVelocidadDelJugador(){
-        assertEquals(100, guardián.velocidadDelJugador());
+        assertEquals(200, guardián.velocidadDelJugador());
     }
 
     @Test
     void TestHabilidadGuardian(){
-        assertEquals(400, guardián.habilidad());
+        assertEquals(2300, guardián1.habilidad());
         //su velocidad + sus skills + su nivel de reflejos + su fuerza.
     }
 

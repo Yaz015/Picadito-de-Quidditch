@@ -11,15 +11,16 @@ public class Buscador extends Jugador {
     private Boolean encontroSnitch=false;
     private Integer turnosBuscando=0;
 
-    public Buscador(Integer skill, Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba, Equipo equipo){
-        super(peso, escoba,skill, equipo);
+    public Buscador( Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba, Equipo equipo){
+        super(peso, escoba, equipo);
         this.nivelDeReflejos=nivelDeReflejos;
         this.nivelDeVision=nivelDeVision;
     }
-
     public Integer habilidad(){
-        return super.habilidad()+this.nivelDeReflejos*this.nivelDeVision;
+        return (super.skill+this.velocidadDelJugador())+this.nivelDeReflejos*this.nivelDeVision;
     }
+    public Integer velocidadDelJugador(){
+        return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
 
     public Boolean puedeBloquear(Jugador jugador) {
         return false;

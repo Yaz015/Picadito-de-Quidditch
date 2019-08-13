@@ -5,15 +5,16 @@ public class Guardián extends Jugador {
     private Integer randomNumber = 3;
 
 
-    public Guardián(Integer skill, Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
-        super(peso, escoba, skill, equipo);
+    public Guardián( Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
+        super(peso, escoba, equipo);
         this.nivelDeReflejos = nivelDeReflejos;
         this.fuerza = fuerza;
     }
-
-    public Integer habilidad() {
-        return super.habilidad() + this.nivelDeReflejos + this.fuerza;
+    public Integer habilidad(){
+        return (super.skill+ this.velocidadDelJugador())+this.nivelDeReflejos*this.fuerza;
     }
+    public Integer velocidadDelJugador(){
+        return (int)(super.velocidadDeEscoba() * super.nivelManejoDeEscoba()); }
 
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();

@@ -12,7 +12,7 @@ public class Nimbus implements Escoba {
     }
 
     public Integer velocidadEscoba(){
-        return (int)((80 - this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud());
+        return (int)((80 - (this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud()));
     }
 
     public Double getPorcentajeDeSalud(){

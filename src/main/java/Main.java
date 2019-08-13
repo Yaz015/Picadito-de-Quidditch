@@ -5,10 +5,10 @@ public class Main {
         Equipo griffindor = new Equipo();
         Equipo slytheren= new Equipo();
 
-        Guardián guardián= new Guardián(100,10,10,80,saeta,griffindor);
-        Cazador cazador1 = new Cazador(63, 34, 54, 80, saeta, griffindor);
-        Buscador buscador = new Buscador(30, 32, 49, 75, saeta, griffindor);
-        Golpeador golpeador = new Golpeador(30, 18, 19, 70, saeta, slytheren);
+        Guardián guardián= new Guardián(100,10,80,saeta,griffindor);
+        Cazador cazador1 = new Cazador(34, 54, 80, saeta, griffindor);
+        Buscador buscador = new Buscador(32, 49, 75, saeta, griffindor);
+        Golpeador golpeador = new Golpeador(18, 19, 70, saeta, slytheren);
 
         griffindor.agregarJugador(cazador1);
         griffindor.agregarJugador(buscador);

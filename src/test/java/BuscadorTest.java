@@ -13,24 +13,24 @@ class BuscadorTest {
     void setUp() {
         saeta = new SaetaDeFuego();
         griffindor = new Equipo();
-        buscador = new Buscador(100, 110, 150, 90, saeta, griffindor);
-        buscador1 = new Buscador(10, 10, 10, 10, saeta, griffindor);
+        buscador = new Buscador(110, 150, 90, saeta, griffindor);
+        buscador1 = new Buscador(10, 10, 10, saeta, griffindor);
     }
 
     @Test
     void testManejoDeEscoba() {
-        assertEquals(1.1111111111111112, buscador.nivelManejoDeEscoba());
+        assertEquals(2.2222222222222223, buscador.nivelManejoDeEscoba());
         //skills del jugador / su peso.
     }
 
     @Test
     void testVelocidadDelJugador() {
-        assertEquals(111, buscador.velocidadDelJugador());
+        assertEquals(222, buscador.velocidadDelJugador());
     }
 
     @Test
     void testHabilidad() {
-        assertEquals(16711, buscador.habilidad());
+        assertEquals(16922, buscador.habilidad());
         //su velocidad + sus skills + su nivel de reflejos * nivel de visión
     }
 
