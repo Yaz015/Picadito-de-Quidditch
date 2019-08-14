@@ -50,8 +50,8 @@ public class Guardián extends Jugador {
         return !this.equipo.tenesQuaffle();
     }
 
-    public void juega(){
-
+    public void juegaContra(Jugador jugador) {//NO juega
+        //this.puedeBloquear(jugador);}
     }
 
     public void eligeUnBlancoUtil(){
