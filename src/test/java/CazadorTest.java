@@ -20,7 +20,6 @@ public class CazadorTest {
         cazador1= new Cazador(5,5,50, saeta, griffindor);
         cazador2= new Cazador(6,6,200, nimbus, slytheren);}
 
-
     @Test
     void testLepasaElTrapo(){
        assertTrue(cazador1.lePasaElTrapo(cazador2));

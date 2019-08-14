@@ -1,3 +1,5 @@
+import exceptions.NoTieneNiveldeReflejos;
+
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
@@ -15,7 +17,9 @@ public class Cazador extends Jugador {
 
     public Integer velocidadDelJugador(){
         return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
-    public Integer nivelDeReflejos(){return null;}
+
+    public Integer nivelDeReflejos(){
+        throw new NoTieneNiveldeReflejos(" El cazador no tiene nivel de reflejo");}
 
     public void intentarMeterGol(){
         if(this.equipo.equipoContrarioEvitaBloqueo(this)){

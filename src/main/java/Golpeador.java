@@ -1,3 +1,6 @@
+import exceptions.NoEsUtilGolpearGolpeadoresException;
+import exceptions.NoTieneNiveldeReflejos;
+
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -24,9 +27,8 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
-    public Integer nivelDeReflejos() {
-        return null;
-    }
+    public Integer nivelDeReflejos(){
+        throw new NoTieneNiveldeReflejos(" El golpeador no tiene nivel de reflejo");}
 
     public Boolean sosCazador(){
         return false;
@@ -35,11 +37,14 @@ public class Golpeador extends Jugador {
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }
-    public void golpeadoPorBludger(){
-        super.skill=super.skill-2;
+    public void golpeadoPorBludger() {
+        if (esBlancoUtil() == false)
+            throw new NoEsUtilGolpearGolpeadoresException("No se puede golpear a golpeadores");
+    }
+       /* super.skill=super.skill-2;
         if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
             super.escobaDelJugador.pierdeSalud();
-        }}
+        }*/
     public Integer randomGolpea(){
         List<Integer> rango = IntStream.range(1,9).boxed().collect(Collectors.toList());
         Random rand = new Random();

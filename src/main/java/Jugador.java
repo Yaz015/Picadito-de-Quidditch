@@ -20,7 +20,6 @@ public abstract class Jugador {
         return this.habilidad()> this.equipo.promedioDeHabilidades()
                && this.velocidadDelJugador()> mercadoDeEscobas.getNumeroAleatorio();
     }
-
     public  Escoba escobaDelJugador() { return this.escobaDelJugador; }
 
     public Double nivelManejoDeEscoba() {
