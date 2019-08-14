@@ -16,7 +16,7 @@ public class Guardián extends Jugador {
     }
 
     public Integer habilidad(){
-        return this.velocidadDelJugador()+ this.getSkill() +this.nivelDeReflejos+this.fuerza;
+        return super.velocidadDelJugador()+ super.getSkill() +this.nivelDeReflejos+this.fuerza;
     }
 
 

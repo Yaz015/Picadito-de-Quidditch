@@ -73,6 +73,7 @@ package main;
             System.out.println(cazador1.turnoCazador());
             buscador1.buscandoSnitch();
             System.out.println(buscador1.getTurno());
+            System.out.println(guardian1.lePasaElTrapo(guardian3));
 
                    }
 

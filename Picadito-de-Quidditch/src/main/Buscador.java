@@ -64,7 +64,7 @@ public class Buscador extends Jugador {
 
 
     public Boolean esBlancoUtil(){
-        return !this.encontroSnitch||this.kilometros<4001;
+        return !this.encontroSnitch||this.kilometros>4001;
        }
 
     public Double getKilometros() {
