@@ -1,5 +1,5 @@
 import exceptions.NoHayJugadoresEnEquipoException;
-import exceptions.NoSePuedeAgregarJugadoresException;
+import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,7 +25,6 @@ public class Equipo {
         return list.get(rand.nextInt(list.size()));
     }
 
-
     public Boolean puedenBloquear(Jugador jugador){
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
@@ -48,11 +47,12 @@ public class Equipo {
                 .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
 
-    public void agregarJugador(Jugador jugador) throws NoSePuedeAgregarJugadoresException {
-            if(jugador.sosCazador() && this.listaDeCazadores().size()>4){
-                throw new NoSePuedeAgregarJugadoresException("No se Puede agregar cazadores");
-            }
-            jugadores.add(jugador);
+    public void agregarJugador(Jugador jugador) {
+        if(jugador.sosCazador() && this.listaDeCazadores().size()==3){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar más cazadores");
+        }else if(jugador.sosGuardian() && this.listaDeGuardianes().size()==1)
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas guardianes");
+        jugadores.add(jugador);
     }
 
     public Integer cantDeJugadoresEnEquipo(){
@@ -121,5 +121,10 @@ public class Equipo {
 
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
+    }
+
+    public List<Jugador> listaDeGuardianes(){
+        return jugadores.stream()
+                .filter(j->j.sosGuardian()).collect(Collectors.toList());
     }
 }

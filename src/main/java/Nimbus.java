@@ -26,7 +26,6 @@ public class Nimbus implements Escoba {
     public Integer añoActual(){
         return Calendar.getInstance().get(Calendar.YEAR);}
 
-    @Override
     public String getTipo() {
         return tipo;
     }

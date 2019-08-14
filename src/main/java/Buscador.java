@@ -7,7 +7,7 @@ public class Buscador extends Jugador {
 
     private Integer nivelDeReflejos;
     private Integer nivelDeVision;
-    private Double kilometros;
+    private Double kilometros=0.0;
     private Boolean encontroSnitch=false;
     private Integer turnosBuscando=0;
 
@@ -25,9 +25,12 @@ public class Buscador extends Jugador {
         return false;
     }
 
+    ///Metodos Sos
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosGuardian(){return false;}
+    ///
 
     public void persiguiendoLaSnitch() {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
@@ -35,7 +38,6 @@ public class Buscador extends Jugador {
                 this.atrapaSnitch();
         }
     }
-
 
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {

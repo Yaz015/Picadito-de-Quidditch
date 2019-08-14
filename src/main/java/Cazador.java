@@ -35,9 +35,12 @@ public class Cazador extends Jugador {
         this.skill=skill-2;
     }
 
+    ///Metodos Sos
     public Boolean sosCazador(){
         return true;
     }
+    public Boolean sosGuardian(){return false;}
+    ///
 
     public Boolean esBlancoUtil(){
         return !this.equipo.tenesQuaffle();

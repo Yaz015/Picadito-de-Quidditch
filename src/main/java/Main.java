@@ -22,7 +22,7 @@ public class Main {
         System.out.println(cazador1.nivelManejoDeEscoba());
         System.out.println(cazador1.lePasaElTrapo(buscador)+" le pasa el trapo");
         System.out.println(guardián.puedeBloquear(cazador1));
-        System.out.println(griffindor.listaDeCazadores());
+        System.out.println(griffindor.listaDeCazadores().size()+" cant lista de caadores");
         System.out.println(griffindor.jugadorCazadorRapidoDelEquipo());
         slytheren.agregarJugador(golpeador);
         System.out.println(guardián.puedeBloquear(buscador));

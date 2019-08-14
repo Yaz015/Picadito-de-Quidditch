@@ -16,9 +16,12 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
+    ///Metodos Sos
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosGuardian(){return false;}
+    ///
 
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????

@@ -1,4 +1,3 @@
-
 public class Campo {
     private Pelota quaffle;
     private Pelota snitch;

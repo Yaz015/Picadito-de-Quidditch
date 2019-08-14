@@ -39,6 +39,8 @@ public abstract class Jugador {
 
     public abstract Boolean sosCazador();
 
+    public abstract Boolean sosGuardian();
+
     public abstract Boolean esBlancoUtil();
 
     public void golpeadoPorBludger(){

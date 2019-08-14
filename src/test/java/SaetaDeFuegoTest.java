@@ -9,12 +9,11 @@ public class SaetaDeFuegoTest {
 
     @BeforeEach
     void setUp(){
-        saetaDeFuegoA=mock(SaetaDeFuego.class);
+        saetaDeFuegoA= new SaetaDeFuego();
     }
 
     @Test
     void velocidadDeLaEScoba(){
-        when(saetaDeFuegoA.velocidadEscoba()).thenReturn(100);
         assertEquals(100,saetaDeFuegoA.velocidadEscoba());
     }
 }
