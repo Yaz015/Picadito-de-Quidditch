@@ -1,3 +1,8 @@
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
@@ -19,11 +24,13 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
+    public Integer nivelDeReflejos() {
+        return null;
+    }
+
     public Boolean sosCazador(){
         return false;
     }
-    public Boolean sosBuscador(){return false;}
-
 
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
@@ -33,8 +40,21 @@ public class Golpeador extends Jugador {
         if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
             super.escobaDelJugador.pierdeSalud();
         }}
+    public Integer randomGolpea(){
+        List<Integer> rango = IntStream.range(1,9).boxed().collect(Collectors.toList());
+        Random rand = new Random();
+        return rango.get(rand.nextInt(rango.size()));
+    }
+    public Boolean puedeGolpearAotro(Jugador jugador){
+        if(this.punteria>this.equipo.getRandomBlancoUtilEquipoContrario().nivelDeReflejos() ||
+                this.randomGolpea()==8){ return true;} else return false; }
 
-    public void juega(){
-        //cuando juega elige un blanco útil
+    public void juegaContra(Equipo equipoContrario){
+        //this.equipo.getRandomBlancoUtilEquipoContrario();
+        if(this.puedeGolpearAotro(equipoContrario.getRandomBlancoUtil())); {
+            equipoContrario.getRandomBlancoUtil().golpeadoPorBludger();
+            super.skill=super.skill+1;
+        }
+
     }
 }

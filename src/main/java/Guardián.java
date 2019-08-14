@@ -5,38 +5,40 @@ public class Guardián extends Jugador {
     private Integer randomNumber = 3;
 
 
-    public Guardián( Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
+    public Guardián(Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
         super(peso, escoba, equipo);
         this.nivelDeReflejos = nivelDeReflejos;
         this.fuerza = fuerza;
     }
-    public Integer habilidad(){
-        return (super.skill+ this.velocidadDelJugador())+this.nivelDeReflejos*this.fuerza;
+
+    public Integer habilidad() {
+        return (super.skill + this.velocidadDelJugador()) + this.nivelDeReflejos * this.fuerza;
     }
-    public Integer velocidadDelJugador(){
-        return (int)(super.velocidadDeEscoba() * super.nivelManejoDeEscoba()); }
+
+    public Integer velocidadDelJugador() {
+        return (int) (super.velocidadDeEscoba() * super.nivelManejoDeEscoba());
+    }
 
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
-       // System.out.println(this.getRandomNumber());//sacar este print
         return 3 == this.getRandomNumber();
     }
 
-
-    public void setRandomNumber(){
-        Random ran=new Random();
-        this.setRandomNumber((int)(ran.nextDouble()*3)+1);
+    public void setRandomNumber() {
+        Random ran = new Random();
+        this.setRandomNumber((int) (ran.nextDouble() * 3) + 1);
     }
 
-    public Boolean sosCazador(){
+    public Boolean sosCazador() {
         return false;
     }
 
-    public void golpeadoPorBludger(){
-        super.skill=super.skill-2;
+    public void golpeadoPorBludger() {
+        super.skill = super.skill - 2;
         if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
             super.escobaDelJugador.pierdeSalud();
-        }}
+        }
+    }
 
     public Integer getRandomNumber() {
         return randomNumber;
@@ -46,16 +48,15 @@ public class Guardián extends Jugador {
         this.randomNumber = randomNumber;
     }
 
-    public Boolean esBlancoUtil(){
+    public Boolean esBlancoUtil() {
         return !this.equipo.tenesQuaffle();
     }
 
-    public void juegaContra(Jugador jugador) {//NO juega
-        //this.puedeBloquear(jugador);}
-    }
-
-    public void eligeUnBlancoUtil(){
+    public void eligeUnBlancoUtil() {
         this.equipo.getRandomBlancoUtilEquipoContrario();
     }
-}
 
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos;
+    }
+    public void juegaContra(Equipo equipoContrario){}}

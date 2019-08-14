@@ -15,6 +15,7 @@ public class Cazador extends Jugador {
 
     public Integer velocidadDelJugador(){
         return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
+    public Integer nivelDeReflejos(){return null;}
 
     public void intentarMeterGol(){
         if(this.equipo.equipoContrarioEvitaBloqueo(this)){
@@ -55,7 +56,7 @@ public class Cazador extends Jugador {
         this.skill = this.skill - 2;
     }
 
-    public void jugaContra(Equipo equipoContrario){
+    public void juegaContra(Equipo equipoContrario){
         equipo.getPelota();
         if(this.equipo.tenesQuaffle().equals(true) && !equipoContrario.puedenBloquear(this)){
             this.meteGol();

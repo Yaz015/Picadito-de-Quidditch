@@ -43,5 +43,9 @@ public abstract class Jugador {
     public abstract Boolean esBlancoUtil();
 
     public abstract void golpeadoPorBludger();
+
+    public abstract void juegaContra(Equipo equipoContrario);
+
+    public abstract  Integer nivelDeReflejos();
 }
 

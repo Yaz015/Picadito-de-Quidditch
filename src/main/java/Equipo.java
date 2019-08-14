@@ -107,7 +107,7 @@ public class Equipo {
     }
 
     public Jugador getRandomBlancoUtilEquipoContrario(){
-        return this.equipoContrario.getRandomBlancoUtil();
+        return equipoContrario.getRandomBlancoUtil();
     }
 
     public void buscadorAtrapaSnitch(){

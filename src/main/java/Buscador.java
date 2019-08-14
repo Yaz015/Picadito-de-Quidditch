@@ -33,6 +33,10 @@ public class Buscador extends Jugador {
         return false;
     }
 
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos;
+    }
+
     public void persiguiendoLaSnitch() {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros >= 5000.0) {
@@ -86,19 +90,14 @@ public class Buscador extends Jugador {
         if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
             super.escobaDelJugador.pierdeSalud();
             this.buscadorReiniciaBusqueda();
-
         }
     }
     public void buscadorReiniciaBusqueda() {
-        this.habilidad().equals(0);
-        this.getTurnosBuscando().equals(0);
+        this.kilometros=0.0;
     }
-    public void retomaActividad(){
-        this.quedaAturdido();
-        if (this.turnosBuscando == this.turnosBuscando + 1);
-    { this.esBlancoUtil();}
+    public void retomaActividad() {
+        if (this.turnosBuscando == this.turnosBuscando + 1) ;
     }
-
     public void quedaAturdido(){
         this.turnosBuscando=this.turnosBuscando-1;}
 

@@ -29,7 +29,7 @@ public class Main {
         System.out.println(buscador.sosCazador());
 
 
-        buscador.juega();
+        buscador.juegaContra(slytheren);
         buscador.buscandoLaSnitch();
         System.out.println(buscador.skill);
     }
