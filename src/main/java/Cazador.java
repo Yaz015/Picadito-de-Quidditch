@@ -49,4 +49,8 @@ public class Cazador extends Jugador {
     public void meteGol(){
         this.skill=this.skill+5;
     }
+
+    public Integer getNivelDeReflejos(){
+        return 0;
+    }
 }

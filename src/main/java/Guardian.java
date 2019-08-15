@@ -1,18 +1,18 @@
 import java.util.Random;
-public class Guardián extends Jugador {
+public class Guardian extends Jugador {
     private Integer nivelDeReflejos;
     private Integer fuerza;
     private Integer randomNumber = 3;
 
 
-    public Guardián(Integer skill, Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
+    public Guardian(Integer skill, Integer nivelDeReflejos, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo) {
         super(peso, escoba, skill, equipo);
-        this.nivelDeReflejos = nivelDeReflejos;
+        this.setNivelDeReflejos(nivelDeReflejos);
         this.fuerza = fuerza;
     }
 
     public Integer habilidad() {
-        return super.habilidad() + this.nivelDeReflejos + this.fuerza;
+        return super.habilidad() + this.getNivelDeReflejos() + this.fuerza;
     }
 
     public Boolean puedeBloquear(Jugador jugador) {
@@ -52,6 +52,15 @@ public class Guardián extends Jugador {
 
     public void eligeUnBlancoUtil(){
         this.equipo.getRandomBlancoUtilEquipoContrario();
+    }
+
+    @Override
+    public Integer getNivelDeReflejos() {
+        return nivelDeReflejos;
+    }
+
+    public void setNivelDeReflejos(Integer nivelDeReflejos) {
+        this.nivelDeReflejos = nivelDeReflejos;
     }
 }
 

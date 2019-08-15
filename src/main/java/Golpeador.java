@@ -1,3 +1,8 @@
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
@@ -20,7 +25,17 @@ public class Golpeador extends Jugador {
     public Boolean sosCazador(){
         return false;
     }
+
+
+    public Boolean sosBuscador() {
+        return false;
+    }
+
     public Boolean sosGuardian(){return false;}
+
+    public Boolean sosGolpeador() {
+        return true;
+    }
     ///
 
     public Boolean esBlancoUtil(){
@@ -29,5 +44,23 @@ public class Golpeador extends Jugador {
 
     public void juega(){
         //cuando juega elige un blanco útil
+    }
+
+    public Jugador blancoUtilRandomDeGuardian(){
+      return  this.equipo.getRandomBlancoUtilEquipoContrario();
+    }
+
+    public Boolean puedeGolpearBlanco(){
+        return this.punteria>this.blancoUtilRandomDeGuardian().getNivelDeReflejos() || 8>=this.randomNumber();
+    }
+
+    public Integer getNivelDeReflejos(){
+        return 0;
+    }
+
+    public Integer randomNumber(){
+        List<Integer> rango = IntStream.range(1, 11).boxed().collect(Collectors.toList());
+        Random rand = new Random();
+        return rango.get(rand.nextInt(rango.size()));
     }
 }

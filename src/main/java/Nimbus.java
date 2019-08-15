@@ -2,28 +2,28 @@ import java.util.Calendar;
 
 public class Nimbus implements Escoba {
 
-    private Integer añoDeFabricacion;
+    private Integer anioDeFabricacion;
     private Integer porcentajeDeSalud;
     private String tipo="Nimbua";
 
-    public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
-        this.añoDeFabricacion=añoDeFabricacion;
+    public Nimbus(Integer anioDeFabricacion, Integer porcentajeDeSalud){
+        this.anioDeFabricacion = anioDeFabricacion;
         this.porcentajeDeSalud=porcentajeDeSalud;
     }
 
     public Integer velocidadEscoba(){
-        return (int)((80 - this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud());
+        return (int)((80 - this.cantAniosDesdeFabricacion())*this.getPorcentajeDeSalud());
     }
 
     public Double getPorcentajeDeSalud(){
         return (double)this.porcentajeDeSalud/100;
     }
 
-    public Integer cantAñosDesdeFabricacion(){
-        return this.añoActual()-this.añoDeFabricacion;
+    public Integer cantAniosDesdeFabricacion(){
+        return this.anioActual()-this.anioDeFabricacion;
     }
 
-    public Integer añoActual(){
+    public Integer anioActual(){
         return Calendar.getInstance().get(Calendar.YEAR);}
 
     public String getTipo() {

@@ -1,6 +1,5 @@
 import exceptions.NoHayJugadoresEnEquipoException;
 import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -48,10 +47,17 @@ public class Equipo {
     }
 
     public void agregarJugador(Jugador jugador) {
-        if(jugador.sosCazador() && this.listaDeCazadores().size()==3){
+        if(this.jugadores.size()==7){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("Equipo Completo no se puede agregar mas jugadores");
+        } else if (jugador.sosCazador() && this.listaDeCazadores().size() == 3) {
             throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar más cazadores");
-        }else if(jugador.sosGuardian() && this.listaDeGuardianes().size()==1)
+        } else if (jugador.sosGuardian() && this.listaDeGuardianes().size() == 1) {
             throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas guardianes");
+        }else if(jugador.sosBuscador() && this.listaDeBuscadores().size()==1){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas buscador");
+        } else if(jugador.sosGolpeador() && this.listaDeGolpeadores().size()==2){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas golpaores");
+        }
         jugadores.add(jugador);
     }
 
@@ -126,5 +132,15 @@ public class Equipo {
     public List<Jugador> listaDeGuardianes(){
         return jugadores.stream()
                 .filter(j->j.sosGuardian()).collect(Collectors.toList());
+    }
+
+    public List<Jugador> listaDeBuscadores(){
+        return jugadores.stream()
+                .filter(j->j.sosBuscador()).collect(Collectors.toList());
+    }
+
+    public List<Jugador> listaDeGolpeadores(){
+        return jugadores.stream()
+                .filter(j->j.sosGolpeador()).collect(Collectors.toList());
     }
 }

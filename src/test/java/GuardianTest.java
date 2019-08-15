@@ -3,33 +3,32 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class GuardiánTest {
-    Guardián guardián;
+class GuardianTest {
+    Guardian guardian;
     SaetaDeFuego saeta;
     Equipo griffindor;
-    Guardián guardián1;
+    Guardian guardian1;
 
     @BeforeEach
      void setUp(){
         saeta = new SaetaDeFuego();
-        guardián=new Guardián(100, 100, 100, 100, saeta, griffindor);
-        guardián1= new Guardián(10, 10, 10, 10, saeta, griffindor);
+        guardian =new Guardian(100, 100, 100, 100, saeta, griffindor);
+        guardian1 = new Guardian(10, 10, 10, 10, saeta, griffindor);
     }
 
     @Test
     void testLePasaElTrapo(){
-        assertTrue(guardián.lePasaElTrapo(guardián1));
+        assertTrue(guardian.lePasaElTrapo(guardian1));
     }
 
     @Test
     void testVelocidadDelJugador(){
-        assertEquals(100, guardián.velocidadDelJugador());
+        assertEquals(100, guardian.velocidadDelJugador());
     }
 
     @Test
     void TestHabilidadGuardian(){
-        assertEquals(400, guardián.habilidad());
+        assertEquals(400, guardian.habilidad());
         //su velocidad + sus skills + su nivel de reflejos + su fuerza.
     }
-
 }

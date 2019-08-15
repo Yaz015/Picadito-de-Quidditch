@@ -24,13 +24,13 @@ public class MercadoDeEscobas {
         // public void actualizarMercado() {
         // this.numeroAleatorio=getRandomElement(this.list);
         //
-        public Integer añoActual(){
+        public Integer anioActual(){
             return Calendar.getInstance().get(Calendar.YEAR);
 
         }
 
         public Integer difDeAnios(){
-            return añoActual()-anioDeCreacion;
+            return anioActual()-anioDeCreacion;
         }
 
         public Integer actualizarMercadoDeEscobas(){
