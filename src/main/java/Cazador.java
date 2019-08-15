@@ -31,35 +31,24 @@ public class Cazador extends Jugador {
         }
     }
 
-    public Boolean puedeBloquear(Jugador jugador){
-        return this.lePasaElTrapo(jugador);
-    }
-    public void pierdeBloqueo(){
-        this.skill=skill-2;
-    }
+    public Boolean puedeBloquear(Jugador jugador){ return this.lePasaElTrapo(jugador); }
+
+    public void pierdeBloqueo(){ this.skill=skill-2; }
 
     public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuaffle();}
 
     ///Metodos Sos
-    public Boolean sosCazador(){
-        return true;
-    }
+    public Boolean sosCazador(){ return true; }
     public Boolean sosBuscador() { return false; }
     public Boolean sosGuardian(){return false;}
     public Boolean sosGolpeador() { return false; }
     ///
 
-    public Boolean esBlancoUtil(){
-        return !this.equipo.tenesQuaffle();
-    }
+    public Boolean esBlancoUtil(){ return !this.equipo.tenesQuaffle(); }
 
-    public void meteGol(){
-        this.skill=this.skill+5;
-    }
+    public void meteGol(){ this.skill=this.skill+5; }
 
-    public Integer getNivelDeReflejos(){
-        return this.nivelDeReflejos;
-    }
+    public Integer getNivelDeReflejos(){ return this.nivelDeReflejos; }
 
     public void golpeadoPorBludger(){
         super.golpeadoPorBludger();
