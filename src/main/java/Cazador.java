@@ -1,13 +1,15 @@
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
+    private Integer nivelDeReflejos;
     Pelota quaffle;
 
 
-    public Cazador(Integer skill, Integer punteria, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo){
+    public Cazador(Integer skill, Integer punteria, Integer fuerza, Integer peso,Integer nivelDeReflejos, Escoba escoba, Equipo equipo){
         super(peso, escoba, skill, equipo);
         this.fuerza=fuerza;
         this.punteria=punteria;
+        this.nivelDeReflejos=nivelDeReflejos;
     }
 
     public Integer habilidad(){
@@ -39,7 +41,9 @@ public class Cazador extends Jugador {
     public Boolean sosCazador(){
         return true;
     }
+    public Boolean sosBuscador() { return false; }
     public Boolean sosGuardian(){return false;}
+    public Boolean sosGolpeador() { return false; }
     ///
 
     public Boolean esBlancoUtil(){
@@ -51,6 +55,6 @@ public class Cazador extends Jugador {
     }
 
     public Integer getNivelDeReflejos(){
-        return 0;
+        return this.nivelDeReflejos;
     }
 }

@@ -29,7 +29,9 @@ public class Buscador extends Jugador {
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosBuscador() { return true; }
     public Boolean sosGuardian(){return false;}
+    public Boolean sosGolpeador() { return false; }
     ///
 
     public void persiguiendoLaSnitch() {
