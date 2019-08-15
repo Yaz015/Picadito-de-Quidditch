@@ -77,7 +77,7 @@ public class Equipo {
                 .map( j -> j.habilidad()).reduce( 0, Integer::sum );
     }
 
-    public Jugador jugadorCazadorRapidoDelEquipo(){
+    public Jugador jugadorCazadorMasRapidoDelEquipo(){
         return jugadores.stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
@@ -142,5 +142,9 @@ public class Equipo {
     public List<Jugador> listaDeGolpeadores(){
         return jugadores.stream()
                 .filter(j->j.sosGolpeador()).collect(Collectors.toList());
+    }
+
+    public Jugador jugadorCazadorMasRapidoEquipoContrario(){
+       return this.equipoContrario.jugadorCazadorMasRapidoDelEquipo();
     }
 }

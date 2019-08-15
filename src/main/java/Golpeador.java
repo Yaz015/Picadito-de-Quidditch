@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 public class Golpeador extends Jugador {
     private Integer fuerza;
     private Integer punteria;
+    private Jugador blancoUtilElegido;
 
     public Golpeador(Integer skill, Integer fuerza, Integer punteria, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, skill, equipo);
@@ -21,37 +22,27 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
-    ///Metodos Sos
-    public Boolean sosCazador(){
-        return false;
-    }
 
-
-    public Boolean sosBuscador() {
-        return false;
-    }
-
-    public Boolean sosGuardian(){return false;}
-
-    public Boolean sosGolpeador() {
-        return true;
-    }
-    ///
 
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }
 
     public void juega(){
-        //cuando juega elige un blanco útil
+        this.eligeBlancoUtilRandomDeGuardian();
+        if(this.puedeGolpearBlanco()){
+            this.golpeadoPorBludger();
+            this.skill++;
+            this.blancoUtilElegido.golpeadoPorBludger();
+        }
     }
 
-    public Jugador blancoUtilRandomDeGuardian(){
-      return  this.equipo.getRandomBlancoUtilEquipoContrario();
+    public void eligeBlancoUtilRandomDeGuardian(){
+        this.blancoUtilElegido=this.equipo.getRandomBlancoUtilEquipoContrario();
     }
 
     public Boolean puedeGolpearBlanco(){
-        return this.punteria>this.blancoUtilRandomDeGuardian().getNivelDeReflejos() || 8>=this.randomNumber();
+        return this.punteria>this.blancoUtilElegido.getNivelDeReflejos() || 8>=this.randomNumber();
     }
 
     public Integer getNivelDeReflejos(){
@@ -63,4 +54,11 @@ public class Golpeador extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
+
+    ///Metodos Sos
+    public Boolean sosCazador(){ return false; }
+    public Boolean sosBuscador() { return false; }
+    public Boolean sosGuardian(){return false;}
+    public Boolean sosGolpeador() { return true; }
+    ///
 }

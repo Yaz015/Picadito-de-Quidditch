@@ -31,7 +31,9 @@ public class Guardian extends Jugador {
     public Boolean sosCazador(){
         return false;
     }
+    public Boolean sosBuscador() { return false;}
     public Boolean sosGuardian(){return true;}
+    public Boolean sosGolpeador() { return false;}
     ///
 
     public Integer getRandomNumber() {
@@ -46,15 +48,12 @@ public class Guardian extends Jugador {
         return !this.equipo.tenesQuaffle();
     }
 
-    public void juega(){
-
-    }
+    public void juega(){ }
 
     public void eligeUnBlancoUtil(){
         this.equipo.getRandomBlancoUtilEquipoContrario();
     }
 
-    @Override
     public Integer getNivelDeReflejos() {
         return nivelDeReflejos;
     }

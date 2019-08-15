@@ -4,7 +4,6 @@ public class Cazador extends Jugador {
     private Integer nivelDeReflejos;
     Pelota quaffle;
 
-
     public Cazador(Integer skill, Integer punteria, Integer fuerza, Integer peso,Integer nivelDeReflejos, Escoba escoba, Equipo equipo){
         super(peso, escoba, skill, equipo);
         this.fuerza=fuerza;
@@ -19,23 +18,27 @@ public class Cazador extends Jugador {
     public void juega(){
         if(this.equipo.tenesQuaffle()){
             this.intentarMeterGol();
-        }
+        }else this.meteGol();
     }
 
     public void intentarMeterGol(){
-        if(this.equipo.equipoContrarioEvitaBloqueo(this)){
+        if(this.equipo.tenesQuaffle()){
+        if(this.equipo.equipoContrarioEvitaBloqueo(this)){//evitar bloqueo
             this.pierdeBloqueo();
+            this.pierdeQuaffle();
+            this.equipo.jugadorCazadorMasRapidoEquipoContrario().equipo.tenesQuaffle();
+        } else this.meteGol();
         }
-        else this.meteGol();//evitar bloqueo
     }
 
     public Boolean puedeBloquear(Jugador jugador){
         return this.lePasaElTrapo(jugador);
     }
-
     public void pierdeBloqueo(){
         this.skill=skill-2;
     }
+
+    public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuaffle();}
 
     ///Metodos Sos
     public Boolean sosCazador(){
@@ -57,4 +60,10 @@ public class Cazador extends Jugador {
     public Integer getNivelDeReflejos(){
         return this.nivelDeReflejos;
     }
+
+    public void golpeadoPorBludger(){
+        super.golpeadoPorBludger();
+        this.pierdeQuaffle();
+    }
+
 }

@@ -88,4 +88,14 @@ public class Buscador extends Jugador {
     public void setNivelDeReflejos(Integer nivelDeReflejos) {
         this.nivelDeReflejos = nivelDeReflejos;
     }
+
+    public void reiniciaLaBusqueda(){
+        this.turnosBuscando=0;
+        this.kilometros=0.0;
+    }
+
+    public void golpeadoPorBludger(){
+        super.golpeadoPorBludger();
+        this.reiniciaLaBusqueda();
+    }
 }

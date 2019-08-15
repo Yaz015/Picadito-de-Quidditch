@@ -6,7 +6,7 @@ public class Main {
         Equipo slytheren= new Equipo();
 
         Guardian guardian= new Guardian(100,10,10,80,saeta,griffindor);
-        Cazador cazador1 = new Cazador(63, 34, 54, 80, saeta, griffindor);
+        Cazador cazador1 = new Cazador(63, 34, 54, 80,50, saeta, griffindor);
         Buscador buscador = new Buscador(30, 32, 49, 75, saeta, griffindor);
         Golpeador golpeador = new Golpeador(30, 18, 19, 70, saeta, slytheren);
 
