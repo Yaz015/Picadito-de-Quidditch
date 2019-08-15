@@ -2,13 +2,10 @@ import exceptions.NoHayJugadoresEnEquipoException;
 import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 class EquipoTest {
     Equipo griffindor;
     Equipo slytheren;
@@ -17,7 +14,7 @@ class EquipoTest {
     Cazador cazadorC;
     Cazador cazadorD;
     Buscador buscador;
-    Guardián guardián;
+    Guardian guardian;
     Golpeador golpeadorA;
     Golpeador golpeadorB;
 
@@ -31,7 +28,7 @@ class EquipoTest {
         cazadorC=mock(Cazador.class);
         cazadorD=mock(Cazador.class);
         buscador=mock(Buscador.class);
-        guardián=mock(Guardián.class);
+        guardian =mock(Guardian.class);
         golpeadorA=mock(Golpeador.class);
         golpeadorB=mock(Golpeador.class);
     }
@@ -87,9 +84,9 @@ class EquipoTest {
     }
     @Test
     void testNoSePuedeAgrgarGuardian(){
-        when(guardián.sosGuardian()).thenReturn(true);
-        griffindor.agregarJugador(guardián);
-        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExepcion.class, ()-> griffindor.agregarJugador(guardián));
+        when(guardian.sosGuardian()).thenReturn(true);
+        griffindor.agregarJugador(guardian);
+        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExepcion.class, ()-> griffindor.agregarJugador(guardian));
     }
 
     @Test

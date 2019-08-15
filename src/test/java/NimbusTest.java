@@ -11,12 +11,12 @@ public class NimbusTest {
     @Test
     void testVelocidadDeLaEscoba() {
         assertEquals( 49, nimbusA.velocidadEscoba());
-        //80 - this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud()
+        //80 - this.cantAniosDesdeFabricacion())*this.getPorcentajeDeSalud()
         //redondea para abajo ?
     }
     @Test
-    void testCantAñosDesdeFabricacion(){
-        assertEquals(18, nimbusA.cantAñosDesdeFabricacion());
+    void testCantAniosDesdeFabricacion(){
+        assertEquals(18, nimbusA.cantAniosDesdeFabricacion());
     }
     @Test
     void testGetPorcentajeDeSalud(){

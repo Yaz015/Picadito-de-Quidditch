@@ -38,8 +38,9 @@ public abstract class Jugador {
     public abstract Boolean puedeBloquear(Jugador jugador);
 
     public abstract Boolean sosCazador();
-
+    public abstract Boolean sosBuscador();
     public abstract Boolean sosGuardian();
+    public abstract Boolean sosGolpeador();
 
     public abstract Boolean esBlancoUtil();
 
@@ -49,6 +50,8 @@ public abstract class Jugador {
             this.escobaDelJugador.pierdeSalud();
         }
     }
+
+    public abstract Integer getNivelDeReflejos();
 
 }
 
