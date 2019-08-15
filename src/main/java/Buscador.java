@@ -25,38 +25,31 @@ public class Buscador extends Jugador {
         return false;
     }
 
-    ///Metodos Sos
-    public Boolean sosCazador(){
-        return false;
-    }
-    public Boolean sosGuardian(){return false;}
-    ///
-
     public void persiguiendoLaSnitch() {
-        this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
-        if (this.kilometros >= 5000.0) {
+        this.setKilometros(this.getKilometros() + velocidadDelJugador() / 1.6);
+        if (this.getKilometros() >= 5000.0) {
                 this.atrapaSnitch();
         }
     }
 
     public void buscandoLaSnitch() {
-        if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
+        if (this.randonNumeroSnitch() < this.habilidad() + this.getTurnosBuscando()) {
                 this.persiguiendoLaSnitch();
-                this.encontroSnitch = true;
+                this.setEncontroSnitch(true);
         }
     }
 
     public void juega(){
-        if(this.encontroSnitch==false) {
+        if(this.getEncontroSnitch() ==false) {
             this.buscandoLaSnitch();
             this.setTurnosBuscando(this.getTurnosBuscando() + 1);}
-        else if(this.encontroSnitch==true){
+        else if(this.getEncontroSnitch() ==true){
             this.buscandoLaSnitch();
         }
     }
 
     public Boolean esBlancoUtil(){
-        return this.encontroSnitch==false || this.kilometros<1000;
+        return !this.getEncontroSnitch() || this.getKilometros() <1000;
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
 
@@ -65,17 +58,29 @@ public class Buscador extends Jugador {
         this.equipo.buscadorAtrapaSnitch();
    }
 
-   public Integer randomSnitch() {
+   public Integer randonNumeroSnitch() {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
 
-    public Integer getTurnosBuscando() {
-        return turnosBuscando;
-    }
+    ///// Metodos Sos /////
+    public Boolean sosCazador(){ return false; }
+    public Boolean sosGuardian(){return false;}
+    public Boolean sosBuscador(){return true;}
+    public Boolean sosGolpeador(){return false;}
+    ///// //// /// ///
 
-    public void setTurnosBuscando(Integer turnosBuscando) {
-        this.turnosBuscando = turnosBuscando;
-    }
+    /// get y set ////
+    public Double getKilometros() { return kilometros; }
+
+    public void setKilometros(Double kilometros) { this.kilometros = kilometros; }
+
+    public Boolean getEncontroSnitch() { return encontroSnitch; }
+
+    public void setEncontroSnitch(Boolean encontroSnitch) { this.encontroSnitch = encontroSnitch; }
+    public Integer getTurnosBuscando() { return turnosBuscando; }
+
+    public void setTurnosBuscando(Integer turnosBuscando) { this.turnosBuscando = turnosBuscando; }
+    ///// //// //// ////
 }
