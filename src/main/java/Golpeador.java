@@ -27,8 +27,10 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
-    public Integer nivelDeReflejos(){
-        throw new NoTieneNiveldeReflejos(" El golpeador no tiene nivel de reflejo");}
+    public Integer nivelDeReflejos;
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos=100;
+    }
 
     public Boolean sosCazador(){
         return false;
@@ -41,7 +43,7 @@ public class Golpeador extends Jugador {
         if (esBlancoUtil() == false)
             throw new NoEsUtilGolpearGolpeadoresException("No se puede golpear a golpeadores");
     }
-       /* super.skill=super.skill-2;
+    /* super.skill=super.skill-2;
         if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
             super.escobaDelJugador.pierdeSalud();
         }*/
@@ -52,7 +54,7 @@ public class Golpeador extends Jugador {
     }
     public Boolean puedeGolpearAotro(Jugador jugador){
         if(this.punteria>this.equipo.getRandomBlancoUtilEquipoContrario().nivelDeReflejos() ||
-                this.randomGolpea()==8){ return true;} else return false; }
+                this.randomGolpea()>=8){ return true;} else return false; }
 
     public void juegaContra(Equipo equipoContrario){
         //this.equipo.getRandomBlancoUtilEquipoContrario();
@@ -60,6 +62,5 @@ public class Golpeador extends Jugador {
             equipoContrario.getRandomBlancoUtil().golpeadoPorBludger();
             super.skill=super.skill+1;
         }
-
     }
 }

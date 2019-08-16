@@ -1,11 +1,11 @@
 import exceptions.NoTieneNiveldeReflejos;
 
+import java.util.List;
+
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
     Pelota quaffle;
-
-
     public Cazador( Integer punteria, Integer fuerza, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba, equipo);
         this.fuerza=fuerza;
@@ -18,11 +18,14 @@ public class Cazador extends Jugador {
     public Integer velocidadDelJugador(){
         return (int)(this.velocidadDeEscoba() * this.nivelManejoDeEscoba()); }
 
-    public Integer nivelDeReflejos(){
-        throw new NoTieneNiveldeReflejos(" El cazador no tiene nivel de reflejo");}
+
+    public Integer nivelDeReflejos;
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos=100;
+    }
 
     public void intentarMeterGol(){
-        if(this.equipo.equipoContrarioEvitaBloqueo(this)){
+        if(super.equipo.equipoContrarioEvitaBloqueo(this)){
             this.pierdeBloqueo();
         }
         else this.meteGol();//evitar bloqueo
@@ -39,7 +42,9 @@ public class Cazador extends Jugador {
     public Boolean sosCazador(){
         return true;
     }
+
     public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuaffle();}
+    public Boolean tenesQuaffle(){ return this.equipo.tenesQuaffle();}
 
     public void golpeadoPorBludger(){
         super.skill=super.skill-2;
@@ -49,23 +54,24 @@ public class Cazador extends Jugador {
         }}
 
     public Boolean esBlancoUtil(){// es blanco util es igual a pierde la quaffle
-        return !this.equipo.tenesQuaffle();
+        return !super.equipo.tenesQuaffle();
     }
 
     public void meteGol() {
         this.skill = this.skill + 5;
-        this.equipo.puntosEquipo = equipo.puntosEquipo + 10;}
+        super.equipo.puntosEquipo = super.equipo.puntosEquipo + 10;}
 
     public void noMeteGol() {
         this.skill = this.skill - 2;
+        //super.equipo.equipoContrario.jugadorQueBloquea(this);
     }
 
     public void juegaContra(Equipo equipoContrario){
-        equipo.getPelota();
-        if(this.equipo.tenesQuaffle().equals(true) && !equipoContrario.puedenBloquear(this)){
+        if(this.tenesQuaffle().equals(true) && !equipoContrario.puedenBloquear(this)){
             this.meteGol();
             equipoContrario.getPelota();
         } else
-            this.noMeteGol();
+        {this.noMeteGol();
         equipoContrario.getPelota();
-        equipoContrario.jugadorQueBloquea(this);} }
+        equipoContrario.jugadorQueBloquea(this);} }}
+

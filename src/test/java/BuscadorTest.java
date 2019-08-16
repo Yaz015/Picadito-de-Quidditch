@@ -6,15 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class BuscadorTest {
     private Buscador buscador;
     private Buscador buscador1;
+    private Buscador buscador2;
     private Equipo griffindor;
     private SaetaDeFuego saeta;
+    private Equipo slytheren;
 
     @BeforeEach
     void setUp() {
         saeta = new SaetaDeFuego();
         griffindor = new Equipo();
+        slytheren=new Equipo();
         buscador = new Buscador(110, 150, 90, saeta, griffindor);
         buscador1 = new Buscador(10, 10, 10, saeta, griffindor);
+        buscador2= new Buscador(5,5,50,saeta, slytheren);
     }
 
     @Test
@@ -56,9 +60,13 @@ class BuscadorTest {
         assertTrue(buscador.esBlancoUtil());
     }
 
-    @Test
+  /*  @Test
     void testTurnos(){
-        buscador.juega();
+        buscador.kilometros=5000;
+        buscador.persiguiendoLaSnitch();
+        buscador.buscandoLaSnitch();
+        buscador.juegaContra(slytheren);
         assertEquals(1, buscador.getTurnosBuscando());
-    }
+    }*/
+
 }

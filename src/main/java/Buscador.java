@@ -43,14 +43,12 @@ public class Buscador extends Jugador {
             this.atrapaSnitch();
         }
     }
-
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
             this.persiguiendoLaSnitch();
             this.encontroSnitch = true;
         }
     }
-
     public void juegaContra(Equipo equipoContrario) {
         if (this.encontroSnitch == false) {
             this.buscandoLaSnitch();
@@ -96,8 +94,9 @@ public class Buscador extends Jugador {
         this.kilometros=0.0;
     }
     public void retomaActividad() {
-        if (this.turnosBuscando == this.turnosBuscando + 1) ;
-    }
+        this.quedaAturdido();
+        if (this.esBlancoUtil()); }
+
     public void quedaAturdido(){
         this.turnosBuscando=this.turnosBuscando-1;}
 

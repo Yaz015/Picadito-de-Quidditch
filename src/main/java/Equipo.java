@@ -8,10 +8,11 @@ import java.util.stream.IntStream;
 
 public class Equipo {
     private List<Jugador> jugadores= new ArrayList<>();
-    private Integer puntos=0;
+    public Integer puntosEquipo=0;
     private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Pelota quaffle;
-    private Equipo equipoContrario;
+    public Equipo equipoContrario;
+    public Jugador jugador;
 
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
@@ -65,21 +66,18 @@ public class Equipo {
         return this.jugadores.stream()
                 .map( j -> j.habilidad()).reduce( 0, Integer::sum );
     }
+    public List<Jugador> listaDeCazadores(){
+        return jugadores.stream()
+                .filter(j->j.sosCazador())
+                .collect(Collectors.toList());
+    }
 
     public Jugador jugadorCazadorRapidoDelEquipo(){
-        return jugadores.stream()
+        return this.listaDeCazadores().stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
 
-    public List<Jugador> listaDeCazadores(){
-        return jugadores.stream()
-                .filter(j->j.sosCazador()).collect(Collectors.toList());
-    }
 
-    public Jugador cazadorMasRapido(){
-        return this.listaDeCazadores().stream()
-                .max(Comparator.comparing(jugador->jugador.habilidad())).get();
-    }
 
     public Jugador jugadorRandom()
     {        Random rand = new Random();
@@ -111,7 +109,7 @@ public class Equipo {
     }
 
     public void buscadorAtrapaSnitch(){
-        this.puntos=this.puntos+150;
+        this.puntosEquipo=this.puntosEquipo+150;
     }
 
 
@@ -127,4 +125,5 @@ public class Equipo {
         this.jugadorCazadorRapidoDelEquipo().skill =
                 this.jugadorCazadorRapidoDelEquipo().skill + 10;
     }
-    public Double puntosEquipo;}
+}
+
