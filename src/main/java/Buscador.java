@@ -10,6 +10,7 @@ public class Buscador extends Jugador {
     private Double kilometros=0.0;
     private Boolean encontroSnitch=false;
     private Integer turnosBuscando=0;
+    private Boolean estaAturdido=false;
 
     public Buscador(Integer skill, Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba,skill, equipo);
@@ -26,12 +27,10 @@ public class Buscador extends Jugador {
     }
 
     ///Metodos Sos
-    public Boolean sosCazador(){
-        return false;
-    }
-    public Boolean sosBuscador() { return true; }
+    public Boolean sosCazador(){ return false; }
+    public Boolean sosBuscador(){ return true; }
     public Boolean sosGuardian(){return false;}
-    public Boolean sosGolpeador() { return false; }
+    public Boolean sosGolpeador(){ return false; }
     ///
 
     public void persiguiendoLaSnitch() {
@@ -43,17 +42,19 @@ public class Buscador extends Jugador {
 
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
-                this.persiguiendoLaSnitch();
                 this.encontroSnitch = true;
         }
     }
 
     public void juega(){
-        if(this.encontroSnitch==false) {
+        if(this.estaAturdido){
+            System.out.println("Este jugador pierde su turno porque está aturdidio");
+            this.estaAturdido=false;
+        }else if(this.encontroSnitch==false) {
             this.buscandoLaSnitch();
-            this.setTurnosBuscando(this.getTurnosBuscando() + 1);}
+            this.setTurnosBuscando(this.getTurnosBuscando()+1);}
         else if(this.encontroSnitch==true){
-            this.buscandoLaSnitch();
+            this.persiguiendoLaSnitch();
         }
     }
 
@@ -95,7 +96,9 @@ public class Buscador extends Jugador {
     }
 
     public void golpeadoPorBludger(){
-        super.golpeadoPorBludger();
-        this.reiniciaLaBusqueda();
+        if(!this.esGroso()){
+            super.golpeadoPorBludger();
+            this.reiniciaLaBusqueda();
+        }else if(this.esGroso()){this.estaAturdido=true;}
     }
 }
