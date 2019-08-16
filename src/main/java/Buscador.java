@@ -43,7 +43,7 @@ public class Buscador extends Jugador {
     public void juega(){
         if(this.esGroso() && this.reinicioLaBusqueda){
             this.reinicioLaBusqueda=false;
-            System.out.println("El  buscador está aturdido este turno no hace nada");
+            System.out.println("El  buscador está aturdido este turno no hace nada");///dejame commitear
         }
         if(this.getEncontroSnitch() ==false) {
             this.buscandoLaSnitch();
