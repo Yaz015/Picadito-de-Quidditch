@@ -22,8 +22,6 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
-
-
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }

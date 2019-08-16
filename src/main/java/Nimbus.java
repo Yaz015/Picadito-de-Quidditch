@@ -4,7 +4,7 @@ public class Nimbus implements Escoba {
 
     private Integer anioDeFabricacion;
     private Integer porcentajeDeSalud;
-    private String tipo="Nimbua";
+    private String tipo="Nimbus";
 
     public Nimbus(Integer anioDeFabricacion, Integer porcentajeDeSalud){
         this.anioDeFabricacion = anioDeFabricacion;

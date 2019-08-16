@@ -15,7 +15,6 @@ public class Equipo {
     private Equipo equipoContrario;
 
 
-
     public Boolean puedenBloquear(Jugador jugador){
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));

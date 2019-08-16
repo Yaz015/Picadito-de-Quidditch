@@ -10,6 +10,7 @@ public class Buscador extends Jugador {
     private Double kilometros=0.0;
     private Boolean encontroSnitch=false;
     private Integer turnosBuscando=0;
+    private Boolean reinicioLaBusqueda=false;
 
     public Buscador(Integer skill, Integer nivelDeReflejos, Integer nivelDeVision, Integer peso, Escoba escoba, Equipo equipo){
         super(peso, escoba,skill, equipo);
@@ -40,6 +41,10 @@ public class Buscador extends Jugador {
     }
 
     public void juega(){
+        if(this.esGroso() && this.reinicioLaBusqueda){
+            this.reinicioLaBusqueda=false;
+            System.out.println("El  buscador está aturdido este turno no hace nada");
+        }
         if(this.getEncontroSnitch() ==false) {
             this.buscandoLaSnitch();
             this.setTurnosBuscando(this.getTurnosBuscando() + 1);}
@@ -53,7 +58,7 @@ public class Buscador extends Jugador {
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
 
-   public void  atrapaSnitch(){
+    public void  atrapaSnitch(){
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
    }
@@ -62,6 +67,17 @@ public class Buscador extends Jugador {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
+    }
+
+    public void reinicaBusqueda(){
+        this.kilometros=0.0;
+        this.turnosBuscando=0;
+        this.reinicioLaBusqueda=true;
+    }
+
+    public void golpeadoPorBludger(){
+        super.golpeadoPorBludger();
+        this.reinicaBusqueda();
     }
 
     ///// Metodos Sos /////
@@ -73,14 +89,11 @@ public class Buscador extends Jugador {
 
     /// get y set ////
     public Double getKilometros() { return kilometros; }
-
     public void setKilometros(Double kilometros) { this.kilometros = kilometros; }
-
     public Boolean getEncontroSnitch() { return encontroSnitch; }
-
     public void setEncontroSnitch(Boolean encontroSnitch) { this.encontroSnitch = encontroSnitch; }
     public Integer getTurnosBuscando() { return turnosBuscando; }
-
     public void setTurnosBuscando(Integer turnosBuscando) { this.turnosBuscando = turnosBuscando; }
+    public Integer getNivelDeReflejos() { return null; }
     ///// //// //// ////
 }
