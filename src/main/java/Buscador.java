@@ -66,7 +66,8 @@ public class Buscador extends Jugador {
    public void  atrapaSnitch(){
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
-   }
+        //termina el partido y suma 150 puntos para su equipo
+    }
 
    public Integer randomSnitch() {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());

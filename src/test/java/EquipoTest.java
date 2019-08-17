@@ -82,7 +82,6 @@ class EquipoTest {
         when(cazadorA.habilidad()).thenReturn(1000);
         when(cazadorB.habilidad()).thenReturn(500);
         when(cazadorC.habilidad()).thenReturn(200);
-
         griffindor.agregarJugador(cazadorA);
         griffindor.agregarJugador(cazadorB);
         griffindor.agregarJugador(cazadorC);

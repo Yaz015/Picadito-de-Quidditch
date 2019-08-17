@@ -7,14 +7,18 @@ class BuscadorTest {
     private Buscador buscador;
     private Buscador buscador1;
     private Equipo griffindor;
+    private Equipo slytherin;
     private SaetaDeFuego saeta;
+    private Cazador cazador;
 
     @BeforeEach
     void setUp() {
         saeta = new SaetaDeFuego();
         griffindor = new Equipo();
-        buscador = new Buscador(100, 110, 150, 90, saeta, griffindor);
+        slytherin=new Equipo();
+        buscador = new Buscador(10000, 110, 150, 90, saeta, griffindor);
         buscador1 = new Buscador(10, 10, 10, 10, saeta, griffindor);
+        cazador=new Cazador(100,50, 30, 80,12, saeta, griffindor);
     }
 
     @Test
@@ -42,7 +46,7 @@ class BuscadorTest {
     @Test
     void testEsGroso() {
         griffindor.agregarJugador(buscador);
-        griffindor.agregarJugador(buscador1);
+        griffindor.agregarJugador(cazador);
         assertTrue(buscador.esGroso());
     }
 

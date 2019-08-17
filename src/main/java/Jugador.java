@@ -16,7 +16,7 @@ public abstract class Jugador {
 
     public Boolean esGroso() {
         return this.habilidad()> this.equipo.promedioDeHabilidades()
-               && this.velocidadDelJugador()> mercadoDeEscobas.getNumeroAleatorio();
+               && this.velocidadDelJugador()> this.mercadoDeEscobas.getNumeroArbitrario();
     }
 
     public  Escoba escobaDelJugador() { return this.escobaDelJugador; }
