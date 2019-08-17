@@ -36,9 +36,11 @@ public class Main {
         System.out.println(cazador1.skill);
         System.out.println(griffindor.puntosEquipo);
         cazador1.juegaContra(slytheren);
+        System.out.println(cazador1.pierdeQuaffle());
         System.out.println(cazador1.skill);
         System.out.println(griffindor.puntosEquipo);
         System.out.println(cazador2.skill);
+        System.out.println(cazador2.tenesQuaffle());
 
 
     }

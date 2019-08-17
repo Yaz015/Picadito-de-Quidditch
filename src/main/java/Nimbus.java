@@ -4,7 +4,7 @@ public class Nimbus implements Escoba {
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
-    private String tipo="Nimbua";
+    private String tipo="Nimbus";
 
     public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
         this.añoDeFabricacion=añoDeFabricacion;
@@ -14,7 +14,6 @@ public class Nimbus implements Escoba {
     public Integer velocidadEscoba(){
         return (int)((80 - (this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud()));
     }
-
     public Double getPorcentajeDeSalud(){
         return (double)this.porcentajeDeSalud/100;
     }

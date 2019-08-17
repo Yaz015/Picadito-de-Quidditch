@@ -10,7 +10,7 @@ public class SaetaDeFuego implements Escoba {
         return tipo;
     }
 
-    public void pierdeSalud() {
+    public void pierdeSalud() { //NO tiene porcentaje de Salud
 
     }
 

@@ -17,75 +17,69 @@ public class Equipo {
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
     }
-
-    public int getRandomElement(List<Integer> list)
-    {
-        Random rand = new Random();                //preguntar
-        return list.get(rand.nextInt(list.size()));
+    public void setPelota(Pelota quaffle) {
+        this.quaffle = quaffle;
+    }
+    public Pelota getPelota() {
+        return quaffle;
     }
 
-
+    public int getRandomElement(List<Integer> list)
+    { Random rand = new Random();                //preguntar
+        return list.get(rand.nextInt(list.size())); }
+    /** Si los jugadores del equipo, hay uno que pueda bloquear al jugador contrario**/
     public Boolean puedenBloquear(Jugador jugador){
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
-
-    public Boolean intentanBloquear(Jugador jugador){
-        return this.puedenBloquear(jugador);
-    }
-
-    public Boolean equipoContrarioEvitaBloqueo(Jugador jugador){
-        return this.equipoContrario.intentanBloquear(jugador);
-    }
-
+    /** SI el equipo tiene jugador estrella, le pasa el trapo a al mejor jugador del otro equipo**/
     public Boolean tieneJugadorEstrella(Equipo equipo){
         return this.mejorJugador().lePasaElTrapo(equipo.mejorJugador());
     }
-
+    /** El mejor jugador es el de mayor habilidad de un equipo**/
     public Jugador mejorJugador(){
         return this.jugadores.stream()
                 .max(Comparator.comparing(jugador->jugador.habilidad())).get();
     }
-
+    /** Agrega los jugadores al equipo**/
     public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
     }
-
+    /** Excepcion si el quipo no tiene jugadores**/
     public Integer cantDeJugadoresEnEquipo(){
         if(jugadores.isEmpty()) {
             throw new NoHayJugadoresEnEquipoException("No hay jugadores en el Equipo");
         }
         return jugadores.size();
     }
-
+    /** suma habilidades y saca promedio**/
     public Double promedioDeHabilidades(){
         return (double)(this.sumaDeHabilidadesDeJugadores()/this.cantDeJugadoresEnEquipo());
     }
-
     public Integer sumaDeHabilidadesDeJugadores(){
         return this.jugadores.stream()
                 .map( j -> j.habilidad()).reduce( 0, Integer::sum );
     }
+    /** Listado de cazadores, por eso el metodo abstracto sos cazador en Jugador**/
     public List<Jugador> listaDeCazadores(){
         return jugadores.stream()
                 .filter(j->j.sosCazador())
                 .collect(Collectors.toList());
     }
-
+    /** Comparar de la lista de jugadores, al mas rapido**/
     public Jugador jugadorCazadorRapidoDelEquipo(){
         return this.listaDeCazadores().stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
-
-
 
     public Jugador jugadorRandom()
     {        Random rand = new Random();
         return this.jugadores.get(rand.nextInt(jugadores.size()));
     }
 
+    //hacer que salga sorteado que tiene la pelota
     public Boolean tenesQuaffle(){
-        return this.randomPelota().equals(1);
+        return true; //this.randomPelota().equals(1);
     }
 
     public Integer randomPelota(){
@@ -93,34 +87,21 @@ public class Equipo {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-
+    /** Listado de blanco utiles, para metodo en golpeador**/
     public List<Jugador> listadeBlancosUtiles(){
         return this.jugadores.stream()
                 .filter(j->j.esBlancoUtil()).collect(Collectors.toList());
     }
-
     public Jugador getRandomBlancoUtil(){
         Random rand = new Random();
         return this.listadeBlancosUtiles().get(rand.nextInt(this.listadeBlancosUtiles().size()));
     }
+    public Jugador blancoUtilDelRandom(){ return this.getRandomBlancoUtil();}
 
     public Jugador getRandomBlancoUtilEquipoContrario(){
         return equipoContrario.getRandomBlancoUtil();
     }
-
-    public void buscadorAtrapaSnitch(){
-        this.puntosEquipo=this.puntosEquipo+150;
-    }
-
-
-    public void setPelota(Pelota quaffle) {
-        this.quaffle = quaffle;
-    }
-
-    public Pelota getPelota() {
-        return quaffle;
-    }
-
+    /** Jugador que bloquea, es el cazador mas rapid, gana 10 de skill**/
     public void jugadorQueBloquea(Jugador jugador) {
         this.jugadorCazadorRapidoDelEquipo().skill =
                 this.jugadorCazadorRapidoDelEquipo().skill + 10;

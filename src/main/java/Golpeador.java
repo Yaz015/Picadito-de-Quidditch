@@ -15,51 +15,48 @@ public class Golpeador extends Jugador {
         this.fuerza=fuerza;
         this.punteria=punteria;
     }
-
     public Integer habilidad(){
         return super.skill+ this.velocidadDelJugador()+this.punteria+this.fuerza;
     }
-
     public Integer velocidadDelJugador(){
         return (int)(super.velocidadDeEscoba() * super.nivelManejoDeEscoba()); }
-
+    /** Si es groso bloquea**/
     public Boolean puedeBloquear(Jugador jugador){
         return this.esGroso();
     }
-
+    /** seteo nivel de reflejos porque es requisito del metodo golpeadoXbudgler**/
     public Integer nivelDeReflejos;
     public Integer nivelDeReflejos() {
         return this.nivelDeReflejos=100;
     }
-
+    /** NO es cazador, para metodo jugadorCazador mas rapido**/
     public Boolean sosCazador(){
         return false;
     }
-
+    /** NO es blanco util**/
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }
+    /** Excepcion porque no es util golpear golpeadores**/
     public void golpeadoPorBludger() {
         if (esBlancoUtil() == false)
             throw new NoEsUtilGolpearGolpeadoresException("No se puede golpear a golpeadores");
     }
-    /* super.skill=super.skill-2;
-        if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
-            super.escobaDelJugador.pierdeSalud();
-        }*/
+    /** Ramdom para metodo si puede golpear a otro**/
     public Integer randomGolpea(){
         List<Integer> rango = IntStream.range(1,9).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
+    /** Golpea si tiene mayor su punteria que un random de blanco utiles o si sale un random >=8**/
     public Boolean puedeGolpearAotro(Jugador jugador){
         if(this.punteria>this.equipo.getRandomBlancoUtilEquipoContrario().nivelDeReflejos() ||
                 this.randomGolpea()>=8){ return true;} else return false; }
 
+    /**Juega contra equipo contrario, elige blanco util, y lo golpea, suma 1 de skill**/
     public void juegaContra(Equipo equipoContrario){
-        //this.equipo.getRandomBlancoUtilEquipoContrario();
         if(this.puedeGolpearAotro(equipoContrario.getRandomBlancoUtil())); {
-            equipoContrario.getRandomBlancoUtil().golpeadoPorBludger();
+            equipoContrario.blancoUtilDelRandom().golpeadoPorBludger();
             super.skill=super.skill+1;
         }
     }

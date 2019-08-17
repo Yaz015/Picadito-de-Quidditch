@@ -32,12 +32,12 @@ public abstract class Jugador {
     public Double nivelManejoDeEscoba() {
         return (double) this.skill / this.peso;
     }
-
-    public abstract Integer velocidadDelJugador();
-
     public Integer velocidadDeEscoba() {
         return this.escobaDelJugador().velocidadEscoba();
     }
+
+    /** Metodos abstractos, para diferenciar en cada jugador**/
+    public abstract Integer velocidadDelJugador();
 
     public abstract Integer habilidad();
 
@@ -45,10 +45,16 @@ public abstract class Jugador {
 
     public abstract Boolean sosCazador();
 
-
     public abstract Boolean esBlancoUtil();
 
-    public abstract void golpeadoPorBludger();
+    /** Para todo jugador se cumplem que pierde 2 de skill, y % de salud si es nimbus**/
+
+    public void golpeadoPorBludger() {
+        this.skill = this.skill - 2;
+        if (this.escobaDelJugador.getTipo().equals("Nimbus")) {
+            this.escobaDelJugador.pierdeSalud();
+        }
+    }
 
     public abstract void juegaContra(Equipo equipoContrario);
 

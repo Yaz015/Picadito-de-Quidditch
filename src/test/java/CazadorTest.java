@@ -20,7 +20,10 @@ public class CazadorTest {
         cazador1 = new Cazador(5, 5, 50, saeta, griffindor);
         cazador2 = new Cazador(6, 6, 200, nimbus, slytheren);
     }
-
+    @Test
+    void testTenesQuaffle(){
+        assertFalse(cazador1.pierdeQuaffle());
+    }
 
     @Test
     void testJuegaContra() {
@@ -30,7 +33,7 @@ public class CazadorTest {
         griffindor.puntosEquipo = griffindor.puntosEquipo + 100;
         cazador1.juegaContra(slytheren);
         cazador1.equipo.tenesQuaffle();
-        cazador1.meteGol();
+        cazador1.meteGol(slytheren);
         slytheren.puedenBloquear(cazador1).equals(false);
 
         assertEquals(110, griffindor.puntosEquipo);

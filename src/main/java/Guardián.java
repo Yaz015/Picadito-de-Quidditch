@@ -18,7 +18,7 @@ public class Guardián extends Jugador {
     public Integer velocidadDelJugador() {
         return (int) (super.velocidadDeEscoba() * super.nivelManejoDeEscoba());
     }
-
+    /** Bloquea si sale un 3 en el random**/
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
         return 3 == this.getRandomNumber();
@@ -28,17 +28,13 @@ public class Guardián extends Jugador {
         Random ran = new Random();
         this.setRandomNumber((int) (ran.nextDouble() * 3) + 1);
     }
-
+    /**No es cazador, para metodo de cazador jugador mas rapidp**/
     public Boolean sosCazador() {
         return false;
     }
-
+    /** Todos los jugadores pierden 2 de skill y %de salud si es nimbus, esta en clase padre**/
     public void golpeadoPorBludger() {
-        super.skill = super.skill - 2;
-        if (super.escobaDelJugador.getTipo().equals("Nimbus")) {
-            super.escobaDelJugador.pierdeSalud();
-        }
-    }
+        super.golpeadoPorBludger();}
 
     public Integer getRandomNumber() {
         return randomNumber;
@@ -47,7 +43,7 @@ public class Guardián extends Jugador {
     public void setRandomNumber(Integer randomNumber) {
         this.randomNumber = randomNumber;
     }
-
+    /** Es blanco util si su equipo no tiene la quaffle**/
     public Boolean esBlancoUtil() {
         return !this.equipo.tenesQuaffle();
     }
@@ -59,4 +55,8 @@ public class Guardián extends Jugador {
     public Integer nivelDeReflejos() {
         return this.nivelDeReflejos;
     }
-    public void juegaContra(Equipo equipoContrario){}}
+    /** No juega, solo bloquea en su turno**/
+    public void juegaContra(Equipo equipoContrario){this.puedeBloquear(equipoContrario.jugador);
+    // Para mi aca va excepcion
+
+    }}
