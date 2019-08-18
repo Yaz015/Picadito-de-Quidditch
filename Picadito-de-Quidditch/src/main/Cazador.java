@@ -9,14 +9,16 @@ public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
     private Pelota quaffle;
-
+    protected Integer nivelDeReflejos=0;//se le asigna un valor igual 0 para poder codear golpeador
 
     public Cazador( Integer punteria, Integer fuerza, Integer peso, Escoba escobaDelJugador,Equipo equipo){
         super(peso, escobaDelJugador,equipo);
         this.setFuerza(fuerza);
         this.setPunteria(punteria);
     }
-
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos();
+    }
     public Integer habilidad(){
         return this.velocidadDelJugador()+ this.getSkill() + this.getPunteria() * getFuerza();
     }
@@ -35,9 +37,7 @@ public class Cazador extends Jugador {
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
     }
-    public Boolean esBlancoUtil(){
-        return this.getEquipo().tenesQuaffle();
-    }
+
 
     public void haceGol(){
         this.skill=skill+10;
@@ -45,7 +45,7 @@ public class Cazador extends Jugador {
     }
 
     public Boolean tenesQuaffle(){
-        return this.randomPelota().equals(1);
+        return super.equipo.tenesQuaffle();
 
     }
 
@@ -54,8 +54,41 @@ public class Cazador extends Jugador {
         return this.getEquipo().jugadorRandom().equals(this);
     }
 
+    public Boolean pierdeQuaffle()
+    { return !super.equipo.tenesQuaffle() ;}
 
-    public void juegaCazador(){
+    /** Si es golpeado pierde 2 de skill y %de salud si tiene nimbus,en clase padre. En cazador tmb pierde la Quaffle**/
+    public void golpeadoPorBludger(){
+        super.golpeadoPorBludger();
+        this.pierdeQuaffle();
+    }
+    /** ES blanco util si pierde Quaffle**/
+    public Boolean esBlancoUtil(){
+        return pierdeQuaffle();
+    }
+    /** metodos para que juegue si mete o no mete gol**/
+    public void meteGol(Equipo equipoContrario) {
+        this.skill = this.skill + 5;
+        super.equipo.puntos= super.equipo.getPuntos()+ 10;
+        this.pierdeQuaffle();
+        equipoContrario.tenesQuaffle();
+    }
+    public void noMeteGol(Equipo equipoContrario) {
+        this.skill = this.skill - 2;
+        this.pierdeQuaffle();
+        equipoContrario.tenesQuaffle();   }
+
+    /** Juega contra un Equipo contrario, tiene la Quaffle y si no es bloqueado, mete gol(sumando 5 de skill y 10 puntos a su equipo
+     * si es bloqueado no mete gol, el bloqueador gana 2 de skill. El jugador que juega pierde pelota
+     * y la gana el Cazador mas rapido contrario**/
+
+
+    public void juegaContra(Equipo equipoContrario){
+        this.tenesQuaffle();
+        if(!equipoContrario.puedenBloquear(this)){
+            this.meteGol(equipoContrario);}
+        else this.noMeteGol(equipoContrario);
+        equipoContrario.jugadorQueBloquea(this);
 
     }
 

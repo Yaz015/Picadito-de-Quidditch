@@ -15,7 +15,7 @@ public class Equipo {
     protected List<Jugador> jugadores = new ArrayList<>();
     protected List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Equipo equipoContrario;
-
+    private Jugador blancoEquipoContrario;
 
 
     public void agregarJugador(Jugador jugador) {
@@ -96,6 +96,12 @@ public class Equipo {
 
     public Jugador getRandomBlancoUtilEquipoContrario(){
         return this.equipoContrario.getRandomBlancoUtil();
+    }
+
+    /** Jugador que bloquea, es el cazador mas rapid, gana 10 de skill**/
+    public void jugadorQueBloquea(Jugador jugador) {
+        this.jugadorCazadorRapidoDelEquipo().skill =
+                this.jugadorCazadorRapidoDelEquipo().skill + 10;
     }
 
 

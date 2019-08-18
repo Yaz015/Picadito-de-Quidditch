@@ -13,13 +13,14 @@ public abstract class Jugador {
     protected List<Jugador> jugadores;
     protected MercadoDeEscobas mercadoDeEscobas;
 
+
     public Jugador(Integer peso, Escoba escobaDelJugador,Equipo equipo){
         this.setPeso(peso);
         this.setEscobaDelJugador(escobaDelJugador);
         this.setSkill(100);
         this.setEquipo(equipo);
     }
-
+    public abstract Integer nivelDeReflejos();
 
     public Double nivelManejoDeEscoba() {
         return (double) (this.getSkill() / this.getPeso());
@@ -62,16 +63,15 @@ public abstract class Jugador {
         return this.puedeBloquear(jugador);
     }
 
-     public void golpeadoPorBludger(Jugador unJugador){
+     public  void golpeadoPorBludger(){
         this.skill=-2 ;
         this.getEscobaDelJugador().escobaGolpeada();
      }
 
 
-    public Jugador jugadorCazadorRapidoDelEquipo(){
-        return jugadores.stream()
-                .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
-    }
+    public abstract void juegaContra(Equipo equipoContrario);
+
+
     public  Boolean sosCazador(){
         return this.sosCazador();
 
@@ -80,6 +80,7 @@ public abstract class Jugador {
     public Boolean esBlancoUtil(){
         return this.esBlancoUtil();
     }
+
 
 
 
@@ -144,20 +145,6 @@ public abstract class Jugador {
     public Escoba escobaDelJugador() {
         return this.getEscobaDelJugador();
     }
-
-
-
-    /*public void turnoCazador(Cazador cazador){
-        if (
-            cazador.tenesPelota()&& !cazador.esBloqueado()&& this.turnoJugador(); {
-        cazador.skill=cazador.skill+5.0;
-        this.puntosEquipo=this.puntosEquipo+10.0;
-        cazador.tenesPelota().equals(false);}
-    else if (cazador.esBloqueado().equals(true)) {
-        cazador.skill = cazador.skill - 2;
-        jugador.jugadorQueBloquea(cazador);
-        cazador.tenesPelota().equals(false);
-        cazador.cazadorMasRapido().agarraPelota(pelota); //falta hacer q el jugador mas rapido la agarre// }*/
 
 }
 

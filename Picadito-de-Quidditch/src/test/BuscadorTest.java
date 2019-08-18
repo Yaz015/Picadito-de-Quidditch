@@ -13,6 +13,7 @@ public class BuscadorTest {
         public Buscador buscador;
         private Buscador buscador1;
         private Equipo griffindor;
+        private Equipo slitheryn;
         private SaetaDeFuego saeta;
 
         @BeforeEach
@@ -21,6 +22,7 @@ public class BuscadorTest {
             griffindor = new Equipo();
             buscador = new Buscador(100, 110, 150,  saeta, griffindor);
             buscador1 = new Buscador(10, 10, 10,  saeta, griffindor);
+            slitheryn= new Equipo();
         }
 
        /* @Test
@@ -64,7 +66,7 @@ public class BuscadorTest {
 
         @Test
         void testTurnos(){
-            buscador.juega();
+            buscador.juegaContra(slitheryn);
             assertEquals(1, buscador.getTurnosBuscando());
         }
     }

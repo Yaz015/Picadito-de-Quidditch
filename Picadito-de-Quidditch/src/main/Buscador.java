@@ -17,6 +17,9 @@ public class Buscador extends Jugador {
         this.nivelDeReflejos = nivelDeReflejos;
         this.nivelDeVision = nivelDeVision;
     }
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos();
+    }
 
     public Integer habilidad() {
         return this.velocidadDelJugador() + this.getSkill() + this.nivelDeReflejos * this.nivelDeVision;
@@ -37,23 +40,29 @@ public class Buscador extends Jugador {
 
     public void buscandoSnitch(){
         if (this.encontroSnitch==false){
-           if( this.randomSnitch() < (this.habilidad()+ this.getTurno()))
-               this.setTurno(this.getTurno() + 1);{
+           if( this.randomSnitch() < (this.habilidad()+ this.turnosBuscando))
+               this.setTurno(this.turnosBuscando + 1);{
                    this.encontroSnitch=true;
 
            }
         }
     }
-    public void juega(){
-        this.buscandoSnitch();
+
+    public void juegaContra(Equipo equipoContrario) {
+        if (this.encontroSnitch == false) {
+            this.buscandoSnitch();
+            this.setTurnosBuscando(this.getTurnosBuscando() + 1);
+        } else if (this.encontroSnitch == true) {
+            this.buscandoSnitch();
+        }
     }
 
     public Boolean atrapoSnitch(){
         return this.encontroSnitch&&this.getKilometros()>=5000;
     }
 
-    public void esGolpeadoPorBludger(){
-        this.skill=-2 ;
+    public void GolpeadoPorBludger(){
+        super.skill=skill-2 ;
         this.getEscobaDelJugador().escobaGolpeada();
         this.kilometros=0.0;
     }

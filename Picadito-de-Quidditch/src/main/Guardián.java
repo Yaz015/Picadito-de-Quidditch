@@ -14,7 +14,9 @@ public class Guardián extends Jugador {
         this.nivelDeReflejos=nivelDeReflejos;
         this.fuerza=fuerza;
     }
-
+    public Integer nivelDeReflejos() {
+        return this.nivelDeReflejos();
+    }
     public Integer habilidad(){
         return super.velocidadDelJugador()+ super.getSkill() +this.nivelDeReflejos+this.fuerza;
     }
@@ -26,13 +28,17 @@ public class Guardián extends Jugador {
         return rango.get(rand.nextInt(rango.size()));
     }
     //
-    public Boolean puedeBloquear(Cazador uncazador){
+    public Boolean puedeBloquear(Jugador uncazador){
         return this.randomDeBloqueo().equals(3);
     }
 
 
     public Boolean esBlancoUtil(){
         return !this.getEquipo().tenesQuaffle();
+    }
+
+    public void juegaContra(Equipo equipoContrario){
+
     }
 
 }
