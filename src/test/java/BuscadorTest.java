@@ -1,3 +1,4 @@
+import exceptions.ElJuegoHaTerminadoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +62,7 @@ class BuscadorTest {
     }
 
     @Test
-    void testTurnos(){
+    void testTurnos() throws ElJuegoHaTerminadoException {
         buscador.juega();
         assertEquals(1, buscador.getTurnosBuscando());
     }

@@ -132,7 +132,7 @@ public class Equipo {
     }
 
     public void buscadorAtrapaSnitch() throws ElJuegoHaTerminadoException {
-        this.puntos=this.puntos+150;
+        this.setPuntos(this.getPuntos() +150);
         throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
     }
 
@@ -158,5 +158,13 @@ public class Equipo {
 
     public Jugador jugadorCazadorMasRapidoEquipoContrario(){
        return this.equipoContrario.jugadorCazadorMasRapidoDelEquipo();
+    }
+
+    public Integer getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(Integer puntos) {
+        this.puntos = puntos;
     }
 }
