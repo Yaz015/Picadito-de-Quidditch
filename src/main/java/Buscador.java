@@ -79,9 +79,10 @@ public class Buscador extends Jugador {
         return rango.get(rand.nextInt(rango.size()));
     }
 
-    public void reiniciaLaBusqueda(){
+    public void reiniciaLaBusqueda(){ /**si la estaba persiguiendo vuelve a buscarla**/
         this.turnosBuscando=0;
         this.kilometros=0.0;
+        this.encontroSnitch=false;
     }
 
     public void golpeadoPorBludger(){
