@@ -29,6 +29,15 @@ public class Equipo {
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
 
+    public List<Jugador> jugadoresQueBloquean(Jugador jugador){
+       return this.equipoContrario.jugadores.stream().
+                filter(j->j.puedeBloquear(jugador)).collect(Collectors.toList());
+    }
+
+    public Jugador primerJugadorQueBloquea(Jugador jugador){
+        return this.jugadoresQueBloquean(jugador).get(0);
+    }
+
     public Boolean intentanBloquear(Jugador jugador){
         return this.puedenBloquear(jugador);
     }
@@ -98,7 +107,7 @@ public class Equipo {
     }
 
     public Boolean tenesQuaffle(){
-        return this.randomPelota().equals(1);
+        return this.randomPelota().equals(1); //hicimos este
     }
 
     public Integer randomPelota(){
@@ -123,6 +132,7 @@ public class Equipo {
 
     public void buscadorAtrapaSnitch(){
         this.puntos=this.puntos+150;
+        /// termina el partido
     }
 
     public void setPelota(Pelota quaffle) {

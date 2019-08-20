@@ -23,18 +23,18 @@ class BuscadorTest {
 
     @Test
     void testManejoDeEscoba() {
-        assertEquals(1.1111111111111112, buscador.nivelManejoDeEscoba());
+        assertEquals(111.11111111111112, buscador.nivelManejoDeEscoba());
         //skills del jugador / su peso.
     }
 
     @Test
     void testVelocidadDelJugador() {
-        assertEquals(111, buscador.velocidadDelJugador());
+        assertEquals(11111, buscador.velocidadDelJugador());
     }
 
     @Test
     void testHabilidad() {
-        assertEquals(16711, buscador.habilidad());
+        assertEquals(37611, buscador.habilidad());
         //su velocidad + sus skills + su nivel de reflejos * nivel de visión
     }
 

@@ -46,12 +46,9 @@ public abstract class Jugador {
 
     public void golpeadoPorBludger(){
         this.skill=this.skill-2;
-        if (this.escobaDelJugador.getTipo().equals("Nimbus")){
-            this.escobaDelJugador.pierdeSalud();
-        }
+        this.escobaDelJugador.pierdeSalud();
     }
 
     public abstract Integer getNivelDeReflejos();
-
 }
 
