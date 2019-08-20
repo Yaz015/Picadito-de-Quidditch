@@ -1,3 +1,5 @@
+import exceptions.ElJuegoHaTerminadoException;
+
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -33,7 +35,7 @@ public class Buscador extends Jugador {
     public Boolean sosGolpeador(){ return false; }
     ///
 
-    public void persiguiendoLaSnitch() {
+    public void persiguiendoLaSnitch() throws ElJuegoHaTerminadoException {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros >= 5000.0) {
                 this.atrapaSnitch();
@@ -46,7 +48,7 @@ public class Buscador extends Jugador {
         }
     }
 
-    public void juega(){
+    public void juega() throws ElJuegoHaTerminadoException {
         if(this.estaAturdido){
             System.out.println("Este jugador pierde su turno porque está aturdidio");
             this.estaAturdido=false;
@@ -63,7 +65,7 @@ public class Buscador extends Jugador {
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
 
-   public void  atrapaSnitch(){
+   public void  atrapaSnitch() throws ElJuegoHaTerminadoException {
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
         //termina el partido y suma 150 puntos para su equipo
@@ -74,6 +76,19 @@ public class Buscador extends Jugador {
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
+
+    public void reiniciaLaBusqueda(){
+        this.turnosBuscando=0;
+        this.kilometros=0.0;
+    }
+
+    public void golpeadoPorBludger(){
+        if(!this.esGroso()){
+            super.golpeadoPorBludger();
+            this.reiniciaLaBusqueda();
+        }else if(this.esGroso()){this.estaAturdido=true;}
+    }
+
 
     public Integer getTurnosBuscando() {
         return turnosBuscando;
@@ -91,15 +106,5 @@ public class Buscador extends Jugador {
         this.nivelDeReflejos = nivelDeReflejos;
     }
 
-    public void reiniciaLaBusqueda(){
-        this.turnosBuscando=0;
-        this.kilometros=0.0;
-    }
 
-    public void golpeadoPorBludger(){
-        if(!this.esGroso()){
-            super.golpeadoPorBludger();
-            this.reiniciaLaBusqueda();
-        }else if(this.esGroso()){this.estaAturdido=true;}
-    }
 }

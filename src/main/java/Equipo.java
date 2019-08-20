@@ -1,3 +1,4 @@
+import exceptions.ElJuegoHaTerminadoException;
 import exceptions.NoHayJugadoresEnEquipoException;
 import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
 import java.util.ArrayList;
@@ -130,10 +131,11 @@ public class Equipo {
         return this.equipoContrario.getRandomBlancoUtil();
     }
 
-    public void buscadorAtrapaSnitch(){
+    public void buscadorAtrapaSnitch() throws ElJuegoHaTerminadoException {
         this.puntos=this.puntos+150;
-        /// termina el partido
+        throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
     }
+
 
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
