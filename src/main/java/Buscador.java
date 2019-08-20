@@ -50,18 +50,20 @@ public class Buscador extends Jugador {
 
     public void juega() throws ElJuegoHaTerminadoException {
         if(this.estaAturdido){
-            System.out.println("Este jugador pierde su turno porque está aturdidio");
+            System.out.println("Este jugador pierde su turno porque está aturdido");
             this.estaAturdido=false;
-        }else if(this.encontroSnitch==false) {
-            this.buscandoLaSnitch();
-            this.setTurnosBuscando(this.getTurnosBuscando()+1);}
-        else if(this.encontroSnitch==true){
-            this.persiguiendoLaSnitch();
+        }else if(!this.estaAturdido) {
+            if (!this.encontroSnitch) {
+                this.buscandoLaSnitch();
+                this.setTurnosBuscando(this.getTurnosBuscando() + 1);
+            } else if (this.encontroSnitch) {
+                this.persiguiendoLaSnitch();
+            }
         }
     }
 
     public Boolean esBlancoUtil(){
-        return this.encontroSnitch==false || this.kilometros<1000;
+        return !this.encontroSnitch || this.kilometros<1000;
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
 
@@ -88,7 +90,6 @@ public class Buscador extends Jugador {
             this.reiniciaLaBusqueda();
         }else if(this.esGroso()){this.estaAturdido=true;}
     }
-
 
     public Integer getTurnosBuscando() {
         return turnosBuscando;
