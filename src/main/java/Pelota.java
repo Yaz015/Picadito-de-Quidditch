@@ -1,5 +1,4 @@
 
 
-public interface Pelota {
-    String getTipo();
+public class Pelota {
 }

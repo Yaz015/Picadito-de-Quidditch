@@ -1,7 +1,3 @@
-import exceptions.NoTieneNiveldeReflejos;
-
-import java.util.List;
-
 public class Cazador extends Jugador {
     private Integer punteria;
     private Integer fuerza;
@@ -18,7 +14,7 @@ public class Cazador extends Jugador {
     /** Seteamos nivel de reflejos, aunq no tenia el cazador, porque es requisito si es golpeado x bludger**/
     public Integer nivelDeReflejos;
     public Integer nivelDeReflejos() {
-        return this.nivelDeReflejos=100;
+        return this.nivelDeReflejos=10000;
     }
 
     public Boolean puedeBloquear(Jugador jugador){
@@ -28,7 +24,7 @@ public class Cazador extends Jugador {
     public Boolean sosCazador(){
         return true;
     }
-    /** Booleam para ver si tiene o no quaffle**/
+    /** Boolean para ver si tiene o no quaffle**/
     public Boolean pierdeQuaffle(){ return !super.equipo.tenesQuaffle() ;}
     public Boolean tenesQuaffle(){ return super.equipo.tenesQuaffle();}
     /** Si es golpeado pierde 2 de skill y %de salud si tiene nimbus,en clase padre. En cazador tmb pierde la Quaffle**/
@@ -41,26 +37,27 @@ public class Cazador extends Jugador {
         return pierdeQuaffle();
     }
     /** metodos para que juegue si mete o no mete gol**/
+
     public void meteGol(Equipo equipoContrario) {
-        this.skill = this.skill + 5;
+        super.skill = super.skill + 5;
         super.equipo.puntosEquipo = super.equipo.puntosEquipo + 10;
         this.pierdeQuaffle();
         equipoContrario.tenesQuaffle();
     }
     public void noMeteGol(Equipo equipoContrario) {
-        this.skill = this.skill - 2;
+        super.skill = super.skill - 2;
         this.pierdeQuaffle();
-        equipoContrario.tenesQuaffle();   }
+        equipoContrario.tenesQuaffle(); }
 
     /** Juega contra un Equipo contrario, tiene la Quaffle y si no es bloqueado, mete gol(sumando 5 de skill y 10 puntos a su equipo
      * si es bloqueado no mete gol, el bloqueador gana 2 de skill. El jugador que juega pierde pelota
      * y la gana el Cazador mas rapido contrario**/
 
     public void juegaContra(Equipo equipoContrario){
-        this.tenesQuaffle();
+        if (this.tenesQuaffle()){
         if(!equipoContrario.puedenBloquear(this)){
             this.meteGol(equipoContrario);}
         else this.noMeteGol(equipoContrario);
-        equipoContrario.jugadorQueBloquea(this);
-            }}
+        this.jugadorQueBloquea();
+            }}}
 

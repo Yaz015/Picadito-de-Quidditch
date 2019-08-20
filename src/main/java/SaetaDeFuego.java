@@ -1,21 +1,10 @@
 public class SaetaDeFuego implements Escoba {
 
-    private String tipo="Saeta";
 
-    public Integer velocidadEscoba(){
+    public Integer velocidadEscoba() {
         return 100;
     }
+    public void escobaGolpeada() {
+    }}
 
-    public String getTipo() {
-        return tipo;
-    }
 
-    public void pierdeSalud() { //NO tiene porcentaje de Salud
-
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-}

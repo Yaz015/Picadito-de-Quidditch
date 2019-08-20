@@ -4,37 +4,32 @@ public class Nimbus implements Escoba {
 
     private Integer añoDeFabricacion;
     private Integer porcentajeDeSalud;
-    private String tipo="Nimbus";
+    private String tipo = "Nimbus";
 
-    public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud){
-        this.añoDeFabricacion=añoDeFabricacion;
-        this.porcentajeDeSalud=porcentajeDeSalud;
+    public Nimbus(Integer añoDeFabricacion, Integer porcentajeDeSalud) {
+        this.añoDeFabricacion = añoDeFabricacion;
+        this.porcentajeDeSalud = porcentajeDeSalud;
     }
 
-    public Integer velocidadEscoba(){
-        return (int)((80 - (this.cantAñosDesdeFabricacion())*this.getPorcentajeDeSalud()));
-    }
-    public Double getPorcentajeDeSalud(){
-        return (double)this.porcentajeDeSalud/100;
+    public void escobaGolpeada() {
+        this.porcentajeDeSalud = this.porcentajeDeSalud-10;
     }
 
-    public Integer cantAñosDesdeFabricacion(){
-        return this.añoActual()-this.añoDeFabricacion;
+    public Integer velocidadEscoba() {
+        return (int) ((80 - (this.cantAñosDesdeFabricacion()) * this.getPorcentajeDeSalud()));
     }
 
-    public Integer añoActual(){
-        return Calendar.getInstance().get(Calendar.YEAR);}
-
-    @Override
-    public String getTipo() {
-        return tipo;
+    public Double getPorcentajeDeSalud() {
+        return (double) this.porcentajeDeSalud / 100;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public Integer cantAñosDesdeFabricacion() {
+        return this.añoActual() - this.añoDeFabricacion;
     }
 
-    public void pierdeSalud(){
-        this.porcentajeDeSalud=this.porcentajeDeSalud-10;
+    public Integer añoActual() {
+        return Calendar.getInstance().get(Calendar.YEAR);
     }
+
+
 }

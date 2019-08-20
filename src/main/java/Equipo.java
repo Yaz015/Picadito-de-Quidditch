@@ -1,3 +1,4 @@
+import exceptions.ElJuegoHaTerminadoException;
 import exceptions.NoHayJugadoresEnEquipoException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -32,6 +33,7 @@ public class Equipo {
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
+
     /** SI el equipo tiene jugador estrella, le pasa el trapo a al mejor jugador del otro equipo**/
     public Boolean tieneJugadorEstrella(Equipo equipo){
         return this.mejorJugador().lePasaElTrapo(equipo.mejorJugador());
@@ -79,9 +81,8 @@ public class Equipo {
 
     //hacer que salga sorteado que tiene la pelota
     public Boolean tenesQuaffle(){
-        return true; //this.randomPelota().equals(1);
+        return true;   //this.randomPelota().equals(1);
     }
-
     public Integer randomPelota(){
         List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
         Random rand = new Random();
@@ -102,9 +103,11 @@ public class Equipo {
         return equipoContrario.getRandomBlancoUtil();
     }
     /** Jugador que bloquea, es el cazador mas rapid, gana 10 de skill**/
-    public void jugadorQueBloquea(Jugador jugador) {
-        this.jugadorCazadorRapidoDelEquipo().skill =
-                this.jugadorCazadorRapidoDelEquipo().skill + 10;
+
+    public void buscadorAtrapaSnitch(){
+        this.puntosEquipo=this.puntosEquipo+150;
+        throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
     }
-}
+    }
+
 

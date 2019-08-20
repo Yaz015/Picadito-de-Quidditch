@@ -1,5 +1,4 @@
 import exceptions.NoEsUtilGolpearGolpeadoresException;
-import exceptions.NoTieneNiveldeReflejos;
 
 import java.util.List;
 import java.util.Random;
@@ -44,7 +43,7 @@ public class Golpeador extends Jugador {
     }
     /** Ramdom para metodo si puede golpear a otro**/
     public Integer randomGolpea(){
-        List<Integer> rango = IntStream.range(1,9).boxed().collect(Collectors.toList());
+        List<Integer> rango = IntStream.range(1,11).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
@@ -55,6 +54,7 @@ public class Golpeador extends Jugador {
 
     /**Juega contra equipo contrario, elige blanco util, y lo golpea, suma 1 de skill**/
     public void juegaContra(Equipo equipoContrario){
+
         if(this.puedeGolpearAotro(equipoContrario.getRandomBlancoUtil())); {
             equipoContrario.blancoUtilDelRandom().golpeadoPorBludger();
             super.skill=super.skill+1;

@@ -1,7 +1,3 @@
-import org.junit.platform.commons.JUnitException;
-
-import java.util.List;
-
 public abstract class Jugador {
     protected Integer peso;
     protected Escoba escobaDelJugador;
@@ -51,16 +47,16 @@ public abstract class Jugador {
 
     public void golpeadoPorBludger() {
         this.skill = this.skill - 2;
-        if (this.escobaDelJugador.getTipo().equals("Nimbus")) {
-            this.escobaDelJugador.pierdeSalud();
+        this.escobaDelJugador().escobaGolpeada();
         }
-    }
 
     public abstract void juegaContra(Equipo equipoContrario);
 
     public abstract Integer nivelDeReflejos();
 
-}
+    public Integer jugadorQueBloquea() { return
+        this.skill = this.skill + 10;
+}}
 
 
 

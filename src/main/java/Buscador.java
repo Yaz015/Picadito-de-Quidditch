@@ -35,25 +35,23 @@ public class Buscador extends Jugador {
     public Integer nivelDeReflejos() {
         return this.nivelDeReflejos;
     }
-    /** Si atraps snith**/
+    /** Si atrapa snith**/
     public void atrapaSnitch() {
         super.skill = super.skill + 10;
-        super.equipo.puntosEquipo= super.equipo.puntosEquipo +150;
+        super.equipo.buscadorAtrapaSnitch();
     }
     /** una vez que la encuentra la persigue**/
     public void persiguiendoLaSnitch() {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros >= 5000.0) {
             this.atrapaSnitch();
-        }
-    }
+        } }
     /** Comienza el juego buscando snith hasta encontrarla **/
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
-            this.persiguiendoLaSnitch();
             this.encontroSnitch = true;
-        }
-    }
+            this.persiguiendoLaSnitch();
+        } }
     /** Juega contra el equipo contrario. Tiene que buscarla primero, y luego perseguirla, si la encuentra atrapa la snith**/
     public void juegaContra(Equipo equipoContrario) {
         if (this.encontroSnitch == false) {
@@ -61,8 +59,7 @@ public class Buscador extends Jugador {
             this.setTurnosBuscando(this.getTurnosBuscando() + 1);
         } else if (this.encontroSnitch == true) {
             this.buscandoLaSnitch();
-        }
-    }
+        } }
     /** Si busca la snith es blanco util o si sus km son menores a mil**/
     public Boolean esBlancoUtil() {
         //this.buscandoLaSnitch();
@@ -81,9 +78,11 @@ public class Buscador extends Jugador {
     public void setTurnosBuscando(Integer turnosBuscando) {
         this.turnosBuscando = turnosBuscando;
     }
-    /** Todos los jugadores pierdes 2 de skill, y %de salud si tienen nimbus, en clase padre. El buscador tmb reinica busqueda**/
+
+    /** Todos los jugadores pierdes 2 de skill, y % de salud si tienen nimbus, en clase padre. El buscador tmb reinica busqueda**/
+
     public void golpeadoPorBludger() {
-        super.golpeadoPorBludger();
+        //super.golpeadoPorBludger();
             this.buscadorReiniciaBusqueda();
         }
     public void buscadorReiniciaBusqueda() {
@@ -106,7 +105,8 @@ public class Buscador extends Jugador {
         }}
 
     /** Si es groso y es golpeado x blugger queda aturdido, y trata de retomar actividad**/
-    public void  bonusBuscador(){if (this.esGroso()){
+    public void bonusBuscador(){
+        if (this.esGroso()){
     this.golpeadoPorBludger();
     this.noJuegaQuedaAturdido();
     this.retomaActividad();}
