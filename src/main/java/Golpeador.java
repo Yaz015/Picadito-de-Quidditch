@@ -22,14 +22,12 @@ public class Golpeador extends Jugador {
         return this.esGroso();
     }
 
-
-
     public Boolean esBlancoUtil(){
         return false;//No es útil golpear golpeadores.????
     }
 
     public void juega(){
-        this.eligeBlancoUtilRandomDeGuardian();
+        this.eligeBlancoUtilRandomDeGolpeador();
         if(this.puedeGolpearBlanco()){
             this.golpeadoPorBludger();
             this.skill++;
@@ -37,7 +35,7 @@ public class Golpeador extends Jugador {
         }
     }
 
-    public void eligeBlancoUtilRandomDeGuardian(){
+    public void eligeBlancoUtilRandomDeGolpeador(){
         this.blancoUtilElegido=this.equipo.getRandomBlancoUtilEquipoContrario();
     }
 
