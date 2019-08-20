@@ -27,7 +27,5 @@ public class Main {
         slytheren.agregarJugador(golpeador);
         System.out.println(guardian.puedeBloquear(buscador));
         System.out.println(buscador.sosCazador());
-
-        buscador.juega();
     }
 }

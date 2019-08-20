@@ -16,8 +16,8 @@ public class GolpeadorTest {
         griffindor= new Equipo();
         saeta= new SaetaDeFuego();
         nimbus=new Nimbus(1989,80);
-        golpeador1= new Golpeador(100,100, 100,90, saeta, griffindor);
-        golpeador2= new Golpeador(10,10,10, 60, nimbus, slytheren);
+        golpeador1= new Golpeador(200,100, 100,100, saeta, griffindor);
+        golpeador2= new Golpeador(200,10,10, 10, nimbus, slytheren);
     }
 
 

@@ -17,27 +17,12 @@ public class CazadorTest {
         griffindor = new Equipo();
         saeta = new SaetaDeFuego();
         nimbus = new Nimbus(1989, 80);
-        cazador1 = new Cazador(5, 5, 50, 90,40 ,saeta, griffindor);
-        cazador2 = new Cazador(6, 6, 200, 90, 30 ,nimbus,slytheren);
+        cazador1 = new Cazador(200,5, 5, 50, 40,saeta, griffindor);
+        cazador2 = new Cazador(200,6, 6, 200,30, nimbus, slytheren);
     }
     @Test
     void testTenesQuaffle(){
         assertFalse(cazador1.pierdeQuaffle());
-    }
-
-    @Test
-    void testJuegaContra() {
-        //cazador1.equipo.getPelota().equals(quaffle);
-        griffindor.agregarJugador(cazador1);
-        cazador1.skill = cazador1.skill + 5;
-        griffindor.setPuntos( griffindor.getPuntos() + 100);
-        cazador1.equipo.tenesQuaffle();
-        cazador1.meteGol();
-        slytheren.puedenBloquear(cazador1).equals(false);
-
-        assertEquals(110, griffindor.getPuntos());
-        assertEquals(205, cazador1.skill);
-        //assertEquals(110, griffindor.puntosEquipo);
     }
 
     @Test
