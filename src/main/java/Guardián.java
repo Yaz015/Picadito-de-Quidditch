@@ -56,7 +56,7 @@ public class Guardián extends Jugador {
         return this.nivelDeReflejos;
     }
     /** No juega, solo bloquea en su turno**/
-    public void juegaContra(Equipo equipoContrario){this.puedeBloquear(equipoContrario.jugador);
+    public void juegaContra(){this.puedeBloquear(equipo.equipoContrario.jugador);
     // Para mi aca va excepcion
 
     }}

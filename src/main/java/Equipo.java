@@ -68,9 +68,14 @@ public class Equipo {
         return this.listaDeCazadores().stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
-    public Jugador jugadorCazadorMasRapidoEquipoContrario(Equipo equipoContrario){
+    public Jugador jugadorCazadorMasRapidoEquipoContrario(){
         return equipoContrario.jugadorCazadorRapidoDelEquipo();
     }
+    /** Jugador que bloquea gana + de skill**/
+    public void jugadorQueBloquea(){
+        if (equipoContrario.puedenBloquear(jugador)) {
+            equipoContrario.jugador.skill= equipoContrario.jugador.skill+10;
+        }}
     public Jugador jugadorRandom()
     {        Random rand = new Random();
         return this.jugadores.get(rand.nextInt(jugadores.size())); }
@@ -108,8 +113,12 @@ public class Equipo {
     /** Jugador que bloquea, es el cazador mas rapid, gana 10 de skill**/
     public void buscadorAtrapaSnitch(){
         this.puntosEquipo=this.puntosEquipo+150;
-        throw new ElJuegoHaTerminadoException( "El buscador ha atrapado la Snitch, el juego ha terminado ");}}
-
-
+        throw new ElJuegoHaTerminadoException( "El buscador ha atrapado la Snitch, el juego ha terminado ");}
+    public Boolean intentanBloquear(Jugador jugador){
+        return this.puedenBloquear(jugador);
+    }
+    public Boolean equipoContrarioEvitaBloqueo(Jugador jugador){
+        return this.equipoContrario.intentanBloquear(jugador);
+    }}
 
 

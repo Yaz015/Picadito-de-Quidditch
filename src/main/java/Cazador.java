@@ -37,25 +37,33 @@ public class Cazador extends Jugador {
         return equipo.pierdeQuaffle();
     }
     /** metodos para que juegue si mete o no mete gol**/
-    public void meteGol() {
-        super.skill = super.skill + 5;
-        super.equipo.puntosEquipo = super.equipo.puntosEquipo + 10;
-        super.equipo.pierdeQuaffle();
 
-    }
     public void noMeteGol() {
         super.skill = super.skill - 2;
         super.equipo.pierdeQuaffle(); }
-    /** Juega contra un Equipo contrario, tiene la Quaffle y si no es bloqueado, mete gol(sumando 5 de skill y 10 puntos a su equipo
-     * si es bloqueado no mete gol, el bloqueador gana 2 de skill. El jugador que juega pierde pelota
-     * y la gana el Cazador mas rapido contrario**/
 
-    public void juegaContra(Equipo equipoContrario){
-        if( this.equipo.tenesQuaffle()== true &&!equipoContrario.puedenBloquear(this)){
-            this.meteGol();
-            equipo.jugadorCazadorMasRapidoEquipoContrario(equipoContrario).tenesQuaffle();}
-        else this.noMeteGol();
-        this.jugadorQueEsBloqueado(equipoContrario);
-        equipo.jugadorCazadorMasRapidoEquipoContrario(equipoContrario).tenesQuaffle();
-            }}
+    public void meteGol(){
+        this.skill=this.skill+5;
+        this.equipo.puntosEquipo = this.equipo.puntosEquipo + 10;}
+
+
+        /** Juega contra un Equipo contrario, tiene la Quaffle y si no es bloqueado, mete gol(sumando 5 de skill y 10 puntos a su equipo
+         * si es bloqueado no mete gol, el bloqueador gana 2 de skill. El jugador que juega pierde pelota
+         * y la gana el Cazador mas rapido contrario**/
+
+        public void juegaContra(){
+            if(this.equipo.tenesQuaffle()){
+                this.intentarMeterGol();
+            }else this.equipo.pierdeQuaffle();
+        }
+
+        public void intentarMeterGol(){
+            if ( this.equipo.equipoContrario.puedenBloquear(this)) {//evitar bloqueo
+                this.noMeteGol();
+                this.equipo.jugadorCazadorMasRapidoEquipoContrario().tenesQuaffle();
+                this.equipo.jugadorQueBloquea();
+            } else
+                this.equipo.tenesQuaffle();
+                this.meteGol();
+        }}
 

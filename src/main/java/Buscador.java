@@ -52,7 +52,7 @@ public class Buscador extends Jugador {
             this.persiguiendoLaSnitch();
         } }
     /** Juega contra el equipo contrario. Tiene que buscarla primero, y luego perseguirla, si la encuentra atrapa la snith**/
-    public void juegaContra(Equipo equipoContrario) {
+    public void juegaContra() {
         if (this.encontroSnitch == false) {
             this.buscandoLaSnitch();
             this.setTurnosBuscando(this.getTurnosBuscando() + 1);

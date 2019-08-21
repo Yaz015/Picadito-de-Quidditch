@@ -50,13 +50,10 @@ public abstract class Jugador {
         this.escobaDelJugador().escobaGolpeada();
         }
 
-    public abstract void juegaContra(Equipo equipoContrario);
+    public abstract void juegaContra();
 
     public abstract Integer nivelDeReflejos();
-    public void jugadorQueEsBloqueado(Equipo equipoContrario){
-        if (equipoContrario.puedenBloquear(this)) {
-            equipoContrario.jugador.skill= equipoContrario.jugador.skill+10;
-        }}
+
 
     public Boolean tenesQuaffle(){ return this.equipo.tenesQuaffleRandom();}
     }

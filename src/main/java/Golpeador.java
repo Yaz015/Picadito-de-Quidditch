@@ -53,10 +53,9 @@ public class Golpeador extends Jugador {
                 this.randomGolpea()>=8){ return true;} else return false; }
 
     /**Juega contra equipo contrario, elige blanco util, y lo golpea, suma 1 de skill**/
-    public void juegaContra(Equipo equipoContrario){
-
-        if(this.puedeGolpearAotro(equipoContrario.getRandomBlancoUtil())); {
-            equipoContrario.blancoUtilDelRandom().golpeadoPorBludger();
+    public void juegaContra(){
+        if(this.puedeGolpearAotro(equipo.equipoContrario.getRandomBlancoUtil())); {
+            equipo.equipoContrario.blancoUtilDelRandom().golpeadoPorBludger();
             super.skill=super.skill+1;
         }
     }
