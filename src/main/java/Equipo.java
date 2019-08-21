@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 
 public class Equipo {
     private List<Jugador> jugadores= new ArrayList<>();
-    private Integer puntos=0;
+    protected Integer puntos=0;
     private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Pelota quaffle;
-    private Equipo equipoContrario;
+    protected Equipo equipoContrario;
 
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
@@ -31,7 +31,7 @@ public class Equipo {
     }
 
     public List<Jugador> jugadoresQueBloquean(Jugador jugador){
-       return this.equipoContrario.jugadores.stream().
+       return this.getEquipoContrario().jugadores.stream().
                 filter(j->j.puedeBloquear(jugador)).collect(Collectors.toList());
     }
 
@@ -44,7 +44,7 @@ public class Equipo {
     }
 
     public Boolean equipoContrarioEvitaBloqueo(Jugador jugador){
-        return this.equipoContrario.intentanBloquear(jugador);
+        return this.getEquipoContrario().intentanBloquear(jugador);
     }
 
     public Boolean tieneJugadorEstrella(Equipo equipo){
@@ -128,7 +128,7 @@ public class Equipo {
     }
 
     public Jugador getRandomBlancoUtilEquipoContrario(){
-        return this.equipoContrario.getRandomBlancoUtil();
+        return this.getEquipoContrario().getRandomBlancoUtil();
     }
 
     public void buscadorAtrapaSnitch() throws ElJuegoHaTerminadoException {
@@ -157,7 +157,7 @@ public class Equipo {
     }
 
     public Jugador jugadorCazadorMasRapidoEquipoContrario(){
-       return this.equipoContrario.jugadorCazadorMasRapidoDelEquipo();
+       return this.getEquipoContrario().jugadorCazadorMasRapidoDelEquipo();
     }
 
     public Integer getPuntos() {
@@ -166,5 +166,13 @@ public class Equipo {
 
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
+    }
+
+    public Equipo getEquipoContrario() {
+        return equipoContrario;
+    }
+
+    public void setEquipoContrario(Equipo equipoContrario) {
+        this.equipoContrario = equipoContrario;
     }
 }
