@@ -49,7 +49,7 @@ public class Buscador extends Jugador {
     }
 
     public void juega() throws ElJuegoHaTerminadoException {
-        if(this.estaAturdido){
+        if (this.estaAturdido){
             System.out.println("Este jugador pierde su turno porque está aturdido");
             this.estaAturdido=false;
         }else if(!this.estaAturdido) {
