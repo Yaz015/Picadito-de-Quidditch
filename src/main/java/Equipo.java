@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 
 public class Equipo {
     private List<Jugador> jugadores= new ArrayList<>();
-    protected Integer puntos=0;
+    private Integer puntos=0;
     private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Pelota quaffle;
-    protected Equipo equipoContrario;
+    private Equipo equipoContrario;
 
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
@@ -31,7 +31,7 @@ public class Equipo {
     }
 
     public List<Jugador> jugadoresQueBloquean(Jugador jugador){
-       return this.getEquipoContrario().jugadores.stream().
+       return this.equipoContrario.jugadores.stream().
                 filter(j->j.puedeBloquear(jugador)).collect(Collectors.toList());
     }
 
@@ -44,7 +44,7 @@ public class Equipo {
     }
 
     public Boolean equipoContrarioEvitaBloqueo(Jugador jugador){
-        return this.getEquipoContrario().intentanBloquear(jugador);
+        return this.equipoContrario.intentanBloquear(jugador);
     }
 
     public Boolean tieneJugadorEstrella(Equipo equipo){
@@ -88,7 +88,7 @@ public class Equipo {
     }
 
     public Jugador jugadorCazadorMasRapidoDelEquipo(){
-        return jugadores.stream()
+        return this.listaDeCazadores().stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
 
@@ -97,25 +97,13 @@ public class Equipo {
                 .filter(j->j.sosCazador()).collect(Collectors.toList());
     }
 
-    public Jugador cazadorMasRapido(){
-        return this.listaDeCazadores().stream()
-                .max(Comparator.comparing(jugador->jugador.habilidad())).get();
-    }
-
     public Jugador jugadorRandom()
     {        Random rand = new Random();
         return this.jugadores.get(rand.nextInt(jugadores.size()));
     }
 
-    public Boolean tenesQuaffle(){
-        return this.randomPelota().equals(1); //hicimos este
-    }
-
-    public Integer randomPelota(){
-        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
-        Random rand = new Random();
-        return rango.get(rand.nextInt(rango.size()));
-    }
+    public Boolean pierdeQuaffle(){ return false;}
+    public Boolean tenesQuafflee(){ return true;}
 
     public List<Jugador> listadeBlancosUtiles(){
         return this.jugadores.stream()
@@ -128,13 +116,14 @@ public class Equipo {
     }
 
     public Jugador getRandomBlancoUtilEquipoContrario(){
-        return this.getEquipoContrario().getRandomBlancoUtil();
+        return this.equipoContrario.getRandomBlancoUtil();
     }
 
     public void buscadorAtrapaSnitch() throws ElJuegoHaTerminadoException {
         this.setPuntos(this.getPuntos() +150);
         throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
     }
+
 
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
@@ -156,7 +145,7 @@ public class Equipo {
     }
 
     public Jugador jugadorCazadorMasRapidoEquipoContrario(){
-       return this.getEquipoContrario().jugadorCazadorMasRapidoDelEquipo();
+       return this.equipoContrario.jugadorCazadorMasRapidoDelEquipo();
     }
 
     public Integer getPuntos() {
@@ -165,6 +154,10 @@ public class Equipo {
 
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
+    }
+
+    public void jugadorQueBloqueaGana10(Jugador jugador){
+        this.primerJugadorQueBloquea(jugador).skill=+10;
     }
 
     public Equipo getEquipoContrario() {

@@ -15,7 +15,7 @@ public class Cazador extends Jugador {
         return super.habilidad()+this.punteria*fuerza;
     }
 
-    public void juega(){
+  /*  public void juega(){
         if(this.equipo.tenesQuaffle()){
             this.intentarMeterGol();
         }else this.meteGol();
@@ -27,9 +27,31 @@ public class Cazador extends Jugador {
             this.pierdeQuaffle();
             this.equipo.jugadorCazadorMasRapidoEquipoContrario().equipo.tenesQuaffle();
         }
+    }*/
+
+    public void noMeteGol() {
+        this.skill = this.skill - 2;
+        this.equipo.pierdeQuaffle(); }
+
+    public void meteGol(){
+        this.skill=this.skill+5;
+        this.equipo.puntos= this.equipo.puntos + 10;
     }
+  public void juega(){
+      if(this.equipo.tenesQuaffle()){
+          this.intentarMeterGol();
+      }else this.meteGol();
+  }
 
-
+    public void intentarMeterGol(){
+        if ( this.equipo.equipoContrario.puedenBloquear(this)) {//evitar bloqueo
+            this.noMeteGol();
+            this.equipo.jugadorCazadorMasRapidoEquipoContrario().tenesQuaffle();
+            this.equipo.jugadorQueBloquea();
+        } else
+            this.equipo.tenesQuaffle();
+        this.meteGol();
+    }
     public Boolean puedeBloquear(Jugador jugador){ return this.lePasaElTrapo(jugador); }
 
     public void pierdeBloqueo(){ this.skill=skill-2; }
@@ -45,7 +67,6 @@ public class Cazador extends Jugador {
 
     public Boolean esBlancoUtil(){ return !this.equipo.tenesQuaffle(); }
 
-    public void meteGol(){ this.skill=this.skill+5; }
 
     public Integer getNivelDeReflejos(){ return this.nivelDeReflejos; }
 
