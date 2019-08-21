@@ -11,11 +11,31 @@ public class Guardian extends Jugador {
     private Double nivelDeReflejos;
     private Double fuerza;
 
-    Guardian(Double peso, Escoba escobaDelJugador, Double skill) {
-        super(peso, escobaDelJugador, skill);
+    Guardian(Double peso, Escoba escobaDelJugador, Equipo equipo) {
+        super(peso, escobaDelJugador, equipo);
     }
     public Double habilidad(){
         return velocidadDelJugador() + super.skill + nivelDeReflejos + fuerza;
+    }
+
+    @Override
+    public boolean sosCazador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGuardian() {
+        return true;
+    }
+
+    @Override
+    public boolean sosBuscador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGolpeador() {
+        return false;
     }
 
     public Boolean turnoGuardian( Jugador jugador)  {

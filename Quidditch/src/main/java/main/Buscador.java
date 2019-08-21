@@ -1,12 +1,35 @@
 package main;
-public class Buscador extends Jugador { private Double nivelDeReflejos;
+public class Buscador extends Jugador {
+    private Double nivelDeReflejos;
     private Double nivelDeVision;
+    public Pelota bludger;
+    public Pelota snitch;
 
-    Buscador(Double peso, Escoba escobaDelJugador, Double skill) {
-        super(peso, escobaDelJugador, skill);
+    Buscador(Double peso, Escoba escobaDelJugador, Equipo equipo) {
+        super(peso, escobaDelJugador,equipo);
     }
     public Double habilidad(){
         return velocidadDelJugador() + super.skill + nivelDeReflejos + nivelDeVision;
+    }
+
+    @Override
+    public boolean sosCazador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGuardian() {
+        return false;
+    }
+
+    @Override
+    public boolean sosBuscador() {
+        return true;
+    }
+
+    @Override
+    public boolean sosGolpeador() {
+        return false;
     }
 
     public Boolean turnoBuscador(Jugador jugador){

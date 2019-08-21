@@ -7,16 +7,16 @@ package main;
 public abstract class Jugador {
     protected Double peso;
     protected Escoba escobaDelJugador;
-    protected Double skill=100.00;
+    protected Double skill;
     protected Equipo equipo;
     protected Integer turno=0;
     public List<Jugador> jugadores;
 
 
-    Jugador(Double peso, Escoba escobaDelJugador, Double skill, Equipo equipo){
+    Jugador(Double peso, Escoba escobaDelJugador,  Equipo equipo){
         this.peso=peso;
         this.escobaDelJugador=escobaDelJugador;
-        this.skill=skill;
+        this.skill=200.0;
         this.equipo= equipo;
     }
     public Escoba escobaDelJugador() {
@@ -95,6 +95,14 @@ public abstract class Jugador {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+
+    public abstract boolean sosCazador();
+
+    public abstract boolean sosGuardian();
+
+    public abstract boolean sosBuscador();
+
+    public abstract boolean sosGolpeador();
 }
 
 

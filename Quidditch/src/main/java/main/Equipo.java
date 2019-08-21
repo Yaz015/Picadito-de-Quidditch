@@ -1,18 +1,14 @@
 package main;
-import exception.DemasiadosJugadoresEnEquipoException;
 import exception.NoHayJugadoresEnEquipoException;
+import exception.NoSePuedeAgregarJugadoresEnEquipoExepcion;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Equipo {
     public List<Jugador> jugadores = new ArrayList<>();
     protected Integer puntos=0;
-    public Pelota pelota;
     public Jugador jugador;
 
     public Boolean tieneJugadorEstrellaContra(Equipo equipo) {
@@ -25,10 +21,38 @@ public class Equipo {
     }
 
     public void agregarJugador(Jugador jugador) {
-        if(cantDeJugadoresEnEquipo()>7)
-            throw new DemasiadosJugadoresEnEquipoException("No se pueden sumar mas jugadores, equipo lleno");
-        //excepcion de no poder agregar?. demasiados jugadores no se permiten mas
+        if(this.jugadores.size()==7){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("Equipo Completo no se puede agregar mas jugadores");
+        } else if (jugador.sosCazador() && this.listaDeCazadores().size() == 3) {
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar más cazadores");
+        } else if (jugador.sosGuardian() && this.listaDeGuardianes().size() == 1) {
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas guardianes");
+        }else if(jugador.sosBuscador() && this.listaDeBuscadores().size()==1){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas buscador");
+        } else if(jugador.sosGolpeador() && this.listaDeGolpeadores().size()==2){
+            throw new NoSePuedeAgregarJugadoresEnEquipoExepcion("No se puede agregar mas golpaores");
+        }
         jugadores.add(jugador);
+    }
+
+    private Collection<Object> listaDeGolpeadores() {
+        return jugadores.stream()
+                .filter(jugador -> jugador.sosGolpeador()).collect(Collectors.toList());
+    }
+
+    private Collection<Object> listaDeBuscadores() {
+        return jugadores.stream()
+                .filter(jugador -> jugador.sosBuscador()).collect(Collectors.toList());
+    }
+
+    private Collection<Object> listaDeGuardianes() {
+        return jugadores.stream()
+                . filter(jugador -> jugador.sosGuardian()).collect(Collectors.toList());
+    }
+
+    private Collection<Object> listaDeCazadores() {
+        return jugadores.stream()
+                .filter(j->j.sosCazador()).collect(Collectors.toList());
     }
 
     public Integer cantDeJugadoresEnEquipo() {

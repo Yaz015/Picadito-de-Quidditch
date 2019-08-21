@@ -8,11 +8,31 @@ public class Golpeador extends Jugador {
     protected Double punteria;
     protected Double fuerza;
 
-    Golpeador(Double peso, Escoba escobaDelJugador, Double skill) {
-        super(peso, escobaDelJugador, skill);
+    Golpeador(Double peso, Escoba escobaDelJugador, Equipo equipo) {
+        super(peso, escobaDelJugador, equipo);
     }
     public Double habilidad(){
         return velocidadDelJugador() + super.skill + punteria + fuerza;
+    }
+
+    @Override
+    public boolean sosCazador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGuardian() {
+        return false;
+    }
+
+    @Override
+    public boolean sosBuscador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGolpeador() {
+        return true;
     }
 
     public Boolean turnoGolpeador(Jugador jugador){

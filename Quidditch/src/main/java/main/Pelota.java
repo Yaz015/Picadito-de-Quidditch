@@ -1,4 +1,4 @@
 package main;
 
-public  interface Pelota {
+public class Pelota {
 }

@@ -3,12 +3,33 @@ package main;
 public class Cazador extends Jugador {
     private Double punteria;
     private Double fuerza;
+    private Pelota quaflle;
 
-    Cazador(Double peso, Escoba escobaDelJugador, Double skill) {
-        super(peso, escobaDelJugador, skill);
+    Cazador(Double peso, Escoba escobaDelJugador, Equipo equipo) {
+        super(peso, escobaDelJugador, equipo);
     }
     public Double habilidad(){
         return velocidadDelJugador() + skill + punteria +fuerza;
+    }
+
+    @Override
+    public boolean sosCazador() {
+        return true;
+    }
+
+    @Override
+    public boolean sosGuardian() {
+        return false;
+    }
+
+    @Override
+    public boolean sosBuscador() {
+        return false;
+    }
+
+    @Override
+    public boolean sosGolpeador() {
+        return false;
     }
 
     public Boolean turnoCazador(Jugador jugador){
