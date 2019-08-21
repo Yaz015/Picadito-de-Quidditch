@@ -66,38 +66,4 @@ class BuscadorTest {
         buscador.juega();
         assertEquals(1, buscador.getTurnosBuscando());
     }
-
-    @Test
-    void testPersiguiendoSnitchKilometros(){
-        buscador.persiguiendoLaSnitch();
-        assertEquals(69.375 ,buscador.getKilometros());
-        //Kilometros() + velocidadDelJugador() / 1.6
-    }
-
-    @Test
-    void testPersiguiendoLaSnitch(){
-        buscador.setKilometros(5000.0);
-        buscador.persiguiendoLaSnitch();
-        assertEquals(110, buscador.skill);
-    }
-
-    @Test
-    void testNoAtrapo(){
-        buscador.setKilometros(4999.0-69.375);
-        buscador.persiguiendoLaSnitch();
-        assertEquals(100, buscador.skill);
-    }
-
-    @Test
-    void testBuscandoSnitch(){
-        buscador.randonNumeroSnitch().equals(buscador.habilidad()+buscador.getTurnosBuscando());
-        buscador.buscandoLaSnitch();
-        assertTrue(buscador.getEncontroSnitch());
-    }
-
-    @Test
-    void atrapoSnitch(){
-        buscador.atrapaSnitch();
-        assertEquals(110, buscador.skill);
-    }
 }

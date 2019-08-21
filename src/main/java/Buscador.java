@@ -38,13 +38,13 @@ public class Buscador extends Jugador {
     public void persiguiendoLaSnitch() throws ElJuegoHaTerminadoException {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros >= 5000.0) {
-                this.atrapaSnitch();
+            this.atrapaSnitch();
         }
     }
 
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
-                this.encontroSnitch = true;
+            this.encontroSnitch = true;
         }
     }
 
@@ -67,13 +67,13 @@ public class Buscador extends Jugador {
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
 
-   public void  atrapaSnitch() throws ElJuegoHaTerminadoException {
+    public void  atrapaSnitch() throws ElJuegoHaTerminadoException {
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
         //termina el partido y suma 150 puntos para su equipo
     }
 
-   public Integer randomSnitch() {
+    public Integer randomSnitch() {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
