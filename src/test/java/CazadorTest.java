@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CazadorTest {
@@ -10,6 +13,7 @@ public class CazadorTest {
     Nimbus nimbus;
     Equipo griffindor;
     Equipo slytheren;
+    List<Jugador>cazadoresSlytheren= new ArrayList<>();
 
     @BeforeEach
     void setUp() {
@@ -19,31 +23,38 @@ public class CazadorTest {
         nimbus = new Nimbus(1989, 80);
         cazador1 = new Cazador(5, 5, 50, saeta, griffindor);
         cazador2 = new Cazador(6, 6, 200, nimbus, slytheren);
-    }
-    @Test
-    void testTenesQuaffle(){
-        assertFalse(cazador1.pierdeQuaffle());
+        cazadoresSlytheren.add(cazador2);
+
     }
 
     @Test
-    void testJuegaContra() {
-        //cazador1.equipo.getPelota().equals(quaffle);
-        griffindor.agregarJugador(cazador1);
-        cazador1.skill = cazador1.skill + 5;
-        griffindor.puntosEquipo = griffindor.puntosEquipo + 100;
-        cazador1.juegaContra(slytheren);
-        cazador1.equipo.tenesQuaffle();
-        cazador1.meteGol(slytheren);
-        slytheren.puedenBloquear(cazador1).equals(false);
+    void testNoTenesQuaffle(){
+        assertFalse(griffindor.pierdeQuaffle());
+    }
 
-        assertEquals(110, griffindor.puntosEquipo);
+    @Test
+    void testMeteGol() {
+        cazador1.meteGol();
+        assertEquals(10, griffindor.puntosEquipo);
         assertEquals(205, cazador1.skill);
-        //assertEquals(110, griffindor.puntosEquipo);
+        assertFalse(griffindor.pierdeQuaffle());
+    }
+    @Test
+    void testNoMeteGol(){
+        cazador1.noMeteGol();
+        assertEquals(198, cazador1.skill);
+        assertFalse(griffindor.pierdeQuaffle());
     }
 
     @Test
-    void testPierdeQuaffle() {
-        assertFalse(cazador1.pierdeQuaffle());
+    void testGolpeadoPorBludger(){
+        cazador1.golpeadoPorBludger();
+        assertEquals(198, cazador1.skill);
+        assertFalse(griffindor.pierdeQuaffle());
+        cazador2.golpeadoPorBludger();
+        assertEquals(198, cazador2.skill);
+        assertEquals(0.7, nimbus.getPorcentajeDeSalud());
+
     }
 
     @Test
@@ -54,7 +65,6 @@ public class CazadorTest {
     @Test
     void testLepasaElTrapo() {
         assertTrue(cazador1.lePasaElTrapo(cazador2));
-
     }
 
     @Test
@@ -62,7 +72,6 @@ public class CazadorTest {
         assertEquals(625, cazador1.habilidad());
         assertEquals(292, cazador2.habilidad());
     }
-
     @Test
     void testVelocidadCazador() {
         assertEquals(400, cazador1.velocidadDelJugador());

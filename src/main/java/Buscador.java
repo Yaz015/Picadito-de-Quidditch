@@ -16,11 +16,9 @@ public class Buscador extends Jugador {
         this.nivelDeReflejos = nivelDeReflejos;
         this.nivelDeVision = nivelDeVision;
     }
-
     public Integer habilidad() {
         return (super.skill + this.velocidadDelJugador()) + this.nivelDeReflejos * this.nivelDeVision;
     }
-
     public Integer velocidadDelJugador() {
         return (int) (this.velocidadDeEscoba() * this.nivelManejoDeEscoba());
     }
@@ -36,6 +34,7 @@ public class Buscador extends Jugador {
         return this.nivelDeReflejos;
     }
     /** Si atrapa snith**/
+
     public void atrapaSnitch() {
         super.skill = super.skill + 10;
         super.equipo.buscadorAtrapaSnitch();
@@ -62,7 +61,6 @@ public class Buscador extends Jugador {
         } }
     /** Si busca la snith es blanco util o si sus km son menores a mil**/
     public Boolean esBlancoUtil() {
-        //this.buscandoLaSnitch();
         return this.encontroSnitch == false || this.kilometros < 1000;
     }
     /** El ramdom es para el metodo buscando la snitch**/
@@ -82,7 +80,7 @@ public class Buscador extends Jugador {
     /** Todos los jugadores pierdes 2 de skill, y % de salud si tienen nimbus, en clase padre. El buscador tmb reinica busqueda**/
 
     public void golpeadoPorBludger() {
-        //super.golpeadoPorBludger();
+           super.golpeadoPorBludger();
             this.buscadorReiniciaBusqueda();
         }
     public void buscadorReiniciaBusqueda() {

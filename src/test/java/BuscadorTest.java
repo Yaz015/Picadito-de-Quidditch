@@ -9,18 +9,33 @@ class BuscadorTest {
     private Buscador buscador2;
     private Equipo griffindor;
     private SaetaDeFuego saeta;
+    private Nimbus nimbus;
     private Equipo slytheren;
 
     @BeforeEach
     void setUp() {
         saeta = new SaetaDeFuego();
+        nimbus= new Nimbus(1989,80);
         griffindor = new Equipo();
         slytheren=new Equipo();
         buscador = new Buscador(110, 150, 90, saeta, griffindor);
         buscador1 = new Buscador(10, 10, 10, saeta, griffindor);
-        buscador2= new Buscador(5,5,50,saeta, slytheren);
+        buscador2= new Buscador(5,5,50,nimbus, slytheren);
     }
+    @Test /** Este test da una excepcion porque si atrapa la snith termina el juego**/
+    void TestAtrapaSnith(){
+        buscador.atrapaSnitch();
+        assertEquals(210, buscador.skill);
+    }
+    @Test
+    void testGolpeadoPorBludger(){
+        buscador.golpeadoPorBludger();
+        assertEquals(198, buscador.skill);
+        buscador2.golpeadoPorBludger();
+        assertEquals(198, buscador2.skill);
+        assertEquals(0.7, nimbus.getPorcentajeDeSalud());
 
+    }
     @Test
     void testManejoDeEscoba() {
         assertEquals(2.2222222222222223, buscador.nivelManejoDeEscoba());

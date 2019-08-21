@@ -17,6 +17,13 @@ class GuardiánTest {
     }
 
     @Test
+    void testGolpeadoPorBludger() {
+        guardián.golpeadoPorBludger();
+        assertEquals(198, guardián.skill);
+        guardián1.golpeadoPorBludger();
+        assertEquals(198, guardián1.skill);
+    }
+    @Test
     void testLePasaElTrapo(){
         assertTrue(guardián.lePasaElTrapo(guardián1));
     }

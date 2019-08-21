@@ -21,6 +21,8 @@ public class GolpeadorTest {
         golpeador2= new Golpeador(10,10,10,  nimbus, slytheren);}
 
 
+
+
     @Test
     void testLepasaElTrapo(){
         assertFalse(golpeador2.lePasaElTrapo(golpeador1));

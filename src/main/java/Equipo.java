@@ -18,12 +18,6 @@ public class Equipo {
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
     }
-    public void setPelota(Pelota quaffle) {
-        this.quaffle = quaffle;
-    }
-    public Pelota getPelota() {
-        return quaffle;
-    }
 
     public int getRandomElement(List<Integer> list)
     { Random rand = new Random();                //preguntar
@@ -33,6 +27,7 @@ public class Equipo {
         return this.jugadores.stream()
                 .anyMatch(j -> j.puedeBloquear(jugador));
     }
+
 
     /** SI el equipo tiene jugador estrella, le pasa el trapo a al mejor jugador del otro equipo**/
     public Boolean tieneJugadorEstrella(Equipo equipo){
@@ -73,21 +68,29 @@ public class Equipo {
         return this.listaDeCazadores().stream()
                 .max(Comparator.comparing(j->j.velocidadDelJugador())).get();
     }
-
+    public Jugador jugadorCazadorMasRapidoEquipoContrario(Equipo equipoContrario){
+        return equipoContrario.jugadorCazadorRapidoDelEquipo();
+    }
     public Jugador jugadorRandom()
     {        Random rand = new Random();
-        return this.jugadores.get(rand.nextInt(jugadores.size()));
-    }
+        return this.jugadores.get(rand.nextInt(jugadores.size())); }
 
     //hacer que salga sorteado que tiene la pelota
-    public Boolean tenesQuaffle(){
-        return true;   //this.randomPelota().equals(1);
+    public Boolean tenesQuaffleRandom(){  //return true;
+       return this.randomPelota().equals(1);
     }
+    public void setQuaffle(Pelota pelota){this.quaffle=quaffle;}
+    public Pelota getQuaffle(){return quaffle;}
+
+    /** Boolean para ver si tiene o no quaffle**/
+    public Boolean pierdeQuaffle(){ return false;}
+    public Boolean tenesQuaffle(){ return true;}
+
     public Integer randomPelota(){
-        List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
+        List<Integer> rango = IntStream.range(1,3).boxed().collect(Collectors.toList());
         Random rand = new Random();
-        return rango.get(rand.nextInt(rango.size()));
-    }
+        return rango.get(rand.nextInt(rango.size())); }
+
     /** Listado de blanco utiles, para metodo en golpeador**/
     public List<Jugador> listadeBlancosUtiles(){
         return this.jugadores.stream()
@@ -103,11 +106,10 @@ public class Equipo {
         return equipoContrario.getRandomBlancoUtil();
     }
     /** Jugador que bloquea, es el cazador mas rapid, gana 10 de skill**/
-
     public void buscadorAtrapaSnitch(){
         this.puntosEquipo=this.puntosEquipo+150;
-        throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
-    }
-    }
+        throw new ElJuegoHaTerminadoException( "El buscador ha atrapado la Snitch, el juego ha terminado ");}}
+
+
 
 

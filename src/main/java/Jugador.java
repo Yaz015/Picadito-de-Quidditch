@@ -53,11 +53,13 @@ public abstract class Jugador {
     public abstract void juegaContra(Equipo equipoContrario);
 
     public abstract Integer nivelDeReflejos();
+    public void jugadorQueEsBloqueado(Equipo equipoContrario){
+        if (equipoContrario.puedenBloquear(this)) {
+            equipoContrario.jugador.skill= equipoContrario.jugador.skill+10;
+        }}
 
-    public Integer jugadorQueBloquea() { return
-        this.skill = this.skill + 10;
-}}
-
+    public Boolean tenesQuaffle(){ return this.equipo.tenesQuaffleRandom();}
+    }
 
 
 
