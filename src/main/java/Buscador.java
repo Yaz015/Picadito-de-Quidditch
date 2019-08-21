@@ -107,6 +107,4 @@ public class Buscador extends Jugador {
     public void setNivelDeReflejos(Integer nivelDeReflejos) {
         this.nivelDeReflejos = nivelDeReflejos;
     }
-
-
 }
