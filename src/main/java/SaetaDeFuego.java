@@ -3,7 +3,7 @@ public class SaetaDeFuego implements Escoba {
         return 100;
     }
 
-    public void pierdeSalud() {//no pasa nada
+    public Integer pierdeSalud() { return  0;//no pasa nada
     }
 
 }

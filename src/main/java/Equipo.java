@@ -10,10 +10,11 @@ import java.util.stream.IntStream;
 
 public class Equipo {
     private List<Jugador> jugadores= new ArrayList<>();
-    private Integer puntos=0;
+    protected Integer puntos=0;
     private List<Integer> rango = IntStream.range(1, jugadores.size()).boxed().collect(Collectors.toList());
     private Pelota quaffle;
-    private Equipo equipoContrario;
+    protected Equipo equipoContrario;
+    protected Jugador jugador;
 
     public void getJugadorDelTurno(){
         this.jugadores.get(getRandomElement(this.rango));
@@ -111,6 +112,9 @@ public class Equipo {
         return this.randomPelota().equals(1); //hicimos este
     }
 
+    public Boolean pierdeQuaffle(){ return false;}
+    public Boolean tenesQuafflee(){ return true;}
+
     public Integer randomPelota(){
         List<Integer> rango = IntStream.range(1,2).boxed().collect(Collectors.toList());
         Random rand = new Random();
@@ -167,4 +171,9 @@ public class Equipo {
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
     }
+
+    public void jugadorQueBloquea(){
+        if (equipoContrario.puedenBloquear(jugador)) {
+            equipoContrario.jugador.skill= equipoContrario.jugador.skill+10;
+        }}
 }

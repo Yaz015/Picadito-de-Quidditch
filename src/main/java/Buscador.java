@@ -86,10 +86,10 @@ public class Buscador extends Jugador {
     }
 
     public void golpeadoPorBludger(){
-        if(!this.esGroso()){
+       // if(!this.esGroso()){
             super.golpeadoPorBludger();
             this.reiniciaLaBusqueda();
-        }else if(this.esGroso()){this.estaAturdido=true;}
+      //  }else if(this.esGroso()){this.estaAturdido=true;}
     }
 
     public Integer getTurnosBuscando() {

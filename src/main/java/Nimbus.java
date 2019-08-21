@@ -13,7 +13,6 @@ public class Nimbus implements Escoba {
     public Integer velocidadEscoba(){
         return (int)((80 - this.cantAniosDesdeFabricacion())*this.getPorcentajeDeSalud());
     }
-
     public Double getPorcentajeDeSalud(){
         return (double)this.porcentajeDeSalud/100;
     }
@@ -25,7 +24,7 @@ public class Nimbus implements Escoba {
     public Integer anioActual(){
         return Calendar.getInstance().get(Calendar.YEAR);}
 
-    public void pierdeSalud(){
+    public Integer pierdeSalud(){return
         this.porcentajeDeSalud=this.porcentajeDeSalud-10;
     }
 }

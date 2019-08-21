@@ -50,5 +50,6 @@ public abstract class Jugador {
     }
 
     public abstract Integer getNivelDeReflejos();
-}
+
+    public Boolean tenesQuaffle(){ return true;}}
 
