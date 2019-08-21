@@ -136,7 +136,6 @@ public class Equipo {
         throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");
     }
 
-
     public void setPelota(Pelota quaffle) {
         this.quaffle=quaffle ;
     }

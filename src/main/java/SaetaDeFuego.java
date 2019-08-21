@@ -5,5 +5,4 @@ public class SaetaDeFuego implements Escoba {
 
     public void pierdeSalud() {//no pasa nada
     }
-
 }

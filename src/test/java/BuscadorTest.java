@@ -66,4 +66,9 @@ class BuscadorTest {
         buscador.juega();
         assertEquals(1, buscador.getTurnosBuscando());
     }
+
+    @Test
+    void testBuscadorAtrapaSnitch(){
+        assertThrows(ElJuegoHaTerminadoException.class,() ->buscador.atrapaSnitch());
+    }
 }

@@ -53,5 +53,4 @@ public class CazadorTest {
         assertEquals(40, cazador2.velocidadDelJugador());
         //this.velocidadDeEscoba() * this.nivelManejoDeEscoba()
     }
-
 }
