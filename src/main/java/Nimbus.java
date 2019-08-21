@@ -23,7 +23,8 @@ public class Nimbus implements Escoba {
     }
 
     public Integer anioActual(){
-        return Calendar.getInstance().get(Calendar.YEAR);}
+        return Calendar.getInstance().get(Calendar.YEAR);
+    }
 
     public void pierdeSalud(){
         this.porcentajeDeSalud=this.porcentajeDeSalud-10;

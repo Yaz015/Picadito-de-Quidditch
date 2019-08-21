@@ -24,21 +24,23 @@ public class GolpeadorTest {
     @Test
     void testLepasaElTrapo(){
         assertFalse(golpeador2.lePasaElTrapo(golpeador1));
-
     }
+
     @Test
     void testHabilidad(){
         assertEquals(600,golpeador1.habilidad());
-        assertEquals(1340,golpeador2.habilidad());
+        assertEquals(1020,golpeador2.habilidad());
+        //su velocidad + sus skills + su puntería + su fuerza.
     }
     @Test
     void testVelocidadGolpeador(){
         assertEquals(200,golpeador1.velocidadDelJugador());
-        assertEquals(1120,golpeador2.velocidadDelJugador());}
+        assertEquals(800,golpeador2.velocidadDelJugador());}
+        //La velocidad se calcula como 80 - la cantidad de años desde su fabricación por el porcentaje de salud de la misma.
 
     @Test
     void testVelocidadEscoba() {
         assertEquals(100, golpeador1.velocidadDeEscoba());
-        assertEquals(56, golpeador2.velocidadDeEscoba());
+        assertEquals(40, golpeador2.velocidadDeEscoba());
     }
 }
