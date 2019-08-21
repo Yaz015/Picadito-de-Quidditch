@@ -1,15 +1,12 @@
-
-
 import java.util.Calendar;
-
 public class MercadoDeEscobas {
-        private Integer numeroAleatorio=100;
+        private Integer numeroArbitrario=100;
         private int longitud=100;
         private Integer anioDeCreacion=2019;
         // private List<Integer> list= new ArrayList<>(longitud);
 
-        public Integer getNumeroAleatorio(){
-            return this.numeroAleatorio;
+        public Integer getNumeroArbitrario(){
+            return this.numeroArbitrario;
         }
 
         // public int getRandomElement(List<Integer> list)
@@ -34,7 +31,7 @@ public class MercadoDeEscobas {
         }
 
         public Integer actualizarMercadoDeEscobas(){
-            return numeroAleatorio+difDeAnios();
+            return numeroArbitrario+difDeAnios();
         }
 
         public boolean debeActualizarMercadodeEscobas(){
@@ -42,7 +39,7 @@ public class MercadoDeEscobas {
         }
 
         public Integer numeroArbitrario(){
-            return getNumeroAleatorio()+difDeAnios();
+            return getNumeroArbitrario()+difDeAnios();
         }
 }
 

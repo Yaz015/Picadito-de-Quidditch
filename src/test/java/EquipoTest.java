@@ -31,6 +31,9 @@ class EquipoTest {
         guardian =mock(Guardian.class);
         golpeadorA=mock(Golpeador.class);
         golpeadorB=mock(Golpeador.class);
+        when(cazadorA.sosCazador()).thenReturn(true);
+        when(cazadorB.sosCazador()).thenReturn(true);
+        when(cazadorC.sosCazador()).thenReturn(true);
     }
 
     @Test
@@ -68,13 +71,21 @@ class EquipoTest {
 
     @Test
     void testListaDeCazadores(){
-        when(cazadorA.sosCazador()).thenReturn(true);
-        when(cazadorB.sosCazador()).thenReturn(true);
-        when(cazadorC.sosCazador()).thenReturn(true);
         slytheren.agregarJugador(cazadorC);
         slytheren.agregarJugador(cazadorB);
         slytheren.agregarJugador(cazadorA);
         assertEquals(3, slytheren.listaDeCazadores().size());
+    }
+
+    @Test
+    void tetJugadorCazadorMasRapido(){
+        when(cazadorA.habilidad()).thenReturn(1000);
+        when(cazadorB.habilidad()).thenReturn(500);
+        when(cazadorC.habilidad()).thenReturn(200);
+        griffindor.agregarJugador(cazadorA);
+        griffindor.agregarJugador(cazadorB);
+        griffindor.agregarJugador(cazadorC);
+        assertEquals(cazadorA, griffindor.jugadorCazadorMasRapidoDelEquipo());
     }
 
     //Exepciones

@@ -22,14 +22,13 @@ public class Cazador extends Jugador {
     }
 
     public void intentarMeterGol(){
-        if(this.equipo.tenesQuaffle()){
         if(this.equipo.equipoContrarioEvitaBloqueo(this)){//evitar bloqueo
             this.pierdeBloqueo();
             this.pierdeQuaffle();
             this.equipo.jugadorCazadorMasRapidoEquipoContrario().equipo.tenesQuaffle();
-        } else this.meteGol();
         }
     }
+
 
     public Boolean puedeBloquear(Jugador jugador){ return this.lePasaElTrapo(jugador); }
 
@@ -54,5 +53,4 @@ public class Cazador extends Jugador {
         super.golpeadoPorBludger();
         this.pierdeQuaffle();
     }
-
 }

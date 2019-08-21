@@ -19,7 +19,6 @@ public class NimbusTest {
         assertEquals(18, nimbusA.cantAniosDesdeFabricacion());
     }
     @Test
-    void testGetPorcentajeDeSalud(){
-        assertEquals(nimbusA.getPorcentajeDeSalud(), 0.8);
+    void testGetPorcentajeDeSalud(){ assertEquals(0.8, nimbusA.getPorcentajeDeSalud());
     }
 }
