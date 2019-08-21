@@ -14,6 +14,7 @@ public class NimbusTest {
         //80 - this.cantAniosDesdeFabricacion())*this.getPorcentajeDeSalud()
         //redondea para abajo ?
     }
+
     @Test
     void testCantAniosDesdeFabricacion(){
         assertEquals(18, nimbusA.cantAniosDesdeFabricacion());
