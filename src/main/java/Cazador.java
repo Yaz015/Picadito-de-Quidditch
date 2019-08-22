@@ -31,32 +31,34 @@ public class Cazador extends Jugador {
 
     public void noMeteGol() {
         this.skill = this.skill - 2;
-        this.equipo.pierdeQuaffle(); }
+        this.equipo.pierdeQuaffle();
+    }
 
     public void meteGol(){
         this.skill=this.skill+5;
-        this.equipo.puntos= this.equipo.puntos + 10;
+        this.equipo.setPuntos(equipo.getPuntos()+10);
+        this.equipo.pierdeQuaffle();
     }
-  public void juega(){
-      if(this.equipo.tenesQuaffle()){
+
+      public void juega(){
+      if(this.equipo.tenesQuafflee()){
           this.intentarMeterGol();
-      }else this.meteGol();
-  }
+      }
+    }
 
     public void intentarMeterGol(){
-        if ( this.equipo.equipoContrario.puedenBloquear(this)) {//evitar bloqueo
+        if ( this.equipo.puedenBloquear(this)) {//evitar bloqueo
             this.noMeteGol();
             this.equipo.jugadorCazadorMasRapidoEquipoContrario().tenesQuaffle();
-            this.equipo.jugadorQueBloquea();
-        } else
-            this.equipo.tenesQuaffle();
-        this.meteGol();
+            this.equipo.jugadorQueBloqueaGana10(this);
+        }else meteGol();
     }
+
+
     public Boolean puedeBloquear(Jugador jugador){ return this.lePasaElTrapo(jugador); }
 
-    public void pierdeBloqueo(){ this.skill=skill-2; }
 
-    public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuaffle();}
+    public Boolean pierdeQuaffle(){ return !this.equipo.tenesQuafflee();}
 
     ///Metodos Sos
     public Boolean sosCazador(){ return true; }
@@ -65,7 +67,7 @@ public class Cazador extends Jugador {
     public Boolean sosGolpeador() { return false; }
     ///
 
-    public Boolean esBlancoUtil(){ return !this.equipo.tenesQuaffle(); }
+    public Boolean esBlancoUtil(){ return !this.equipo.tenesQuafflee(); }
 
 
     public Integer getNivelDeReflejos(){ return this.nivelDeReflejos; }

@@ -63,7 +63,6 @@ public class CazadorTest {
     @Test
     void testLepasaElTrapo() {
         assertTrue(cazador1.lePasaElTrapo(cazador2));
-
     }
 
     @Test

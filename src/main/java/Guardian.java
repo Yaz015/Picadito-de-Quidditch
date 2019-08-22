@@ -45,7 +45,7 @@ public class Guardian extends Jugador {
     }
 
     public Boolean esBlancoUtil(){
-        return !this.equipo.tenesQuaffle();
+        return !this.equipo.tenesQuafflee();
     }
 
     public void juega(){ }

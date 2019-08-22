@@ -87,7 +87,7 @@ public class Buscador extends Jugador {
 
     public void golpeadoPorBludger(){
        // if(!this.esGroso()){
-            super.golpeadoPorBludger();
+            super.golpeadoPorBludger(); /** Asi quedaria con bonus **/
             this.reiniciaLaBusqueda();
       //  }else if(this.esGroso()){this.estaAturdido=true;}
     }
@@ -107,4 +107,5 @@ public class Buscador extends Jugador {
     public void setNivelDeReflejos(Integer nivelDeReflejos) {
         this.nivelDeReflejos = nivelDeReflejos;
     }
+
 }
