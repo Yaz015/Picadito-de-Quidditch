@@ -87,7 +87,7 @@ public class Buscador extends Jugador {
 
     public void golpeadoPorBludger(){
        // if(!this.esGroso()){
-            super.golpeadoPorBludger(); /** Asi quedaria con bonus **/
+            super.golpeadoPorBludger();
             this.reiniciaLaBusqueda();
       //  }else if(this.esGroso()){this.estaAturdido=true;}
     }
@@ -108,4 +108,26 @@ public class Buscador extends Jugador {
         this.nivelDeReflejos = nivelDeReflejos;
     }
 
+    /** Asi quedaria con bonus **/
+    /**  public void golpeadoPorBludger(){
+           if(!this.esGroso()){
+             super.golpeadoPorBludger();
+               this.reiniciaLaBusqueda();
+          }else if(this.esGroso()){this.estaAturdido=true;}
+     } **/
+    /**
+     * public void juega() throws ElJuegoHaTerminadoException {
+     *         if (this.estaAturdido){
+     *             System.out.println("Este jugador pierde su turno porque está aturdido");
+     *             this.estaAturdido=false;
+     *         }else if(!this.estaAturdido) {
+     *             if (!this.encontroSnitch) {
+     *                 this.buscandoLaSnitch();
+     *                 this.setTurnosBuscando(this.getTurnosBuscando() + 1);
+     *             } else if (this.encontroSnitch) {
+     *                 this.persiguiendoLaSnitch();
+     *             }
+     *         }
+     *     }
+     */
 }
