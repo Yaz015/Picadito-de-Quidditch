@@ -1,5 +1,5 @@
 import exceptions.NoHayJugadoresEnEquipoException;
-import exceptions.NoSePuedeAgregarJugadoresEnEquipoExepcion;
+import exceptions.NoSePuedeAgregarJugadoresEnEquipoExcepcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,7 +97,7 @@ class EquipoTest {
     void testNoSePuedeAgrgarGuardian(){
         when(guardian.sosGuardian()).thenReturn(true);
         griffindor.agregarJugador(guardian);
-        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExepcion.class, ()-> griffindor.agregarJugador(guardian));
+        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExcepcion.class, ()-> griffindor.agregarJugador(guardian));
     }
 
     @Test
@@ -109,7 +109,7 @@ class EquipoTest {
         griffindor.agregarJugador(cazadorA);
         griffindor.agregarJugador(cazadorB);
         griffindor.agregarJugador(cazadorC);
-        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExepcion.class,() ->griffindor.agregarJugador(cazadorD));
+        assertThrows(NoSePuedeAgregarJugadoresEnEquipoExcepcion.class,() ->griffindor.agregarJugador(cazadorD));
     }
 
 }
