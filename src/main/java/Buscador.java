@@ -19,35 +19,35 @@ public class Buscador extends Jugador {
         this.setNivelDeReflejos(nivelDeReflejos);
         this.nivelDeVision=nivelDeVision;
     }
-
+    /** Habilidad Buscador. skill+velocidadJugador + la multiplicacion del nivel de reflejos y nivel de vision**/
     public Integer habilidad(){
         return super.habilidad()+ this.getNivelDeReflejos() *this.nivelDeVision;
     }
-
+    /** Buscador no bloquea**/
     public Boolean puedeBloquear(Jugador jugador) {
         return false;
     }
 
-    ///Metodos Sos
+    /** Metodo sos Jugador X?**/
     public Boolean sosCazador(){ return false; }
     public Boolean sosBuscador(){ return true; }
     public Boolean sosGuardian(){return false;}
     public Boolean sosGolpeador(){ return false; }
-    ///
 
+    /** Una vez que encuentra snith, la atrapa**/
     public void persiguiendoLaSnitch() throws ElJuegoHaTerminadoException {
         this.kilometros = this.kilometros + velocidadDelJugador() / 1.6;
         if (this.kilometros >= 5000.0) {
             this.atrapaSnitch();
         }
     }
-
+    /** Comienza el juego buscando la snith con un numero random**/
     public void buscandoLaSnitch() {
         if (this.randomSnitch() < this.habilidad() + this.getTurnosBuscando()) {
             this.encontroSnitch = true;
         }
     }
-
+    /** Buscador juega. Si queda aturdido, pierde un turno, si no encuentra snith sigue buscando en su prox turno. Y luego la persigue**/
     public void juega() throws ElJuegoHaTerminadoException {
         if (this.estaAturdido){
             System.out.println("Este jugador pierde su turno porque está aturdido");
@@ -61,35 +61,33 @@ public class Buscador extends Jugador {
             }
         }
     }
-
+    /** Si busca la snith o los kilometros no llegan a mil. Es blanco util**/
     public Boolean esBlancoUtil(){
         return !this.encontroSnitch || this.kilometros<1000;
         //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
     }
-
+    /** Buscador atrapa snith, gana 10 de skill. Su equipo gana 150 puntos. Y da una excepcion que termina el juego**/
     public void  atrapaSnitch() throws ElJuegoHaTerminadoException {
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
         //termina el partido y suma 150 puntos para su equipo
     }
-
+    /** El random es para metodo buscando snith**/
     public Integer randomSnitch() {
         List<Integer> rango = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
-
-    public void reiniciaLaBusqueda(){ /**si la estaba persiguiendo vuelve a buscarla**/
+    /** El buscador reinicia su busqueda, seteamos en cero los valores**/
+    public void reiniciaLaBusqueda(){
         this.turnosBuscando=0;
         this.kilometros=0.0;
         this.encontroSnitch=false;
     }
-
+    /** Es golpeado por bludger y todos los jugadores pierden 2 de skill y pierde porcentaje de salud si es Nimbus, seteado en clase padre. Ademas el buscador, reinicia busqueda**/
     public void golpeadoPorBludger(){
-       // if(!this.esGroso()){
             super.golpeadoPorBludger();
             this.reiniciaLaBusqueda();
-      //  }else if(this.esGroso()){this.estaAturdido=true;}
     }
 
     public Integer getTurnosBuscando() {
@@ -108,14 +106,13 @@ public class Buscador extends Jugador {
         this.nivelDeReflejos = nivelDeReflejos;
     }
 
-    /** Asi quedaria con bonus **/
+    /** Asi quedaria con bonus...  **/
     /**  public void golpeadoPorBludger(){
            if(!this.esGroso()){
              super.golpeadoPorBludger();
                this.reiniciaLaBusqueda();
           }else if(this.esGroso()){this.estaAturdido=true;}
-     } **/
-    /**
+     }
      * public void juega() throws ElJuegoHaTerminadoException {
      *         if (this.estaAturdido){
      *             System.out.println("Este jugador pierde su turno porque está aturdido");
@@ -127,7 +124,5 @@ public class Buscador extends Jugador {
      *             } else if (this.encontroSnitch) {
      *                 this.persiguiendoLaSnitch();
      *             }
-     *         }
-     *     }
-     */
+     **/
 }

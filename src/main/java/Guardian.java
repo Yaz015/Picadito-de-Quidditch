@@ -11,30 +11,48 @@ public class Guardian extends Jugador {
         this.fuerza = fuerza;
     }
 
+    public Integer getNivelDeReflejos() {
+        return nivelDeReflejos;
+    }
+
+    public void setNivelDeReflejos(Integer nivelDeReflejos) {
+        this.nivelDeReflejos = nivelDeReflejos;
+    }
+    /** Su habilidad es skill + velocidad del jugador, seteados en clase padre Jugadpr. Mas nivel de reflejo y fuerza**/
     public Integer habilidad() {
         return super.habilidad() + this.getNivelDeReflejos() + this.fuerza;
     }
-
+    /**
+     * Puede bloquear si sale 3 en un random
+     **/
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
-       // System.out.println(this.getRandomNumber());//sacar este print
         return 3 == this.getRandomNumber();
     }
 
-
-    public void setRandomNumber(){
-        Random ran=new Random();
-        this.setRandomNumber((int)(ran.nextDouble()*3)+1);
+    public void setRandomNumber() {
+        Random ran = new Random();
+        this.setRandomNumber((int) (ran.nextDouble() * 3) + 1);
     }
 
-    ///Metodos Sos
-    public Boolean sosCazador(){
+    /**
+     * Metodo sos Jugador
+     **/
+    public Boolean sosCazador() {
         return false;
     }
-    public Boolean sosBuscador() { return false;}
-    public Boolean sosGuardian(){return true;}
-    public Boolean sosGolpeador() { return false;}
-    ///
+
+    public Boolean sosBuscador() {
+        return false;
+    }
+
+    public Boolean sosGuardian() {
+        return true;
+    }
+
+    public Boolean sosGolpeador() {
+        return false;
+    }
 
     public Integer getRandomNumber() {
         return randomNumber;
@@ -44,22 +62,21 @@ public class Guardian extends Jugador {
         this.randomNumber = randomNumber;
     }
 
-    public Boolean esBlancoUtil(){
+    /**
+     * Es blanco util si si equipo no tiene pelota
+     **/
+    public Boolean esBlancoUtil() {
         return !this.equipo.tenesQuafflee();
     }
 
-    public void juega(){ }
+    /**
+     * El guardian solo bloquea
+     **/
+    public void juega() {
+    }
 
-    public void eligeUnBlancoUtil(){
+    public void eligeUnBlancoUtil() {
         this.equipo.getRandomBlancoUtilEquipoContrario();
     }
 
-    public Integer getNivelDeReflejos() {
-        return nivelDeReflejos;
-    }
-
-    public void setNivelDeReflejos(Integer nivelDeReflejos) {
-        this.nivelDeReflejos = nivelDeReflejos;
-    }
 }
-

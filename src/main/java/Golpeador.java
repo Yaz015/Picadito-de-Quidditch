@@ -13,32 +13,31 @@ public class Golpeador extends Jugador {
         this.fuerza=fuerza;
         this.punteria=punteria;
     }
-
+    /*** Su habilidad es igual a su skill + velocidad del jugador. Mas la punteria y fuerza**/
     public Integer habilidad(){
         return super.habilidad()+this.punteria+this.fuerza;
     }
-
+    /** Golpeador bloquea si es groso**/
     public Boolean puedeBloquear(Jugador jugador){
         return this.esGroso();
     }
-
+    /** No es util golpear golpeadores, es falo**/
     public Boolean esBlancoUtil(){
-        return false;//No es útil golpear golpeadores.????
+        return false;
     }
-
+    /** Golpeador que juega, elije blanco util. Si lo puede golpear, gana 2 de skill, y el blanco util es golpeado**/
     public void juega(){
         this.eligeBlancoUtilRandomDeGolpeador();
         if(this.puedeGolpearBlanco()){
-            this.golpeadoPorBludger();
             this.skill++;
             this.blancoUtilElegido.golpeadoPorBludger();
         }
     }
-
+    /** Elije un blanco util**/
     public void eligeBlancoUtilRandomDeGolpeador(){
         this.blancoUtilElegido=this.equipo.getRandomBlancoUtilEquipoContrario();
     }
-
+    /** Puede golpear y su punteria es mayor, al nivel de reflejos del blancoutil o en un randmon sale por lo menos 8**/
     public Boolean puedeGolpearBlanco(){
         return this.punteria>this.blancoUtilElegido.getNivelDeReflejos() || 8>=this.randomNumber();
     }
@@ -46,17 +45,16 @@ public class Golpeador extends Jugador {
     public Integer getNivelDeReflejos(){
         return 0;
     }
-
+    /** Random para metodo puedeGolpearBlanco()**/
     public Integer randomNumber(){
         List<Integer> rango = IntStream.range(1, 11).boxed().collect(Collectors.toList());
         Random rand = new Random();
         return rango.get(rand.nextInt(rango.size()));
     }
 
-    ///Metodos Sos
+    /** Metodo sos Jugador**/
     public Boolean sosCazador(){ return false; }
     public Boolean sosBuscador() { return false; }
     public Boolean sosGuardian(){return false;}
     public Boolean sosGolpeador() { return true; }
-    ///
 }
