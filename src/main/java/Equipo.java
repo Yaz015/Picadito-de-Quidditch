@@ -134,7 +134,7 @@ public class Equipo {
     public Jugador getRandomBlancoUtilEquipoContrario(){
         return this.equipoContrario.getRandomBlancoUtil();
     }
-    /** metodo para sumar 150 puntos al equipo, si su buscador encuentra snith y termina el juego con una excepcion**/
+    /** Metodo para sumar 150 puntos al equipo, si su buscador encuentra snith y termina el juego con una excepcion**/
     public void buscadorAtrapaSnitch() throws ElJuegoHaTerminadoException {
         this.setPuntos(this.getPuntos() +150);
         throw new ElJuegoHaTerminadoException("El buscador ha atrapado la Snitch, el juego ha terminado");

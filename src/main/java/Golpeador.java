@@ -13,7 +13,7 @@ public class Golpeador extends Jugador {
         this.fuerza=fuerza;
         this.punteria=punteria;
     }
-    /*** Su habilidad es igual a su skill + velocidad del jugador. Mas la punteria y fuerza**/
+    /** Su habilidad es igual a su skill + velocidad del jugador. Mas la punteria y fuerza**/
     public Integer habilidad(){
         return super.habilidad()+this.punteria+this.fuerza;
     }

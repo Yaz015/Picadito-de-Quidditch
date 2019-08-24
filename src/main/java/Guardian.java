@@ -22,9 +22,7 @@ public class Guardian extends Jugador {
     public Integer habilidad() {
         return super.habilidad() + this.getNivelDeReflejos() + this.fuerza;
     }
-    /**
-     * Puede bloquear si sale 3 en un random
-     **/
+    /**Puede bloquear si sale 3 en un random **/
     public Boolean puedeBloquear(Jugador jugador) {
         this.setRandomNumber();
         return 3 == this.getRandomNumber();
@@ -35,9 +33,7 @@ public class Guardian extends Jugador {
         this.setRandomNumber((int) (ran.nextDouble() * 3) + 1);
     }
 
-    /**
-     * Metodo sos Jugador
-     **/
+    /**Metodo sos Jugador**/
     public Boolean sosCazador() {
         return false;
     }

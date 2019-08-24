@@ -61,16 +61,16 @@ public class Buscador extends Jugador {
             }
         }
     }
-    /** Si busca la snith o los kilometros no llegan a mil. Es blanco util**/
+    /** Si busca la snith o le faltan mil kilometros . ES blanco util**/
     public Boolean esBlancoUtil(){
-        return !this.encontroSnitch || this.kilometros<1000;
-        //buscador si está buscando la snitch o le faltan menos de 1000 kilómetros
+        return !this.encontroSnitch || (this.kilometros>4000 && this.kilometros<5000);
+
     }
     /** Buscador atrapa snith, gana 10 de skill. Su equipo gana 150 puntos. Y da una excepcion que termina el juego**/
     public void  atrapaSnitch() throws ElJuegoHaTerminadoException {
         this.skill= this.skill+10;
         this.equipo.buscadorAtrapaSnitch();
-        //termina el partido y suma 150 puntos para su equipo
+
     }
     /** El random es para metodo buscando snith**/
     public Integer randomSnitch() {
