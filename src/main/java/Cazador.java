@@ -9,7 +9,7 @@ public class Cazador extends Jugador {
         this.punteria=punteria;
         this.nivelDeReflejos=nivelDeReflejos;
     }
-
+    /** Su habilidad es sus skill + velcidad del jugador. Mas la multiplicacion de su punteria y fuerza**/
     public Integer habilidad(){
         return super.habilidad()+this.punteria*fuerza;
     }
@@ -33,7 +33,7 @@ public class Cazador extends Jugador {
     /** Si el equipo contrario puede bloquean al jugador, el cazador no mete gol, y el cazador mas rapido contrario tiene pelota y el que bloquea gana 10 de skill.
      Sino mete gol**/
     public void intentarMeterGol(){
-        if ( equipo.equipoContrarioEvitaBloqueo(this)) {//evitar bloqueo
+        if ( equipo.equipoContrarioEvitaBloqueo(this)) {
             this.noMeteGol();
             this.equipo.jugadorCazadorMasRapidoEquipoContrario().tenesQuaffle();
             this.equipo.jugadorQueBloqueaGana10(this);
